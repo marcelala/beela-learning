@@ -1,16 +1,41 @@
 // dependencies
 import {
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
-/*Project files
-import { authInstance } from "firebaseServices/firebase";
-export async function register(){};
+//project files
+import { authInstance } from "./firebase";
+type iProps = {
+  email: string;
+  password: string;
+};
 
-export async function login(){};
+export async function register({ email, password }: iProps) {
+  try {
+    const user = await createUserWithEmailAndPassword(
+      authInstance,
+      email,
+      password
+    );
+    console.log(user);
+  } catch (error) {
+    // @ts-ignore
+    console.log(error.message);
+  }
+}
 
-export async function logout(){};
+export async function login({ email, password }: iProps) {
+  try {
+    const user = await signInWithEmailAndPassword(
+      authInstance,
+      email,
+      password
+    );
+    console.log(user);
+  } catch (error) {
+    // @ts-ignore
+    console.log(error.message);
+  }
+}
 
-export async function register(){};
-
-*/
+export async function logout() {}
