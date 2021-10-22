@@ -34,8 +34,14 @@ export default function Register() {
   }
 
   async function onSuccess(uid: string) {
-    const { name, city } = form;
-    const newParticipant = { name: name, city: city };
+    const { name, city, email, password, imageURL } = form;
+    const newParticipant = {
+      name: name,
+      city: city,
+      email: email,
+      imageURL: imageURL,
+      userRole: "participant",
+    };
     await createDocumentWithId("participants", uid, newParticipant);
     setUser(newParticipant);
     setIsAuthenticated(true);

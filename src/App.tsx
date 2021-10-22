@@ -21,7 +21,7 @@ export default function App() {
         setStatus(1);
       } else if (uid !== "") {
         // @ts-ignore
-        const user = await getDocument({ path, uid });
+        const user = await getDocument(path, uid);
 
         setUser(user);
         setIsAuthenticated(true);
@@ -32,7 +32,7 @@ export default function App() {
   );
 
   useEffect(() => {
-    fetchUser("auth", uid);
+    fetchUser("participants", uid);
   }, [fetchUser, uid]);
 
   return (

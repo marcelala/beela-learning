@@ -5,25 +5,48 @@ import { useHistory } from "react-router-dom";
 // Project files
 import FormFields from "../../components/FormFields";
 import { login } from "../../firebaseServices/authentication";
+import { useAuthentication } from "../../context/AuthenticationContext";
+import { useUser } from "../../context/UserContext";
+import { getDocument } from "../../firebaseServices/firestore";
 
 export default function Login() {
   // Global state
   const history = useHistory();
+  const { setUser } = useUser();
+  const { setIsAuthenticated } = useAuthentication();
   // Local state
   const loginFields = require("../../data/fields-login.json");
   const [form, setForm] = useState({ email: "", password: "" });
   const { email, password } = form;
   const [errorMessage, setErrorMessage] = useState("");
+
   async function handleLogin(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    await login({ email, password });
-    history.push("/admin-home");
+    setErrorMessage("");
+    const account = await login({ email, password });
+    account.setIsAuthenticated
+      ? await onSuccess(account.payload)
+      : onFailure(account.payload);
+
+    history.push("/");
+  }
+
+  async function onSuccess(uid: string) {
+    const document = await getDocument("users", uid);
+
+    setUser(document);
+    setIsAuthenticated(true);
+    history.push("/");
+  }
+
+  function onFailure(message: string) {
+    setErrorMessage(message);
   }
 
   return (
     <section id="login">
       <h1>Log in</h1>
-      <form onSubmit={(e) => handleLogin}>
+      <form onSubmit={handleLogin}>
         <FormFields fields={loginFields} state={[form, setForm]} />
         <p>{errorMessage}</p>
         <button type="submit">Login</button>

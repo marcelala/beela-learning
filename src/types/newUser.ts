@@ -3,5 +3,6 @@ export const newUser = {
   email: "",
   city: "",
   password: "",
-  phone: "",
+  imageURL: "",
+  courses: [],
 };
