@@ -11,31 +11,41 @@ type iProps = {
 };
 
 export async function register({ email, password }: iProps) {
+  const account = { isCreated: false, payload: "" };
+
   try {
-    const user = await createUserWithEmailAndPassword(
+    const userCredential = await createUserWithEmailAndPassword(
       authInstance,
       email,
       password
     );
-    console.log(user);
+    account.isCreated = true;
+    account.payload = userCredential.user.uid;
+    console.log(userCredential);
   } catch (error) {
+    console.error("authentication.js error", error);
     // @ts-ignore
-    console.log(error.message);
+    account.payload = error.code;
   }
+  return account;
 }
 
 export async function login({ email, password }: iProps) {
+  const account = { isLogged: false, payload: "" };
   try {
-    const user = await signInWithEmailAndPassword(
+    const userCredential = await signInWithEmailAndPassword(
       authInstance,
       email,
       password
     );
-    console.log(user);
+    account.isLogged = true;
+    account.payload = userCredential.user.uid;
+    console.log(userCredential);
   } catch (error) {
+    console.error("authentification.js error", error);
+    alert("Login failed");
     // @ts-ignore
-    console.log(error.message);
+    account.payload = error.code;
   }
+  return account;
 }
-
-export async function logout() {}

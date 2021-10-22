@@ -1,29 +1,33 @@
 // NPM packages
-import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { FormEvent, useState } from "react";
+import { useHistory } from "react-router-dom";
 
 // Project files
-import fields from "../../data/fields-login.json";
-import { getDocument } from "../../firebaseServices/firestore";
-import * as events from "events";
 import FormFields from "../../components/FormFields";
+import { login } from "../../firebaseServices/authentication";
 
 export default function Login() {
   // Global state
   const history = useHistory();
   // Local state
+  const loginFields = require("../../data/fields-login.json");
   const [form, setForm] = useState({ email: "", password: "" });
+  const { email, password } = form;
   const [errorMessage, setErrorMessage] = useState("");
-  async function login() {}
+  async function handleLogin(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    await login({ email, password });
+    history.push("/admin-home");
+  }
 
   return (
-    <div>
+    <section id="login">
       <h1>Log in</h1>
-      <form>
-        <FormFields fields={fields} state={[form, setForm]} />
+      <form onSubmit={(e) => handleLogin}>
+        <FormFields fields={loginFields} state={[form, setForm]} />
         <p>{errorMessage}</p>
-        <button>Login</button>
+        <button type="submit">Login</button>
       </form>
-    </div>
+    </section>
   );
 }

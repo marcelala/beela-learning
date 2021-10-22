@@ -1,26 +1,57 @@
 // dependencies
-import React, { createContext, ReactNode, useContext, useState } from "react";
-import iUser from "../interfaces/iUser";
+import React, {
+  createContext,
+  ReactNode,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+
+import { onAuthStateChanged } from "firebase/auth";
+import { authInstance } from "../firebaseServices/firebase";
 // Interfaces
 interface iProps {
   children: ReactNode;
 }
 interface iContext {
-  users: iUser[];
-  dispatch: Function;
+  uid: string;
+  setUid: any;
+  isAuthenticated: boolean;
+  setIsAuthenticated: any;
 }
 
 // Properties
-const AuthenticationContext = createContext(null);
+const initialState = {
+  uid: "",
+  setUid: null,
+  isLogged: false,
+  setIsLogged: null,
+  setError: null,
+};
+// @ts-ignore
+const AuthenticationContext = createContext<iContext>(initialState);
 
-export function AuthenticationProvider({ children }: any) {
+export function AuthenticationProvider({ children }: iProps) {
   // Local state
-  const [isLogged, setIsLogged] = useState(false);
-  const [user, setUser] = useState({});
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [error, setError] = useState({});
+  const [uid, setUid] = useState("");
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(
+      authInstance,
+      (user) => {
+        if (user) setUid(user.uid);
+        else setUid("no user");
+      },
+      setError
+    );
+    return unsubscribe();
+  }, []);
 
   return (
     <AuthenticationContext.Provider
-      value={{ user, setUser, isLogged, setIsLogged }}
+      value={{ uid, setUid, isAuthenticated, setIsAuthenticated }}
     >
       {children}
     </AuthenticationContext.Provider>
@@ -28,7 +59,6 @@ export function AuthenticationProvider({ children }: any) {
 }
 
 export function useAuthentication() {
-  const context = useContext(AuthenticationContext);
-
-  return context;
+  const auth = useContext(AuthenticationContext);
+  return { ...auth };
 }

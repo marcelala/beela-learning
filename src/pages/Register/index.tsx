@@ -1,40 +1,44 @@
 // dependencies
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { useHistory, Link } from "react-router-dom";
 
-// Project files
+//project files
 import FormFields from "../../components/FormFields";
-import fields from "../../data/fields-sign-up.json";
+//import fields from "../../data/fields-sign-up.json";
 import { register } from "../../firebaseServices/authentication";
 import { createDocumentWithId } from "../../firebaseServices/firestore";
+import { useUser } from "../../context/UserContext";
+import { useAuthentication } from "../../context/AuthenticationContext";
+import { newUser } from "../../types/newUser";
 
 export default function Register() {
-  // Global state
+  // global state
+  const { setUser } = useUser();
+  const { setIsAuthenticated } = useAuthentication();
   const history = useHistory();
+  const signUpFields = require("../../data/fields-sign-up.json");
+
   // Local state
-  const [form, setForm] = useState({
-    name: "",
-    city: "",
-    email: "",
-    password: "",
-  });
+  const [form, setForm] = useState(newUser);
   const [errorMessage, setErrorMessage] = useState("");
 
   // Methods
-  async function onSubmit(event: { preventDefault: () => void; }) {
+  async function onSubmit(event: FormEvent) {
     event.preventDefault();
+    const { email, password } = form;
     setErrorMessage("");
-    const account = await register({form.email, form.password});
-
-    account.isCreated ? onSuccess() : onFailure();
+    const account = await register({ email, password });
+    account.isCreated
+      ? await onSuccess(account.payload)
+      : onFailure(account.payload);
   }
 
-  async function onSuccess(uid) {
-    const newUser = { name: form.name, city: form.city };
-
-    await createDocumentWithId("users", uid, newUser);
-    setUser(newUser);
-    setIsLogged(true);
+  async function onSuccess(uid: string) {
+    const { name, city } = form;
+    const newParticipant = { name: name, city: city };
+    await createDocumentWithId("participants", uid, newParticipant);
+    setUser(newParticipant);
+    setIsAuthenticated(true);
     history.push("/");
   }
 
@@ -46,7 +50,7 @@ export default function Register() {
     <div>
       <h1>Create an account</h1>
       <form onSubmit={onSubmit}>
-        <FormFields fields={fields} state={[form, setForm]} />
+        <FormFields fields={signUpFields} state={[form, setForm]} />
         <p>{errorMessage}</p>
         <button>Create account</button>
       </form>
