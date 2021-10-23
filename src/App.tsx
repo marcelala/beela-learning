@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from "react";
-import "./App.css";
+import "./styles/index.sass";
 import Browser from "./components/Browser";
 import { getDocument } from "./firebaseServices/firestore";
 import { useUserData } from "./context/UserDataContext";
@@ -19,11 +19,9 @@ export default function App() {
     async (path: string, uid: string) => {
       if (uid === "no user") {
         setStatus(1);
-        console.log("user not registered on fetch");
       } else if (uid !== "") {
         // @ts-ignore
         const userData = await getDocument(path, uid);
-        console.log("tries to set user Data on fetch");
         setIsAuthenticated(true);
         setUserData(userData);
         setStatus(1);

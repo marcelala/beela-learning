@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import Navigation from "./Navigation";
@@ -9,10 +9,9 @@ import TopicsList from "../pages/TopicsList";
 import Topic from "../pages/Topic";
 import AdminHome from "../pages/AdminHome";
 import { useUserData } from "../context/UserDataContext";
-import { TopicsDataProvider } from "../context/TopicsContext";
-import AdminSwitch from "./AdminSwitch";
 import ParticipantsList from "../pages/ParticipantsList";
 import Participant from "./Participant";
+import Footer from "./Footer";
 
 export default function Browser() {
   const { userData } = useUserData();
@@ -34,6 +33,7 @@ export default function Browser() {
         />
         <AuthenticatedRoute path="/participants/:id" component={Participant} />
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

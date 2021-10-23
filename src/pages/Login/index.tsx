@@ -27,8 +27,6 @@ export default function Login() {
     account.setIsAuthenticated
       ? await onSuccess(account.payload)
       : onFailure(account.payload);
-
-    history.push("/");
   }
 
   async function onSuccess(uid: string) {
@@ -40,6 +38,7 @@ export default function Login() {
 
   function onFailure(message: string) {
     setErrorMessage(message);
+    history.push("/");
   }
 
   return (
