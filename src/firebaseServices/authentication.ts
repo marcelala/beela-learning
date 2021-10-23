@@ -22,7 +22,7 @@ export async function register({ email, password }: iProps) {
     );
     account.isCreated = true;
     account.payload = authCredential.user.uid;
-    await createDocument("auth", { email, password });
+    await createDocument("participants", { email, password, account });
   } catch (error) {
     console.error("authentication.js error", error);
     // @ts-ignore

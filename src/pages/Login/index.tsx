@@ -35,7 +35,7 @@ export default function Login() {
     const document = await getDocument("userData", uid);
     setUserData(document);
     setIsAuthenticated(true);
-    history.push("/");
+    history.push("/home");
   }
 
   function onFailure(message: string) {
