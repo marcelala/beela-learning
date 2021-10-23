@@ -8,6 +8,7 @@ import Home from "../pages/Home";
 import TopicsList from "../pages/TopicsList";
 import AdminHome from "../pages/AdminHome";
 import { useUserData } from "../context/UserDataContext";
+import { TopicsDataProvider } from "../context/TopicsContext";
 
 export default function Browser() {
   const { userData } = useUserData();
@@ -19,7 +20,9 @@ export default function Browser() {
       <Switch>
         <AuthenticatedRoute exact path="/home" component={HomePage} />
         <AuthenticatedRoute exact path="/ahome" component={AdminHome} />
-        <AuthenticatedRoute exact path="/topics" component={TopicsList} />
+        <TopicsDataProvider>
+          <AuthenticatedRoute exact path="/topics" component={TopicsList} />
+        </TopicsDataProvider>
         <UnauthenticatedRoute exact path="/signup" component={Register} />
         <UnauthenticatedRoute exact path="/login" component={Login} />
       </Switch>
