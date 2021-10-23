@@ -5,16 +5,17 @@ import { Link } from "react-router-dom";
 import TopicCard from "../../components/TopicCard";
 import iTopic from "../../interfaces/iTopic";
 import Spinner from "../../components/Spinner";
+import Type from "../../types/reducerTypes";
 
 export default function TopicsList() {
-  const { topicsData, setTopicsData } = useTopicsData();
+  const { dispatch, topicsData } = useTopicsData();
   const [status, setStatus] = useState(0); // 0 pending, 1 ready, 2 error
 
   // Methods
   const fetchTopics = useCallback(async (path: string) => {
     try {
       const fetchedTopics = await getCollection(path);
-      setTopicsData(fetchedTopics);
+      dispatch({ type: Type.SET_TOPICS, payload: fetchedTopics });
       console.log(topicsData);
       setStatus(1);
     } catch {
@@ -25,7 +26,7 @@ export default function TopicsList() {
   useEffect(() => {
     fetchTopics("topics");
     console.log(topicsData);
-  }, [fetchTopics, status, setTopicsData]);
+  }, [fetchTopics]);
 
   const TopicsList = topicsData.map((item: iTopic) => (
     <Link to={`/topics/${item.id}`} key={item.id}>

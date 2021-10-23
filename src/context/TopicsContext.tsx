@@ -1,24 +1,28 @@
 // dependencies
-import { createContext, useContext, useState } from "react";
+import { createContext, ReactNode, useContext, useReducer } from "react";
 import iTopic from "../interfaces/iTopic";
+import TopicsReducer from "./TopicsReducer";
 //interface
+interface iProps {
+  children: ReactNode;
+}
 interface iContext {
+  dispatch: Function;
   topicsData: iTopic[];
-  setTopicsData: any;
 }
 // properties
 const initialState: iTopic[] = [];
 const TopicsDataContext = createContext<iContext>({
+  dispatch: () => console.warn("context used outside the provider"),
   topicsData: initialState,
-  setTopicsData: null,
 });
 
-export function TopicsDataProvider({ children }: any) {
+export function TopicsDataProvider({ children }: iProps) {
   // Local state
-  const [topicsData, setTopicsData] = useState(initialState);
+  const [topicsData, dispatch] = useReducer(TopicsReducer, initialState);
 
   return (
-    <TopicsDataContext.Provider value={{ topicsData, setTopicsData }}>
+    <TopicsDataContext.Provider value={{ dispatch, topicsData }}>
       {children}
     </TopicsDataContext.Provider>
   );

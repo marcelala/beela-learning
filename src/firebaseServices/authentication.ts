@@ -3,10 +3,15 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail,
+  deleteUser,
+  updatePassword,
+  User,
 } from "firebase/auth";
 //project files
 import { authInstance } from "./firebase";
 import { createDocument, createDocumentWithId } from "./firestore";
+
 type iProps = {
   email: string;
   password: string;
@@ -68,4 +73,43 @@ export async function logOut() {
   }
 
   return account;
+}
+
+export async function sendRecoveryMail(email: string) {
+  sendPasswordResetEmail(authInstance, email)
+    .then(() => {
+      // Password reset email sent!
+      // ..
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+    });
+}
+
+export async function updateCredentials(newPassword: string) {
+  const user = authInstance.currentUser;
+  // @ts-ignore
+  updatePassword(user, newPassword)
+    .then(() => {
+      // Password reset email sent!
+      // ..
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // ..
+    });
+}
+
+export async function deleteAuthAccount(user: User) {
+  deleteUser(user)
+    .then(() => {
+      // User deleted.
+    })
+    .catch((error) => {
+      // An error occurred
+      // ...
+    });
 }

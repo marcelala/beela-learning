@@ -1,0 +1,43 @@
+[
+  {
+    "key": "title",
+    "label": "Topic title",
+    "placeholder": "Topic's title",
+    "type": "text",
+    "instructions":""
+  },
+  {
+    "key": "shortDescription",
+    "label": "Short description",
+    "placeholder": "Briefly describe this topic",
+    "type": "text",
+    "instructions":""
+  },
+  {
+    "key": "fullDescription",
+    "label": "Full description",
+    "placeholder": "Describe what this topic is about in detail ",
+    "type": "text",
+    "instructions":""
+  },  {
+  "key": "owner",
+  "label": "Author",
+  "placeholder": "The name of the main person responsible for this topic",
+  "type": "text",
+  "instructions":""
+},
+  {
+    "key": "thumbnailURL",
+    "label": "Thumbnail URL",
+    "placeholder": "",
+    "type": "image",
+    "instructions":""
+  },
+  {
+    "key": "imageURL",
+    "label": "ImageURL",
+    "placeholder": "",
+    "type": "image",
+    "instructions":""
+  }
+]
