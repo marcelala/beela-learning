@@ -1,26 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useCallback, useEffect, useState } from "react";
+import "./App.css";
+import Browser from "./components/Browser";
+import { getDocument } from "./firebaseServices/firestore";
+import { useUserData } from "./context/UserDataContext";
+import { useAuthentication } from "./context/AuthenticationContext";
 
-function App() {
+export default function App() {
+  // Global state
+  const { uid, setIsAuthenticated, isAuthenticated } = useAuthentication();
+  const { setUserData } = useUserData();
+
+  // Local state
+  const [status, setStatus] = useState(0); // 0 pending, 1 ready, 2 error
+
+  // Methods
+  const fetchUserData = useCallback(
+    async (path: string, uid: string) => {
+      if (uid === "no user") {
+        setStatus(1);
+        console.log("user not registered on fetch");
+      } else if (uid !== "") {
+        // @ts-ignore
+        const userData = await getDocument(path, uid);
+        console.log("tries to set user Data on fetch");
+        setIsAuthenticated(true);
+        setUserData(userData);
+        console.log(userData);
+        setStatus(1);
+      }
+    },
+    [setIsAuthenticated, setUserData]
+  );
+
+  useEffect(() => {
+    fetchUserData("participants", uid);
+    console.log(uid);
+  }, [fetchUserData, uid]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Browser />
     </div>
   );
 }
-
-export default App;

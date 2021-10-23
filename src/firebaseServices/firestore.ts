@@ -4,22 +4,19 @@ import { addDoc, setDoc, updateDoc, getDoc } from "firebase/firestore/lite";
 
 // Project files
 import { fireStoreInstance } from "./firebase";
-//types
-type iProps = {
-  path: string;
-  id: string;
-  data: any;
-};
 
 // Create
-export async function createDocumentWithId({ path, id, data }: iProps) {
+export async function createDocumentWithId(
+  path: string,
+  id: string,
+  data: any
+) {
   const documentReference = doc(fireStoreInstance, path, id);
   await setDoc(documentReference, data);
-
   return id;
 }
 
-export async function createDocument({ path, data }: iProps) {
+export async function createDocument(path: string, data: any) {
   const collectionReference = collection(fireStoreInstance, path);
   const documentReference = await addDoc(collectionReference, data);
 
@@ -27,14 +24,14 @@ export async function createDocument({ path, data }: iProps) {
 }
 
 // Read
-export async function getDocument({ path, id }: iProps) {
+export async function getDocument(path: string, id: string) {
   const documentReference = doc(fireStoreInstance, path, id);
   const document = await getDoc(documentReference);
 
   return { id: document.id, ...document.data() };
 }
 
-export async function getCollection({ path }: iProps) {
+export async function getCollection(path: string) {
   const collectionReference = collection(fireStoreInstance, path);
   const snapshot = await getDocs(collectionReference);
   const list = snapshot.docs.map((doc) => {
@@ -45,7 +42,7 @@ export async function getCollection({ path }: iProps) {
 }
 
 // Update
-export async function updateDocument({ path, data }: iProps) {
+export async function updateDocument(path: string, data: any) {
   const documentReference = doc(fireStoreInstance, path, data.id);
 
   await updateDoc(documentReference, data);

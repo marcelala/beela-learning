@@ -1,0 +1,30 @@
+[
+  {
+    "key": "name",
+    "label": "Name",
+    "placeholder": "Susanne Butler",
+    "type": "text",
+    "instructions":"your full name please"
+  },
+  {
+    "key": "city",
+    "label": "City",
+    "placeholder": "Stockholm",
+    "type": "text",
+    "instructions":"the city where you live"
+  },
+  {
+    "key": "email",
+    "label": "Email",
+    "placeholder": "eduardo.alvarez@novare.se",
+    "type": "email",
+    "instructions":"your email"
+  },
+  {
+    "key": "password",
+    "label": "Password",
+    "placeholder": "********",
+    "type": "password",
+    "instructions":"your password should contain at least 8 characters"
+  }
+]
