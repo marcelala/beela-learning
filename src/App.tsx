@@ -19,12 +19,14 @@ export default function App() {
     async (path: string, uid: string) => {
       if (uid === "no user") {
         setStatus(1);
+        console.log("user not registered on fetch");
       } else if (uid !== "") {
         // @ts-ignore
         const user = await getDocument(path, uid);
-
-        setUser(user);
+        console.log("tries to set user Data on fetch");
         setIsAuthenticated(true);
+        setUser(user);
+        console.log(user);
         setStatus(1);
       }
     },
@@ -33,6 +35,7 @@ export default function App() {
 
   useEffect(() => {
     fetchUser("participants", uid);
+    console.log(uid);
   }, [fetchUser, uid]);
 
   return (

@@ -38,7 +38,7 @@ export function AuthenticationProvider({ children }: iProps) {
   const [uid, setUid] = useState("");
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(
+    onAuthStateChanged(
       authInstance,
       (user) => {
         if (user) setUid(user.uid);
@@ -46,7 +46,6 @@ export function AuthenticationProvider({ children }: iProps) {
       },
       setError
     );
-    return unsubscribe();
   }, []);
 
   return (
