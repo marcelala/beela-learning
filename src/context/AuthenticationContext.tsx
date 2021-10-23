@@ -18,15 +18,15 @@ interface iContext {
   setUid: any;
   isAuthenticated: boolean;
   setIsAuthenticated: any;
+  error: any;
 }
 
 // Properties
 const initialState = {
   uid: "",
   setUid: null,
-  isLogged: false,
-  setIsLogged: null,
   setError: null,
+  error: null,
 };
 // @ts-ignore
 const AuthenticationContext = createContext<iContext>(initialState);
@@ -50,7 +50,7 @@ export function AuthenticationProvider({ children }: iProps) {
 
   return (
     <AuthenticationContext.Provider
-      value={{ uid, setUid, isAuthenticated, setIsAuthenticated }}
+      value={{ error, uid, setUid, isAuthenticated, setIsAuthenticated }}
     >
       {children}
     </AuthenticationContext.Provider>

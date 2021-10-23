@@ -3,14 +3,14 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { AuthenticationProvider } from "./context/AuthenticationContext";
-import { UserProvider } from "./context/UserContext";
+import { UserDataProvider } from "./context/UserDataContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthenticationProvider>
-      <UserProvider>
+      <UserDataProvider>
         <App />
-      </UserProvider>
+      </UserDataProvider>
     </AuthenticationProvider>
   </React.StrictMode>,
   document.getElementById("root")

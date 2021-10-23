@@ -1,13 +1,13 @@
-import { useUser } from "../../context/UserContext";
+import { useUserData } from "../../context/UserDataContext";
 
 export default function AdminHome() {
   // Global state
-  const { user } = useUser();
+  const { userData } = useUserData();
 
   return (
     <div>
       <h1>Admin Home</h1>
-      <p>Welcome to our page {user.name}.</p>
+      <p>Welcome to our page {userData.name}.</p>
       <button> Create a topic</button>
       <button> Edit a topic</button>
       <button> Delete a topic</button>

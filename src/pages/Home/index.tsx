@@ -1,11 +1,11 @@
 import { useHistory } from "react-router-dom";
 import { useAuthentication } from "../../context/AuthenticationContext";
-import { useUser } from "../../context/UserContext";
+import { useUserData } from "../../context/UserDataContext";
 import { logOut } from "../../firebaseServices/authentication";
 
 export default function Home() {
   // Global state
-  const { user } = useUser();
+  const { userData } = useUserData();
   const { setIsAuthenticated } = useAuthentication();
   const history = useHistory();
   // Methods
@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div>
       <h1>Home</h1>
-      <p>Welcome to our page {user.name}.</p>
+      <p>Welcome to our page {userData.name}.</p>
       <button> Add profile</button>
       <button> View topics</button>
 

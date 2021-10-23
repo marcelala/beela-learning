@@ -1,42 +1,41 @@
 import React, { useCallback, useEffect, useState } from "react";
-import logo from "./logo.svg";
 import "./App.css";
 import Browser from "./components/Browser";
 import { getDocument } from "./firebaseServices/firestore";
-import { useUser } from "./context/UserContext";
+import { useUserData } from "./context/UserDataContext";
 import { useAuthentication } from "./context/AuthenticationContext";
 
 export default function App() {
   // Global state
   const { uid, setIsAuthenticated, isAuthenticated } = useAuthentication();
-  const { setUser } = useUser();
+  const { setUserData } = useUserData();
 
   // Local state
   const [status, setStatus] = useState(0); // 0 pending, 1 ready, 2 error
 
   // Methods
-  const fetchUser = useCallback(
+  const fetchUserData = useCallback(
     async (path: string, uid: string) => {
       if (uid === "no user") {
         setStatus(1);
         console.log("user not registered on fetch");
       } else if (uid !== "") {
         // @ts-ignore
-        const user = await getDocument(path, uid);
+        const userData = await getDocument(path, uid);
         console.log("tries to set user Data on fetch");
         setIsAuthenticated(true);
-        setUser(user);
-        console.log(user);
+        setUserData(userData);
+        console.log(userData);
         setStatus(1);
       }
     },
-    [setIsAuthenticated, setUser]
+    [setIsAuthenticated, setUserData]
   );
 
   useEffect(() => {
-    fetchUser("participants", uid);
+    fetchUserData("participants", uid);
     console.log(uid);
-  }, [fetchUser, uid]);
+  }, [fetchUserData, uid]);
 
   return (
     <div className="App">

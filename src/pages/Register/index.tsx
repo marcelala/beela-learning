@@ -7,13 +7,13 @@ import FormFields from "../../components/FormFields";
 //import fields from "../../data/fields-sign-up.json";
 import { register } from "../../firebaseServices/authentication";
 import { createDocumentWithId } from "../../firebaseServices/firestore";
-import { useUser } from "../../context/UserContext";
+import { useUserData } from "../../context/UserDataContext";
 import { useAuthentication } from "../../context/AuthenticationContext";
 import { newUser } from "../../types/newUser";
 
 export default function Register() {
   // global state
-  const { setUser } = useUser();
+  const { setUserData } = useUserData();
   const { setIsAuthenticated } = useAuthentication();
   const history = useHistory();
   const signUpFields = require("../../data/fields-sign-up.json");
@@ -43,7 +43,7 @@ export default function Register() {
       userRole: "participant",
     };
     await createDocumentWithId("participants", uid, newParticipant);
-    setUser(newParticipant);
+    setUserData(newParticipant);
     setIsAuthenticated(true);
     history.push("/");
   }

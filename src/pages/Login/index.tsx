@@ -6,13 +6,13 @@ import { useHistory } from "react-router-dom";
 import FormFields from "../../components/FormFields";
 import { login } from "../../firebaseServices/authentication";
 import { useAuthentication } from "../../context/AuthenticationContext";
-import { useUser } from "../../context/UserContext";
+import { useUserData } from "../../context/UserDataContext";
 import { getDocument } from "../../firebaseServices/firestore";
 
 export default function Login() {
   // Global state
   const history = useHistory();
-  const { setUser } = useUser();
+  const { setUserData } = useUserData();
   const { setIsAuthenticated } = useAuthentication();
   // Local state
   const loginFields = require("../../data/fields-login.json");
@@ -33,7 +33,7 @@ export default function Login() {
 
   async function onSuccess(uid: string) {
     const document = await getDocument("participants", uid);
-    setUser(document);
+    setUserData(document);
     setIsAuthenticated(true);
     history.push("/");
   }
