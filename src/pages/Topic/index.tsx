@@ -1,7 +1,7 @@
 import { useHistory, useParams } from "react-router-dom";
 import { useTopicsData } from "../../context/TopicsContext";
 import iTopic from "../../interfaces/iTopic";
-import { ErrorComponent } from "../../components/ErrorComponent";
+import ErrorComponent from "../../components/ErrorComponent";
 // Interface
 type PropParams = {
   id: string;

@@ -4,12 +4,15 @@ import "./index.css";
 import App from "./App";
 import { AuthenticationProvider } from "./context/AuthenticationContext";
 import { UserDataProvider } from "./context/UserDataContext";
+import { TopicsDataProvider } from "./context/TopicsContext";
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthenticationProvider>
       <UserDataProvider>
-        <App />
+        <TopicsDataProvider>
+          <App />
+        </TopicsDataProvider>
       </UserDataProvider>
     </AuthenticationProvider>
   </React.StrictMode>,

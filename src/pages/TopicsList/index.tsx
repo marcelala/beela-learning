@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import TopicCard from "../../components/TopicCard";
 import iTopic from "../../interfaces/iTopic";
+import Spinner from "../../components/Spinner";
 
 export default function TopicsList() {
   const { topicsData, setTopicsData } = useTopicsData();
@@ -34,7 +35,7 @@ export default function TopicsList() {
 
   return (
     <div className="TopicsList">
-      {status === 0 && <p>Loading ⏱</p>}
+      {status === 0 && <Spinner />}
       {status === 1 && <>{TopicsList}</>}
       {status === 2 && <p>Error 🚨</p>}
     </div>

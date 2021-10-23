@@ -10,23 +10,29 @@ import Topic from "../pages/Topic";
 import AdminHome from "../pages/AdminHome";
 import { useUserData } from "../context/UserDataContext";
 import { TopicsDataProvider } from "../context/TopicsContext";
+import AdminSwitch from "./AdminSwitch";
+import ParticipantsList from "../pages/ParticipantsList";
+import Participant from "./Participant";
 
 export default function Browser() {
   const { userData } = useUserData();
-  const HomePage = userData.userRole === "admin" ? AdminHome : Home;
-
+  const admin = userData.userRole === "admin";
+  const HomePage = admin ? AdminHome : Home;
   return (
     <BrowserRouter>
       <Navigation />
       <Switch>
         <AuthenticatedRoute exact path="/home" component={HomePage} />
-        <AuthenticatedRoute exact path="/ahome" component={AdminHome} />
-        <TopicsDataProvider>
-          <AuthenticatedRoute exact path="/topics" component={TopicsList} />
-          <AuthenticatedRoute exact path="/topics/:id" component={Topic} />
-        </TopicsDataProvider>
         <UnauthenticatedRoute exact path="/signup" component={Register} />
         <UnauthenticatedRoute exact path="/login" component={Login} />
+        <AuthenticatedRoute exact path="/topics" component={TopicsList} />
+        <AuthenticatedRoute exact path="/topics/:id" component={Topic} />
+        <AuthenticatedRoute
+          exact
+          path="/participants"
+          component={ParticipantsList}
+        />
+        <AuthenticatedRoute path="/participants/:id" component={Participant} />
       </Switch>
     </BrowserRouter>
   );

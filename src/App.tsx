@@ -4,6 +4,7 @@ import Browser from "./components/Browser";
 import { getDocument } from "./firebaseServices/firestore";
 import { useUserData } from "./context/UserDataContext";
 import { useAuthentication } from "./context/AuthenticationContext";
+import Spinner from "./components/Spinner";
 
 export default function App() {
   // Global state
@@ -39,7 +40,9 @@ export default function App() {
 
   return (
     <div className="App">
-      <Browser />
+      {status === 0 && <Spinner />}
+      {status === 1 && <Browser />}
+      {status === 2 && <p>Error 🚨</p>}
     </div>
   );
 }
