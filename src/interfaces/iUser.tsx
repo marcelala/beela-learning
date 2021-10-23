@@ -1,5 +1,5 @@
 export default interface iUser {
-  uid?: string;
+  id: string;
   fullName: string;
   email: string;
   city: string;

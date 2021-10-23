@@ -1,14 +1,13 @@
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import ErrorComponent from "./ErrorComponent";
 import iUser from "../interfaces/iUser";
-// Interface
-interface iProps {
-  item: iUser;
-}
-export default function Participant(item: iProps) {
+import PropsUser from "../types/PropsUser";
+
+export default function Participant({ user }: PropsUser) {
+  const history = useHistory();
   // @ts-ignore
-  const { fullName, email, city, iud } = item;
-  if (item === undefined) return <ErrorComponent key={iud.index} />;
+  const { fullName, email, city } = user;
+  if (user === undefined) return <ErrorComponent />;
   return (
     <section id="participant-item">
       <h3>{fullName}</h3>

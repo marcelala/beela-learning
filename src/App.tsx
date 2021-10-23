@@ -26,7 +26,6 @@ export default function App() {
         console.log("tries to set user Data on fetch");
         setIsAuthenticated(true);
         setUserData(userData);
-        console.log(userData);
         setStatus(1);
       }
     },
@@ -35,7 +34,6 @@ export default function App() {
 
   useEffect(() => {
     fetchUserData("userData", uid);
-    console.log(uid);
   }, [fetchUserData, uid]);
 
   return (

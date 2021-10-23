@@ -8,15 +8,16 @@ import Participant from "../../components/Participant";
 import ErrorComponent from "../../components/ErrorComponent";
 
 export default function ParticipantsList() {
-  const { userData, participants, setParticipants } = useUserData();
+  const { userData } = useUserData();
   const history = useHistory();
+  const [participants, setParticipants] = useState([]);
   const [status, setStatus] = useState(0); // 0 pending, 1 ready, 2 error
   // Methods
   const fetchParticipants = useCallback(async (path: string) => {
     try {
-      const fetchedParticipants = await getCollection(path);
+      const fetchedUsers = await getCollection(path);
       // @ts-ignore
-      setParticipants(fetchedParticipants);
+      setParticipants(fetchedUsers);
       setStatus(1);
     } catch {
       setStatus(2);
@@ -26,14 +27,12 @@ export default function ParticipantsList() {
   useEffect(() => {
     fetchParticipants("userData");
     console.log(participants);
-  }, [fetchParticipants, status]);
+  }, [fetchParticipants]);
 
-  const Participants = participants.map((item: iUser) => (
-    <Link to={`/participants/${item.uid}`} key={item.uid}>
-      <Participant item={item} />
-    </Link>
+  const Participants = participants.map((user: iUser) => (
+    <Participant user={user} key={user.id} />
   ));
-  if (Participants === undefined) return ErrorComponent;
+  //if (participants === undefined) return ErrorComponent;
 
   return (
     <section className="ParticipantsList">

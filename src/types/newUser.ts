@@ -1,5 +1,5 @@
 export const newUser = {
-  uid: "",
+  id: "",
   fullName: "",
   email: "",
   password: "",
