@@ -6,6 +6,7 @@ import AuthenticatedRoute from "./AuthenticatedRoute";
 import UnauthenticatedRoute from "./UnauthenticatedRoute";
 import Home from "../pages/Home";
 import TopicsList from "../pages/TopicsList";
+import Topic from "../pages/Topic";
 import AdminHome from "../pages/AdminHome";
 import { useUserData } from "../context/UserDataContext";
 import { TopicsDataProvider } from "../context/TopicsContext";
@@ -22,6 +23,7 @@ export default function Browser() {
         <AuthenticatedRoute exact path="/ahome" component={AdminHome} />
         <TopicsDataProvider>
           <AuthenticatedRoute exact path="/topics" component={TopicsList} />
+          <AuthenticatedRoute exact path="/topics/:id" component={Topic} />
         </TopicsDataProvider>
         <UnauthenticatedRoute exact path="/signup" component={Register} />
         <UnauthenticatedRoute exact path="/login" component={Login} />
