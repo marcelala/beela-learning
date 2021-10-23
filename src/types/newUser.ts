@@ -1,8 +1,13 @@
 export const newUser = {
-  name: "",
+  uid: "",
+  fullName: "",
   email: "",
-  city: "",
   password: "",
+  phone: "",
+  city: "",
   imageURL: "",
-  courses: [],
+  links: [],
+  topics: [],
+  favorites: [],
+  userRole: "",
 };

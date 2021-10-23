@@ -32,7 +32,7 @@ export default function Login() {
   }
 
   async function onSuccess(uid: string) {
-    const document = await getDocument("participants", uid);
+    const document = await getDocument("userData", uid);
     setUserData(document);
     setIsAuthenticated(true);
     history.push("/");

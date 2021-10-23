@@ -7,7 +7,7 @@ export default function AdminHome() {
   return (
     <div>
       <h1>Admin Home</h1>
-      <p>Welcome to our page {userData.name}.</p>
+      <p>Welcome to our page {userData.fullName}.</p>
       <button> Create a topic</button>
       <button> Edit a topic</button>
       <button> Delete a topic</button>

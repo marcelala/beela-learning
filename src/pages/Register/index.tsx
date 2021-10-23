@@ -4,7 +4,6 @@ import { useHistory, Link } from "react-router-dom";
 
 //project files
 import FormFields from "../../components/FormFields";
-//import fields from "../../data/fields-sign-up.json";
 import { register } from "../../firebaseServices/authentication";
 import { createDocumentWithId } from "../../firebaseServices/firestore";
 import { useUserData } from "../../context/UserDataContext";
@@ -34,15 +33,16 @@ export default function Register() {
   }
 
   async function onSuccess(uid: string) {
-    const { name, city, email, password, imageURL } = form;
+    const { fullName, email, phone, city, imageURL, password } = form;
     const newParticipant = {
-      name: name,
+      fullName: fullName,
       city: city,
       email: email,
+      phone: phone,
       imageURL: imageURL,
       userRole: "participant",
     };
-    await createDocumentWithId("participants", uid, newParticipant);
+    await createDocumentWithId("userData", uid, newParticipant);
     setUserData(newParticipant);
     setIsAuthenticated(true);
     history.push("/");

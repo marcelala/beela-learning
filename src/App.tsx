@@ -33,7 +33,7 @@ export default function App() {
   );
 
   useEffect(() => {
-    fetchUserData("participants", uid);
+    fetchUserData("userData", uid);
     console.log(uid);
   }, [fetchUserData, uid]);
 

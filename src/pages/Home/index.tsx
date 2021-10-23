@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <div>
       <h1>Home</h1>
-      <p>Welcome to our page {userData.name}.</p>
+      <p>Welcome to our page {userData.fullName}.</p>
       <button> Add profile</button>
       <button> View topics</button>
 
