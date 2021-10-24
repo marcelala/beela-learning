@@ -1,1 +1,3 @@
-export default function AdminCreateTopic() {}
+export default function AdminCreateTopic() {
+  return "create";
+}

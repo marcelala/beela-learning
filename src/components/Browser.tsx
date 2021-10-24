@@ -12,6 +12,8 @@ import { useUserData } from "../context/UserDataContext";
 import ParticipantsList from "../pages/ParticipantsList";
 import Participant from "./Participant";
 import Footer from "./Footer";
+import AdminTopic from "../pages/AdminTopic";
+import AdminCreateTopic from "../pages/AdminCreateTopic";
 
 export default function Browser() {
   const { userData } = useUserData();
@@ -31,6 +33,13 @@ export default function Browser() {
           path="/participants"
           component={ParticipantsList}
         />
+        <AuthenticatedRoute
+          exact
+          path="/admin-topics/"
+          component={AdminCreateTopic}
+        />
+        <AuthenticatedRoute path="/admin-topics/:id" component={AdminTopic} />
+
         <AuthenticatedRoute path="/participants/:id" component={Participant} />
       </Switch>
       <Footer />

@@ -25,19 +25,5 @@
   "placeholder": "The name of the main person responsible for this topic",
   "type": "text",
   "instructions":""
-},
-  {
-    "key": "thumbnailURL",
-    "label": "Thumbnail URL",
-    "placeholder": "",
-    "type": "image",
-    "instructions":""
-  },
-  {
-    "key": "imageURL",
-    "label": "ImageURL",
-    "placeholder": "",
-    "type": "image",
-    "instructions":""
-  }
+}
 ]

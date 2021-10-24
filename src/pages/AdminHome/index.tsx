@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useUserData } from "../../context/UserDataContext";
+import { newTopic } from "../../types/newTopic";
 
 export default function AdminHome() {
   // Global state
@@ -9,7 +10,10 @@ export default function AdminHome() {
     <section id="home-admin">
       <h1>Admin Home</h1>
       <p>Welcome to our page {userData.fullName}</p>
-      <button> Create a topic</button>
+      <Link to={`/admin-topics/${newTopic.id}`}>
+        <button> Create a topic</button>
+      </Link>
+
       <button> Edit a topic </button>
       <button> Delete a topic </button>
       <Link to="/participants">
