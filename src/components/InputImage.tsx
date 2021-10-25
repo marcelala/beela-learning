@@ -1,39 +1,49 @@
 // NPM packages
-import { FormEvent, useRef } from "react";
+import { FormEvent } from "react";
 
 // Project files
 import Placeholder from "assets/images/placeholder.png";
 import { uploadImage } from "../scripts/uploadImage";
 
-// Interface
+// Interfaces
+interface iFields {
+  key: string;
+  label: string;
+  instructions: string;
+}
 interface iProps {
   onChange: Function;
+  options: iFields;
   state: any;
-  path: string;
+  filename: string;
 }
 
-export default function InputImage({ onChange, state, path }: iProps) {
-  const [form, setForm] = state;
+export default function InputImage({
+  onChange,
+  options,
+  state,
+  filename,
+}: iProps) {
+  const { label, key, instructions } = options;
 
   // Properties
-  const inputReference = useRef<HTMLInputElement>(null);
-
   const Image = state === "" ? Placeholder : state;
 
   // Methods
   async function onFileChange(event: FormEvent) {
-    const image_url = await uploadImage(event, path);
-    setForm(image_url);
-    onChange(image_url);
+    const image_url = await uploadImage(event, filename);
+
+    onChange(key, image_url);
   }
 
   return (
     <fieldset className="input-image">
       <label className="custom-file-chooser">
-        <input onChange={(event) => onFileChange} type="file" />
+        {label}
+        <input onChange={(event) => onFileChange(event)} type="file" />
         <img src={Image} alt="User generated content" />
       </label>
-      <small>Add a png picture above</small>
+      <small>{instructions}</small>
     </fieldset>
   );
 }

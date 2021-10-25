@@ -19,7 +19,6 @@ export async function createDocumentWithId(
 export async function createDocument(path: string, data: any) {
   const collectionReference = collection(fireStoreInstance, path);
   const documentReference = await addDoc(collectionReference, data);
-
   return documentReference.id;
 }
 

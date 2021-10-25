@@ -1,29 +1,39 @@
-[
-  {
+{
+  "title":{
     "key": "title",
     "label": "Topic title",
     "placeholder": "Topic's title",
     "type": "text",
     "instructions":""
   },
-  {
+  "shortDescription":{
     "key": "shortDescription",
     "label": "Short description",
     "placeholder": "Briefly describe this topic",
     "type": "text",
     "instructions":""
   },
-  {
+  "fullDescription": {
     "key": "fullDescription",
     "label": "Full description",
     "placeholder": "Describe what this topic is about in detail ",
     "type": "text",
     "instructions":""
-  },  {
+  },  "owner":{
   "key": "owner",
   "label": "Author",
   "placeholder": "The name of the main person responsible for this topic",
   "type": "text",
   "instructions":""
+},
+"thumbnailURL": {
+"key": "thumbnailURL",
+"label": "Thumbnail image",
+"instructions": "Please choose a picture for the small cards on the topics list."
+},
+  "topicImageURL": {
+    "key": "topicImageURL",
+    "label": "Topic image",
+    "instructions": "Please choose a picture for the main topic banner."
+  }
 }
-]

@@ -50,7 +50,7 @@ export default function AdminTopic() {
   return (
     <section id="topic-editor">
       <h1>{title}</h1>
-      <TopicForm topic={topic} onSubmit={onSave} onChange={onChange} />
+      <TopicForm topic={topic} onChange={onChange} />
       <footer>
         <button onClick={() => onSave(topic)}>Save changes</button>
         <button onClick={() => history.goBack()}>Go back</button>

@@ -1,35 +1,49 @@
 import InputImage from "../../components/InputImage";
 import iTopic from "../../interfaces/iTopic";
-import FormFields from "../../components/FormFields";
-import { newTopic } from "../../types/newTopic";
 import { FormEvent, useState } from "react";
+import InputField from "../../components/InputField";
 // Interface
 interface iProps {
   topic: iTopic;
-  onSubmit: Function;
   onChange: Function;
 }
-export default function TopicForm({ onSubmit, topic, onChange }: iProps) {
+export default function TopicForm({ topic, onChange }: iProps) {
   const topicFields = require("../../data/fields-topic.json");
-  const [form, setForm] = useState(newTopic);
-  const [errorMessage, setErrorMessage] = useState("");
 
   return (
-    <form onSubmit={(event: FormEvent) => onSubmit(event)}>
-      <InputImage
+    <section id={"topic-form"}>
+      <InputField
         onChange={onChange}
-        state={[form, setForm]}
-        path={`thumbnailURL_${topic.id}`}
-        key={"thumbnailURL"}
+        settings={topicFields.title}
+        state={topic.title}
+      />
+      <InputField
+        onChange={onChange}
+        settings={topicFields.owner}
+        state={topic.owner}
+      />
+      <InputField
+        onChange={onChange}
+        settings={topicFields.shortDescription}
+        state={topic.shortDescription}
+      />
+      <InputField
+        onChange={onChange}
+        settings={topicFields.fullDescription}
+        state={topic.fullDescription}
       />
       <InputImage
         onChange={onChange}
-        state={[form, setForm]}
-        path={`topicImageURL_${topic.id}`}
-        key={"topicImageURL"}
+        options={topicFields.thumbnailURL}
+        state={topic.thumbnailURL}
+        filename={topic.title + "_thumbnail"}
       />
-      <FormFields fields={topicFields} state={[form, setForm]} />
-      <p>{errorMessage}</p>
-    </form>
+      <InputImage
+        onChange={onChange}
+        options={topicFields.topicImageURL}
+        state={topic.topicImageURL}
+        filename={topic.title + "_image"}
+      />
+    </section>
   );
 }
