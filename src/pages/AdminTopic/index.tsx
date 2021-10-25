@@ -17,7 +17,6 @@ export default function AdminTopic() {
   const { topicsData, dispatch } = useTopicsData();
   const { id } = useParams<iPropParams>();
   const history = useHistory();
-
   const [topic, setTopic] = useState(findTopic(topicsData, id));
   // Properties
   const title = topic.title === "" ? "Create topic" : "Edit topic";
@@ -38,8 +37,13 @@ export default function AdminTopic() {
   }
 
   async function onCreateTopic(topic: iTopic) {
-    topic.id = await createDocument("topics", topic);
+    const documentID = await createDocument("topics", topic);
+    topic.id = await documentID;
+    await updateDocument("topics", topic);
+    setTopic({ ...topic, id });
+    console.log(topic.id, documentID, "topiciD on create");
     dispatch({ type: Type.CREATE_TOPIC, payload: topic });
+    console.log(topic.id, "id after dispatch");
   }
 
   async function onUpdateTopic(topic: iTopic) {

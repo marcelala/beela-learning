@@ -12,12 +12,14 @@ export default function Topic() {
   const history = useHistory();
   const topicInfo = topicsData.find((item: iTopic) => item.id === id);
   if (topicInfo === undefined) return ErrorComponent;
-  const { topicImageURL, title, fullDescription } = topicInfo;
+  const { topicImageURL, title, fullDescription, owner } = topicInfo;
   return (
     <section id="topic">
       <img src={topicImageURL} alt={title} />
       <h1>{title}</h1>
+      <h3>{owner}</h3>
       <p>{fullDescription}</p>
+      <button onClick={() => history.goBack()}>Go back</button>
     </section>
   );
 }
