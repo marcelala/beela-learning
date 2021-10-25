@@ -1,7 +1,7 @@
 import iTopic from "../interfaces/iTopic";
 
 export const newTopic: iTopic = {
-  id: "newTopic",
+  id: "",
   title: "",
   shortDescription: "",
   fullDescription: "",
