@@ -14,7 +14,7 @@ export default function Navigation() {
   }
   return (
     <nav>
-      <NavLink to="/">Home</NavLink>|<NavLink to="login">Login</NavLink>|
+      <NavLink to="/home">Home</NavLink>|<NavLink to="login">Login</NavLink>|
       <NavLink to="/signup">Sign Up</NavLink>
       <NavLink to="/topics">Browse</NavLink>
       {isAuthenticated ? <button onClick={onLogout}> Sign out</button> : ""}

@@ -27,19 +27,18 @@ export default function Login() {
     account.setIsAuthenticated
       ? await onSuccess(account.payload)
       : onFailure(account.payload);
-
-    history.push("/");
   }
 
   async function onSuccess(uid: string) {
-    const document = await getDocument("participants", uid);
+    const document = await getDocument("userData", uid);
     setUserData(document);
     setIsAuthenticated(true);
-    history.push("/");
+    history.push("/home");
   }
 
   function onFailure(message: string) {
     setErrorMessage(message);
+    history.push("/");
   }
 
   return (

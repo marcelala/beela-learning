@@ -46,7 +46,7 @@ export function AuthenticationProvider({ children }: iProps) {
       },
       setError
     );
-  }, []);
+  }, [isAuthenticated]);
 
   return (
     <AuthenticationContext.Provider

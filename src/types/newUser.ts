@@ -1,8 +1,15 @@
-export const newUser = {
-  name: "",
+import iUser from "../interfaces/iUser";
+
+export const newUser: iUser = {
+  id: "",
+  fullName: "",
   email: "",
-  city: "",
   password: "",
+  phone: "",
+  city: "",
   imageURL: "",
-  courses: [],
+  links: [],
+  topics: [],
+  favorites: [],
+  userRole: "",
 };

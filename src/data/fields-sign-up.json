@@ -1,7 +1,7 @@
 [
   {
-    "key": "name",
-    "label": "Name",
+    "key": "fullName",
+    "label": "fullName",
     "placeholder": "Susanne Butler",
     "type": "text",
     "instructions":"your full name please"
@@ -16,10 +16,16 @@
   {
     "key": "email",
     "label": "Email",
-    "placeholder": "eduardo.alvarez@novare.se",
+    "placeholder": "yourname@gmail.com",
     "type": "email",
     "instructions":"your email"
-  },
+  },  {
+  "key": "phone",
+  "label": "Phone",
+  "placeholder": "0710001111",
+  "type": "text",
+  "instructions":"phone"
+},
   {
     "key": "password",
     "label": "Password",
