@@ -1,64 +1,45 @@
+//dependencies
+import { FormEvent } from "react";
+import { useHistory, useParams, Link } from "react-router-dom";
 import { useTopicsData } from "../../context/TopicsContext";
-import { useHistory, useParams } from "react-router-dom";
 import iTopic from "../../interfaces/iTopic";
-import { newTopic } from "../../types/newTopic";
-import { useState } from "react";
-import {
-  createDocument,
-  updateDocument,
-} from "../../firebaseServices/firestore";
-import Type from "../../types/reducerTypes";
-import TopicForm from "./TopicForm.jsx";
+import ErrorComponent from "../../components/ErrorComponent";
+import iUser from "../../interfaces/iUser";
+import { deleteDocument } from "../../firebaseServices/firestore";
 // Interface
-type iPropParams = {
+type PropParams = {
   id: string;
 };
 export default function AdminTopic() {
   const { topicsData, dispatch } = useTopicsData();
-  const { id } = useParams<iPropParams>();
+  const { id } = useParams<PropParams>();
   const history = useHistory();
-  const [topic, setTopic] = useState(findTopic(topicsData, id));
-  // Properties
-  const title = topic.title === "" ? "Create topic" : "Edit topic";
-  // Methods
-  function findTopic(topicsData: iTopic[], id: string) {
-    const existingTopic = topicsData.find((item) => item.id === id);
-    return existingTopic === undefined ? newTopic : existingTopic;
-  }
+  const topicInfo = topicsData.find((item: iTopic) => item.id === id);
+  if (topicInfo === undefined) return ErrorComponent;
+  const { topicImageURL, title, fullDescription, owner } = topicInfo;
 
-  function onChange(key: string, value: string) {
-    const field = { [key]: value };
-    setTopic({ ...topic, ...field });
+  async function onDelete(id: string) {
+    //e.preventDefault();
+    if (
+      window.confirm(
+        "Are you sure you want to delete this topic and all of its contents?"
+      )
+    ) {
+      await deleteDocument("topics", id);
+      alert("Topic deleted");
+      dispatch({ type: "UPDATE_TOPIC", payload: topicInfo });
+      history.goBack();
+    }
   }
-
-  function onSave(topic: iTopic) {
-    id === "newTopic" ? onCreateTopic(topic) : onUpdateTopic(topic);
-    history.goBack();
-  }
-
-  async function onCreateTopic(topic: iTopic) {
-    const documentID = await createDocument("topics", topic);
-    topic.id = await documentID;
-    await updateDocument("topics", topic);
-    setTopic({ ...topic, id });
-    console.log(topic.id, documentID, "topiciD on create");
-    dispatch({ type: Type.CREATE_TOPIC, payload: topic });
-    console.log(topic.id, "id after dispatch");
-  }
-
-  async function onUpdateTopic(topic: iTopic) {
-    await updateDocument("topics", topic);
-    dispatch({ type: Type.UPDATE_TOPIC, payload: topic });
-  }
-
   return (
-    <section id="topic-editor">
+    <section id="topic">
+      <img src={topicImageURL} alt={title} />
       <h1>{title}</h1>
-      <TopicForm topic={topic} onChange={onChange} />
-      <footer>
-        <button onClick={() => onSave(topic)}>Save changes</button>
-        <button onClick={() => history.goBack()}>Go back</button>
-      </footer>
+      <h3>{owner}</h3>
+      <p>{fullDescription}</p>
+      <Link to={`/admin-topics/${id}`}>Edit topic</Link>
+      <button onClick={() => onDelete(id)}>Delete topic</button>
+      <button onClick={() => history.goBack()}>Go back</button>
     </section>
   );
 }
