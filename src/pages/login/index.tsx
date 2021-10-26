@@ -1,8 +1,8 @@
-// NPM packages
+// dependencies
 import { FormEvent, useState } from "react";
 import { useHistory } from "react-router-dom";
 
-// Project files
+// project files
 import FormFields from "../../components/FormFields";
 import { login } from "../../firebaseServices/authentication";
 import { useAuthentication } from "../../context/AuthenticationContext";

@@ -12,13 +12,6 @@
     "placeholder": "Stockholm",
     "type": "text",
     "instructions":"the city where you live"
-  },
-  {
-    "key": "email",
-    "label": "Email",
-    "placeholder": "yourname@gmail.com",
-    "type": "email",
-    "instructions":"your email"
   },  {
   "key": "phone",
   "label": "Phone",
@@ -26,6 +19,13 @@
   "type": "text",
   "instructions":"phone"
 },
+  {
+    "key": "email",
+    "label": "Email",
+    "placeholder": "yourname@gmail.com",
+    "type": "email",
+    "instructions":"your email"
+  },
   {
     "key": "password",
     "label": "Password",

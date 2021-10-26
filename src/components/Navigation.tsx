@@ -16,6 +16,7 @@ export default function Navigation() {
     <nav>
       <NavLink to="/home">Home</NavLink>|<NavLink to="login">Login</NavLink>|
       <NavLink to="/signup">Sign Up</NavLink>
+      <NavLink to="/recovery">Password recovery</NavLink>
       <NavLink to="/topics">Browse</NavLink>
       {isAuthenticated ? <button onClick={onLogout}> Sign out</button> : ""}
       <button> Calendar</button>
