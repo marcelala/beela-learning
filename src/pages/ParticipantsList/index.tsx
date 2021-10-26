@@ -1,17 +1,22 @@
-import { getCollection } from "../../firebaseServices/firestore";
-import { useCallback, useEffect, useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import {
+  deleteDocument,
+  getCollection,
+} from "../../firebaseServices/firestore";
+import { FormEvent, useCallback, useEffect, useRef, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import Spinner from "../../components/Spinner";
 import { useUserData } from "../../context/UserDataContext";
 import iUser from "../../interfaces/iUser";
 import Participant from "../../components/Participant";
-import ErrorComponent from "../../components/ErrorComponent";
+import { deleteAccount } from "../../firebaseServices/authentication";
 
 export default function ParticipantsList() {
   const { userData } = useUserData();
   const history = useHistory();
   const [participants, setParticipants] = useState([]);
   const [status, setStatus] = useState(0); // 0 pending, 1 ready, 2 error
+  const admin = userData.userRole === "admin";
+
   // Methods
   const fetchParticipants = useCallback(async (path: string) => {
     try {
@@ -29,8 +34,25 @@ export default function ParticipantsList() {
     console.log(participants);
   }, [fetchParticipants]);
 
+  async function onDelete(participant: iUser, e: FormEvent) {
+    e.preventDefault();
+    const userEmail = participant.email;
+    const userId = participant.id;
+
+    if (
+      window.confirm("" + "Do you really want to remove this participant? ?")
+    ) {
+      // @ts-ignore
+      await deleteAccount({ userEmail, userId });
+      await deleteDocument("userData", participant.id);
+      alert("Participant removed");
+    }
+  }
   const Participants = participants.map((user: iUser) => (
-    <Participant user={user} key={user.id} />
+    <div className={"participant-container"}>
+      <Participant user={user} key={user.id} />
+      {admin && <button onClick={(e) => onDelete(user, e)}> x </button>}
+    </div>
   ));
   //if (participants === undefined) return ErrorComponent;
 

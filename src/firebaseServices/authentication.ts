@@ -4,8 +4,8 @@ import {
   signInWithEmailAndPassword,
   signOut,
   sendPasswordResetEmail,
-  deleteUser,
   updatePassword,
+  deleteUser,
   User,
 } from "firebase/auth";
 //project files
@@ -76,40 +76,36 @@ export async function logOut() {
 }
 
 export async function sendRecoveryMail(email: string) {
-  sendPasswordResetEmail(authInstance, email)
-    .then(() => {
-      // Password reset email sent!
-      // ..
-    })
-    .catch((error) => {
-      const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-    });
+  const account = { isReset: false, payload: "" };
+
+  try {
+    await sendPasswordResetEmail(authInstance, email);
+    account.payload = "Password reset email sent! Check your inbox";
+    account.isReset = true;
+  } catch (error) {
+    // @ts-ignore
+    account.payload = error.code;
+  }
+  return account;
 }
 
 export async function updateCredentials(newPassword: string) {
   const user = authInstance.currentUser;
   // @ts-ignore
   updatePassword(user, newPassword)
-    .then(() => {
-      // Password reset email sent!
-      // ..
-    })
+    .then(() => {})
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      // ..
     });
 }
 
-export async function deleteAuthAccount(user: User) {
+export async function deleteAccount(user: User) {
   deleteUser(user)
     .then(() => {
-      // User deleted.
+      console.log("Successfully deleted user");
     })
     .catch((error) => {
-      // An error occurred
-      // ...
+      console.log("Error deleting user:", error);
     });
 }
