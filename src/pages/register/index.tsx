@@ -57,10 +57,12 @@ export default function Register() {
       <h1>Create an account</h1>
       <form onSubmit={onSubmit}>
         <FormFields fields={signUpFields} state={[form, setForm]} />
+        <small>
+          Already a member? <Link to="/login">Log in here</Link>
+        </small>
         <p>{errorMessage}</p>
         <button>Create account</button>
       </form>
-      <Link to="/login">Login instead</Link>
     </div>
   );
 }

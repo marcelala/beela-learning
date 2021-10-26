@@ -1,6 +1,6 @@
 // dependencies
 import { FormEvent, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 // project files
 import FormFields from "../../components/FormFields";
@@ -46,6 +46,13 @@ export default function Login() {
       <h1>Log in</h1>
       <form onSubmit={handleLogin}>
         <FormFields fields={loginFields} state={[form, setForm]} />
+        <Link to={"/recovery"}>
+          <small>Forgot your password?</small>
+        </Link>
+        <small>
+          Not a member yet? <Link to="/register">Sign up here</Link>
+        </small>
+
         <p>{errorMessage}</p>
         <button type="submit">Login</button>
       </form>

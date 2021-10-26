@@ -27,7 +27,7 @@ export default function Browser() {
       <Navigation />
       <Switch>
         <AuthenticatedRoute exact path="/home" component={HomePage} />
-        <UnauthenticatedRoute path="/signup" component={Register} />
+        <UnauthenticatedRoute path="/register" component={Register} />
         <UnauthenticatedRoute path="/login" component={Login} />
         <UnauthenticatedRoute path="/recovery" component={PasswordRecovery} />
         <AuthenticatedRoute exact path="/topics" component={TopicsList} />
