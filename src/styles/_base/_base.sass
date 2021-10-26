@@ -16,12 +16,21 @@ body
   font-family: $font
   background-color: $white
   margin: 0 auto
+  display: grid
+  grid-template-areas: "nav" "content" "footer"
+  grid-row-gap: $space-x-large
+
+.content
+  grid-area: content
+
+.footer-container
+  grid-area: footer
 
 section
   width: 100vw
   padding: 0
   margin: 0
-  background-color: $primary-light
+  @include sectionGrid
 
 article,
 nav,

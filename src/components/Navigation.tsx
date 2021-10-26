@@ -14,12 +14,31 @@ export default function Navigation() {
   }
   return (
     <nav>
-      <NavLink to="/home">Home</NavLink>|<NavLink to="login">Login</NavLink>|
-      <NavLink to="/register">Sign Up</NavLink>
-      <NavLink to="/recovery">Password recovery</NavLink>
-      <NavLink to="/topics">Browse</NavLink>
-      {isAuthenticated ? <button onClick={onLogout}> Sign out</button> : ""}
-      <button> Calendar</button>
+      <div className={"nav-content"}>
+        <ul>
+          <li>
+            <NavLink to="/home">Home</NavLink>
+          </li>
+          <li>
+            <NavLink to="login">Login</NavLink>
+          </li>
+          <li>
+            <NavLink to="/register">Sign Up</NavLink>
+          </li>
+          <li>
+            <NavLink to="/topics">Browse</NavLink>
+          </li>
+          {isAuthenticated ? (
+            <li>
+              {" "}
+              <button onClick={onLogout}> Sign out</button>
+            </li>
+          ) : (
+            ""
+          )}
+        </ul>
+      </div>
+      <hr />
     </nav>
   );
 }

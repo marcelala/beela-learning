@@ -1,6 +1,6 @@
+import Hero from "./Hero";
 import About from "./About";
 import Testimonials from "./Testimonials";
-import Hero from "./Hero";
 import Numbers from "./Numbers";
 import Newsletter from "./Newsletter";
 

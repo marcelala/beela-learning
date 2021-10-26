@@ -8,7 +8,7 @@ interface iProps {
   onChange: Function;
 }
 export default function TopicForm({ topic, onChange }: iProps) {
-  const topicFields = require("../../data/fields-topic.json");
+  const topicFields = require("./fields-topic.json");
 
   return (
     <section id={"topic-form"}>

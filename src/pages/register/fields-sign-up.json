@@ -1,7 +1,7 @@
 [
   {
     "key": "fullName",
-    "label": "fullName",
+    "label": "Full Name",
     "placeholder": "Susanne Butler",
     "type": "text",
     "instructions":"your full name please"

@@ -8,7 +8,7 @@ import { sendRecoveryMail } from "../../firebaseServices/authentication";
 
 export default function PasswordRecovery() {
   const history = useHistory();
-  const recoveryFields = require("../../data/fields-password-recovery.json");
+  const recoveryFields = require("./fields-password-recovery.json");
   const [form, setForm] = useState({ email: "", phone: "" });
   const { email, phone } = form;
   const [errorMessage, setErrorMessage] = useState("");

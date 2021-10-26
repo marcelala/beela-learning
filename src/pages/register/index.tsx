@@ -15,7 +15,7 @@ export default function Register() {
   const { setUserData } = useUserData();
   const { setIsAuthenticated } = useAuthentication();
   const history = useHistory();
-  const signUpFields = require("../../data/fields-sign-up.json");
+  const signUpFields = require("./fields-sign-up.json");
 
   // Local state
   const [form, setForm] = useState(newUser);

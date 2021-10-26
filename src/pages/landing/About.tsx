@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 export default function About() {
   return (
     <section id={"about"}>
@@ -7,7 +6,6 @@ export default function About() {
       <h2>Build your portfolio</h2>
       <h1>Get hired</h1>
       <p>
-        {" "}
         Beela Learning is an online education platform that delivers resources
         to immigrant women aspiring to start or boost their careers in tech. Our
         content ranges from Web development, UI/UX design, Project Management,

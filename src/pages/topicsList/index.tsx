@@ -35,10 +35,10 @@ export default function TopicsList() {
   ));
 
   return (
-    <div className="TopicsList">
+    <section id="topicsList">
       {status === 0 && <Spinner />}
       {status === 1 && <>{TopicsList}</>}
       {status === 2 && <p>Error 🚨</p>}
-    </div>
+    </section>
   );
 }

@@ -27,24 +27,30 @@ export default function Browser() {
     <BrowserRouter>
       <Navigation />
       <Switch>
-        <UnauthenticatedRoute exact path="/" component={Landing} />
-        <UnauthenticatedRoute path="/register" component={Register} />
-        <UnauthenticatedRoute path="/login" component={Login} />
-        <UnauthenticatedRoute path="/recovery" component={PasswordRecovery} />
+        <div className="content">
+          <UnauthenticatedRoute exact path="/" component={Landing} />
+          <UnauthenticatedRoute path="/register" component={Register} />
+          <UnauthenticatedRoute path="/login" component={Login} />
+          <UnauthenticatedRoute path="/recovery" component={PasswordRecovery} />
 
-        <AuthenticatedRoute exact path="/home" component={HomePage} />
-        <AuthenticatedRoute exact path="/topics" component={TopicsList} />
-        <AuthenticatedRoute exact path="/topics/:id" component={TopicPage} />
-        <AuthenticatedRoute
-          exact
-          path="/participants"
-          component={ParticipantsList}
-        />
-        <AuthenticatedRoute
-          path="/admin-topics/:id"
-          component={AdminTopicEditor}
-        />
-        <AuthenticatedRoute path="/participants/:id" component={Participant} />
+          <AuthenticatedRoute exact path="/" component={Landing} />
+          <AuthenticatedRoute exact path="/home" component={HomePage} />
+          <AuthenticatedRoute exact path="/topics" component={TopicsList} />
+          <AuthenticatedRoute exact path="/topics/:id" component={TopicPage} />
+          <AuthenticatedRoute
+            exact
+            path="/participants"
+            component={ParticipantsList}
+          />
+          <AuthenticatedRoute
+            path="/admin-topics/:id"
+            component={AdminTopicEditor}
+          />
+          <AuthenticatedRoute
+            path="/participants/:id"
+            component={Participant}
+          />
+        </div>
       </Switch>
       <Footer />
     </BrowserRouter>

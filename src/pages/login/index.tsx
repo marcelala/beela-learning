@@ -15,7 +15,7 @@ export default function Login() {
   const { setUserData } = useUserData();
   const { setIsAuthenticated } = useAuthentication();
   // Local state
-  const loginFields = require("../../data/fields-login.json");
+  const loginFields = require("./fields-login.json");
   const [form, setForm] = useState({ email: "", password: "" });
   const { email, password } = form;
   const [errorMessage, setErrorMessage] = useState("");
@@ -54,7 +54,9 @@ export default function Login() {
         </small>
 
         <p>{errorMessage}</p>
-        <button type="submit">Login</button>
+        <button type="submit" className="btn btn-primary">
+          Login
+        </button>
       </form>
     </section>
   );
