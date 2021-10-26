@@ -15,6 +15,7 @@ import Footer from "./Footer";
 import AdminTopicEditor from "../pages/adminTopicEditor";
 import AdminTopic from "../pages/adminTopic";
 import PasswordRecovery from "../pages/passwordRecovery";
+import Landing from "../pages/landing";
 
 export default function Browser() {
   const { userData } = useUserData();
@@ -26,10 +27,12 @@ export default function Browser() {
     <BrowserRouter>
       <Navigation />
       <Switch>
-        <AuthenticatedRoute exact path="/home" component={HomePage} />
+        <UnauthenticatedRoute exact path="/" component={Landing} />
         <UnauthenticatedRoute path="/register" component={Register} />
         <UnauthenticatedRoute path="/login" component={Login} />
         <UnauthenticatedRoute path="/recovery" component={PasswordRecovery} />
+
+        <AuthenticatedRoute exact path="/home" component={HomePage} />
         <AuthenticatedRoute exact path="/topics" component={TopicsList} />
         <AuthenticatedRoute exact path="/topics/:id" component={TopicPage} />
         <AuthenticatedRoute

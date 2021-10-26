@@ -4,8 +4,12 @@ import home from "../assets/icons/home.svg";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
+
   return (
     <footer>
+      <a href="mailto:contact@beela.se" target="_blank" rel="noreferrer">
+        <p>Email: contact@beela.se</p>
+      </a>
       <div className="icons">
         <a href="https://github.com/marcelala/">
           <img src={github} alt="github icon" />
@@ -17,7 +21,9 @@ export default function Footer() {
           <img src={home} alt="home icon" />
         </a>
       </div>
-      <span>©{currentYear} Marcela Felix Fortis</span>
+      <span>
+        ©{currentYear} All rights reserved, Beela & Marcela Felix Fortis
+      </span>
     </footer>
   );
 }
