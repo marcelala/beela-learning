@@ -8,17 +8,25 @@ body
   color: $dark
   -webkit-font-smoothing: antialiased
   -moz-osx-font-smoothing: grayscale
+  &::-webkit-scrollbar
+    width: 0.25rem
+    &-track
+      background: $lighter
+    &-thumb
+      background: $light
 
 .App
   scroll-behavior: smooth
   width: 100vw
-  height: 100%
+  height: 100vh
   font-family: $font
   background-color: $white
   margin: 0 auto
   display: grid
   grid-template-areas: "nav" "content" "footer"
-  grid-row-gap: $space-x-large
+  grid-row-gap: 0
+  list-style: none
+
 
 .content
   grid-area: content

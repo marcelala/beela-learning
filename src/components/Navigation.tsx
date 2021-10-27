@@ -1,17 +1,31 @@
 import { NavLink, useHistory } from "react-router-dom";
 import { useAuthentication } from "../context/AuthenticationContext";
 import { logOut } from "../firebaseServices/authentication";
-import logo from "assets/images/logo/beelaLogo.png";
+import logo from "assets/images/logo/BeelaLogonotext.png";
+import Icon from "./Icon";
 export default function Navigation() {
   const { isAuthenticated, setIsAuthenticated } = useAuthentication();
   const history = useHistory();
 
+  const signIn = (
+    <li>
+      <NavLink to="login">
+        <Icon fileName={"sign-in"} />
+      </NavLink>
+    </li>
+  );
+  const signOut = (
+    <li onClick={onLogout}>
+      <Icon fileName={"sign-out"} />
+    </li>
+  );
+  const signToShow = isAuthenticated ? signOut : signIn;
+
   // Methods
   async function onLogout() {
     const account = await logOut();
-    console.log("Nav.jsx account", account);
     setIsAuthenticated(false);
-    history.push("/login");
+    history.push("/");
   }
   return (
     <nav>
@@ -26,22 +40,14 @@ export default function Navigation() {
             <NavLink to="/home">Home</NavLink>
           </li>
           <li>
-            <NavLink to="login">Login</NavLink>
+            <NavLink to="/topics">Discover</NavLink>
           </li>
           <li>
-            <NavLink to="/register">Sign Up</NavLink>
+            <NavLink to="/register" className={"btn btn-primary"}>
+              Sign Up
+            </NavLink>
           </li>
-          <li>
-            <NavLink to="/topics">Browse</NavLink>
-          </li>
-          {isAuthenticated ? (
-            <li>
-              {" "}
-              <button onClick={onLogout}> Sign out</button>
-            </li>
-          ) : (
-            ""
-          )}
+          {signToShow}
         </ul>
       </div>
       <hr />

@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Register from "../pages/register";
 import Login from "../pages/login";
 import Navigation from "./Navigation";
@@ -16,6 +16,7 @@ import AdminTopicEditor from "../pages/adminTopicEditor";
 import AdminTopic from "../pages/adminTopic";
 import PasswordRecovery from "../pages/passwordRecovery";
 import Landing from "../pages/landing";
+import Toolbar from "./Toolbar";
 
 export default function Browser() {
   const { userData } = useUserData();
@@ -26,16 +27,15 @@ export default function Browser() {
   return (
     <BrowserRouter>
       <Navigation />
+      <Toolbar />
       <Switch>
         <div className="content">
-          <UnauthenticatedRoute exact path="/" component={Landing} />
+          <Route exact path="/" component={Landing} />
           <UnauthenticatedRoute path="/register" component={Register} />
           <UnauthenticatedRoute path="/login" component={Login} />
           <UnauthenticatedRoute path="/recovery" component={PasswordRecovery} />
-
-          <AuthenticatedRoute exact path="/" component={Landing} />
           <AuthenticatedRoute exact path="/home" component={HomePage} />
-          <AuthenticatedRoute exact path="/topics" component={TopicsList} />
+          <Route exact path="/topics" component={TopicsList} />
           <AuthenticatedRoute exact path="/topics/:id" component={TopicPage} />
           <AuthenticatedRoute
             exact

@@ -2,9 +2,8 @@ nav
   width: 100%
   z-index: 9999
   margin: 0 auto
-  position: fixed
+  position: sticky
   grid-area: nav
-
   .nav-content
     background-color: $white
     color: $gray
@@ -18,13 +17,14 @@ nav
     align-content: center
     align-items: center
     justify-content: space-between
-    padding: $space-x-small $space-large
+    padding: $space-x-small $space-small
     margin: 0
   img
     padding: 0
-    max-height: 2rem
+    max-height: 2.5rem
     width: auto
     margin: 0
+    @include hover-lift
 
   button
     margin: auto $space-small
