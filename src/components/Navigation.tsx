@@ -28,7 +28,7 @@ export default function Navigation() {
     history.push("/");
   }
   return (
-    <nav>
+    <nav className="navigation">
       <div className={"nav-content"}>
         <ul>
           <li>

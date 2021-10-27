@@ -6,6 +6,7 @@ import iTopic from "../../interfaces/iTopic";
 import ErrorComponent from "../../components/ErrorComponent";
 import iUser from "../../interfaces/iUser";
 import { deleteDocument } from "../../firebaseServices/firestore";
+import Icon from "../../components/Icon";
 // Interface
 type PropParams = {
   id: string;
@@ -37,8 +38,14 @@ export default function AdminTopic() {
       <h1>{title}</h1>
       <h3>{owner}</h3>
       <p>{fullDescription}</p>
-      <Link to={`/admin-topics/${id}`}>Edit topic</Link>
-      <button onClick={() => onDelete(id)}>Delete topic</button>
+      <Link to={`/admin-topics/${id}`}>
+        <Icon fileName={"edit"} />
+        Edit topic
+      </Link>
+      <button onClick={() => onDelete(id)}>
+        <Icon fileName={"bin"} />
+        Delete topic
+      </button>
       <button onClick={() => history.goBack()}>Go back</button>
     </section>
   );

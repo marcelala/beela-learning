@@ -1,10 +1,7 @@
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import Icon from "./Icon";
-import { logOut } from "../firebaseServices/authentication";
-import { useAuthentication } from "../context/AuthenticationContext";
+
 export default function Toolbar() {
-  const { isAuthenticated, setIsAuthenticated } = useAuthentication();
-  const history = useHistory();
   const calendarLink =
     "https://calendar.google.com/calendar/embed?src=u32c1ks1g0q9nt7eljl2hlqqsg%40group.calendar.google.com&ctz=Europe%2FStockholm";
   return (
@@ -30,13 +27,13 @@ export default function Toolbar() {
         </li>
         <li>
           <NavLink to="/participants">
-            <Icon fileName={"face-id"} />
+            <Icon fileName={"user"} />
             <span>View participants</span>
           </NavLink>
         </li>
         <li>
           <a href={calendarLink} target="_blank" rel="noreferrer">
-            <Icon fileName={"calendar-simple"} />
+            <Icon fileName={"calendar-number"} />
             <span>Calendar</span>
           </a>
         </li>
