@@ -24,7 +24,7 @@ export default function LinkForm({ topic }: iProps) {
   function handleChange(key: string, value: string) {
     const field = { [key]: value };
     setLink({ ...link, ...field });
-    setUpdatedTopic({ ...updatedTopic, links: { ...links, ...link } });
+    setUpdatedTopic({ ...updatedTopic, links: [...links, link] });
   }
   async function onSave(topic: iTopic, link: iLink, e: FormEvent) {
     e.preventDefault();

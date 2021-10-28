@@ -6,7 +6,7 @@ export default interface iTopic {
   owner: string;
   thumbnailURL: string;
   topicImageURL: string;
-  links: {};
-  files: {};
-  videos: {};
+  links: Object;
+  files: Object;
+  videos: Object;
 }

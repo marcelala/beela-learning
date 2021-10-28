@@ -2,10 +2,6 @@ import { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useTopicsData } from "../../context/TopicsContext";
 import iTopic from "../../interfaces/iTopic";
-import {
-  createDocument,
-  updateDocument,
-} from "../../firebaseServices/firestore";
 import Type from "../../types/reducerTypes";
 import { newTopic } from "../../types/newTopic";
 import FileForm from "./FileForm";
