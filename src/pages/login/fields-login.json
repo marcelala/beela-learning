@@ -1,16 +1,22 @@
-[
-  {
-    "key": "email",
-    "label": "Email",
-    "placeholder": "yourname@gmail.com",
-    "type": "email",
-    "instructions":"type your email"
+{
+  "fileURL": {
+    "key": "fileURL",
+    "label": "File URL",
+    "instructions": "Please paste the URL of the"
   },
-  {
-    "key": "password",
-    "label": "Password",
-    "placeholder": "********",
-    "type": "password",
-    "instructions":"your password must contain at least 8 characters"
-  }
-]
+  "fileTitle": {
+    "key": "fileTitle",
+    "label": "Title",
+    "instructions": "Please choose a title for this file."
+  },
+  "fileType": {
+    "key": "fileType",
+    "label": "File type",
+    "instructions": "Which type of file is this? .png, .doc, .pdf, .docx?"
+  },
+  "fileDescription": {
+  "key": "fileDescription",
+  "label": "File description",
+  "instructions": "Please choose describe what this resource is about"
+}
+}

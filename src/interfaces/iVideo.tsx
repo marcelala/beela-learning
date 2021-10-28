@@ -1,6 +1,6 @@
 export default interface iVideo {
-  fileURL: string;
-  fileTitle: string;
-  fileType: string;
-  fileDescription: string;
+  videoID: string;
+  videoURL: string;
+  videoTitle: string;
+  videoDescription: string;
 }

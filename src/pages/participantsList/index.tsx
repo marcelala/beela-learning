@@ -9,6 +9,7 @@ import { useUserData } from "../../context/UserDataContext";
 import iUser from "../../interfaces/iUser";
 import Participant from "../../components/Participant";
 import { deleteAccount } from "../../firebaseServices/authentication";
+import Icon from "../../components/Icon";
 
 export default function ParticipantsList() {
   const { userData } = useUserData();
@@ -49,9 +50,14 @@ export default function ParticipantsList() {
     }
   }
   const Participants = participants.map((user: iUser) => (
-    <div className={"participant-container"}>
-      <Participant user={user} key={user.id} />
-      {admin && <button onClick={(e) => onDelete(user, e)}> x </button>}
+    <div className={"participant-container"} key={user.id}>
+      <Participant user={user} />
+      {admin && (
+        <button onClick={(e) => onDelete(user, e)}>
+          {" "}
+          <Icon fileName={"bin"} />{" "}
+        </button>
+      )}
     </div>
   ));
   //if (participants === undefined) return ErrorComponent;

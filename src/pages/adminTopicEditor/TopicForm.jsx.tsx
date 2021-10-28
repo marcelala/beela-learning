@@ -1,6 +1,5 @@
 import InputImage from "../../components/InputImage";
 import iTopic from "../../interfaces/iTopic";
-import { FormEvent, useState } from "react";
 import InputField from "../../components/InputField";
 // Interface
 interface iProps {

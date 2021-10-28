@@ -31,7 +31,6 @@ function updateTopic(state: iTopic[], action: Action) {
   const newState = [...state];
   // @ts-ignore
   const index = newState.findIndex((item) => item.id === topic.id);
-
   // @ts-ignore
   newState[index] = { ...topic };
   return newState;

@@ -3,7 +3,7 @@ import { FormEvent } from "react";
 
 // Project files
 import Placeholder from "assets/images/placeholder.png";
-import { uploadImage } from "../scripts/uploadImage";
+import { uploadImage } from "../scripts/upload/imageUpload";
 
 // Interfaces
 interface iFields {
@@ -40,7 +40,11 @@ export default function InputImage({
     <fieldset className="input-image">
       <label className="custom-file-chooser">
         {label}
-        <input onChange={(event) => onFileChange(event)} type="file" />
+        <input
+          accept="image/gif, image/jpeg, image/png"
+          onChange={(event) => onFileChange(event)}
+          type="file"
+        />
         <img src={Image} alt="User generated content" />
       </label>
       <small>{instructions}</small>

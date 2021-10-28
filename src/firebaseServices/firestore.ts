@@ -1,13 +1,15 @@
 // NPM packages
-import { collection, doc, getDocs } from "firebase/firestore/lite";
 import {
+  collection,
+  doc,
+  getDocs,
+  collectionGroup,
   addDoc,
   setDoc,
   updateDoc,
   getDoc,
   deleteDoc,
 } from "firebase/firestore/lite";
-
 // Project files
 import { fireStoreInstance } from "./firebase";
 
@@ -32,7 +34,6 @@ export async function createDocument(path: string, data: any) {
 export async function getDocument(path: string, id: string) {
   const documentReference = doc(fireStoreInstance, path, id);
   const document = await getDoc(documentReference);
-
   return { id: document.id, ...document.data() };
 }
 
@@ -45,11 +46,35 @@ export async function getCollection(path: string) {
 
   return list;
 }
+export async function getSubCollection(
+  path: string,
+  subPath: string,
+  documentId: string
+) {
+  const subCollectionSnapshot = await getDocs(
+    collection(fireStoreInstance, path, documentId, subPath)
+  );
+  const list = subCollectionSnapshot.docs.map((doc) => {
+    return { id: doc.id, ...doc.data() };
+  });
+
+  return list;
+}
+
+export async function getCollectionGroup(subPath: string) {
+  const allDataSnapshot = await getDocs(
+    collectionGroup(fireStoreInstance, "subPath")
+  );
+  const list = allDataSnapshot.docs.map((doc) => {
+    return { id: doc.id, ...doc.data() };
+  });
+
+  return list;
+}
 
 // Update
 export async function updateDocument(path: string, data: any) {
   const documentReference = doc(fireStoreInstance, path, data.id);
-
   await updateDoc(documentReference, data);
 }
 

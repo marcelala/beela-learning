@@ -1,7 +1,3 @@
-import iLink from "./iLink";
-import iFile from "./iFile";
-import iVideo from "./iVideo";
-
 export default interface iTopic {
   id: string;
   title: string;
@@ -10,7 +6,7 @@ export default interface iTopic {
   owner: string;
   thumbnailURL: string;
   topicImageURL: string;
-  links: Array<iLink>;
-  files: Array<iFile>;
-  video: Array<iVideo>;
+  links: {};
+  files: {};
+  videos: {};
 }

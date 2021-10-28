@@ -1,5 +1,4 @@
 //dependencies
-import { FormEvent } from "react";
 import { useHistory, useParams, Link } from "react-router-dom";
 import { useTopicsData } from "../../context/TopicsContext";
 import iTopic from "../../interfaces/iTopic";
@@ -38,14 +37,38 @@ export default function AdminTopic() {
       <h1>{title}</h1>
       <h3>{owner}</h3>
       <p>{fullDescription}</p>
-      <Link to={`/admin-topics/${id}`}>
-        <Icon fileName={"edit"} />
-        Edit topic
-      </Link>
-      <button onClick={() => onDelete(id)}>
-        <Icon fileName={"bin"} />
-        Delete topic
-      </button>
+      <ul>
+        <li>
+          <Link to={`/admin-topics/${id}/add-upload`}>
+            <Icon fileName={"cloud-upload"} />
+            Upload resources
+          </Link>
+        </li>
+        <li>
+          <Link to={`/admin-topics/${id}/add-video`}>
+            <Icon fileName={"video"} />
+            Add a video
+          </Link>
+        </li>
+        <li>
+          <Link to={`/admin-topics/${id}/add-link`}>
+            <Icon fileName={"link"} />
+            Add a link
+          </Link>
+        </li>
+        <li>
+          <Link to={`/admin-topics/${id}`}>
+            <Icon fileName={"edit"} />
+            Edit topic
+          </Link>
+        </li>
+        <li>
+          <button onClick={() => onDelete(id)}>
+            <Icon fileName={"bin"} />
+            Delete topic
+          </button>
+        </li>
+      </ul>
       <button onClick={() => history.goBack()}>Go back</button>
     </section>
   );

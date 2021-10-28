@@ -5,6 +5,7 @@ import { newTopic } from "../../types/newTopic";
 import { useState } from "react";
 import {
   createDocument,
+  createTopicWithSubCollections,
   updateDocument,
 } from "../../firebaseServices/firestore";
 import Type from "../../types/reducerTypes";
@@ -37,9 +38,9 @@ export default function AdminTopicEditor() {
   }
 
   async function onCreateTopic(topic: iTopic) {
-    const documentID = await createDocument("topics", topic);
+    const documentID = await createTopicWithSubCollections(topic);
     topic.id = await documentID;
-    await updateDocument("topics", topic);
+    //await updateDocument("topics", topic);
     setTopic({ ...topic, id });
     dispatch({ type: Type.CREATE_TOPIC, payload: topic });
   }
