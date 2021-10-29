@@ -35,13 +35,13 @@ export default function TopicForm({ topic, onChange }: iProps) {
         onChange={onChange}
         options={topicFields.thumbnailURL}
         state={topic.thumbnailURL}
-        filename={topic.title + "_thumbnail"}
+        folder={"topic/topic_thumbnail"}
       />
       <InputImage
         onChange={onChange}
         options={topicFields.topicImageURL}
         state={topic.topicImageURL}
-        filename={topic.title + "_image"}
+        folder={"topic/topic_image"}
       />
     </section>
   );

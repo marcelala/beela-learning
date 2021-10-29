@@ -2,10 +2,9 @@
 import dataURLToFile from "./dataURLToFile";
 import { uploadFile } from "../../firebaseServices/storage";
 
-export async function fileUpload(event, filename) {
+export async function fileUpload(event, folder) {
   const file = event.target.files[0];
-  const fileForFirebase = await dataURLToFile(file, `${filename}`);
-  const newURL = await uploadFile(fileForFirebase, filename);
-
+  const fileForFirebase = await dataURLToFile(file, folder);
+  const newURL = await uploadFile(fileForFirebase, folder);
   return newURL;
 }

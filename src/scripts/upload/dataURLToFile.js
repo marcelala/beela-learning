@@ -1,4 +1,4 @@
-export default async function dataURLToFile(dataURL, filename) {
+export default async function dataURLToFile(dataURL, folder) {
   const array = dataURL.split(",");
   const fileType = array[0].match(/:(.*?);/)[1];
   const binaryString = atob(array[1]);
@@ -9,5 +9,5 @@ export default async function dataURLToFile(dataURL, filename) {
     uint8array[length] = binaryString.charCodeAt(length);
   }
 
-  return new File([uint8array], filename, { type: fileType });
+  return new File([uint8array], folder, { type: fileType });
 }

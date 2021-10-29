@@ -15,14 +15,14 @@ interface iProps {
   onChange: Function;
   options: iFields;
   state: any;
-  filename: string;
+  folder: string;
 }
 
 export default function InputImage({
   onChange,
   options,
   state,
-  filename,
+  folder,
 }: iProps) {
   const { label, key, instructions } = options;
 
@@ -31,7 +31,7 @@ export default function InputImage({
 
   // Methods
   async function onFileChange(event: FormEvent) {
-    const image_url = await uploadImage(event, filename);
+    const image_url = await uploadImage(event, folder);
 
     onChange(key, image_url);
   }

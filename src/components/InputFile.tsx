@@ -31,8 +31,8 @@ export default function InputFile({ onChange, options, state, item }: iProps) {
 
   // Methods
   async function onFileChange(event: FormEvent) {
-    const filename = `topics/${title}/file-${id}`;
-    const file_url = await uploadFile(event, filename);
+    const folder = `topics/${title}`;
+    const file_url = await uploadFile(event, folder);
     alert("File uploaded");
     setFileURL(file_url);
     onChange(key, file_url);
