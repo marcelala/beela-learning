@@ -10,7 +10,6 @@ import { useHistory } from "react-router-dom";
 // Interface
 interface iProps {
   topic: iTopic;
-  onChange: Function;
 }
 export default function LinkForm({ topic }: iProps) {
   const { dispatch } = useTopicsData();
@@ -18,7 +17,6 @@ export default function LinkForm({ topic }: iProps) {
   const linkFields = require("fields/fields-link.json");
   const [link, setLink] = useState(newLink);
   const [updatedTopic, setUpdatedTopic] = useState(topic);
-  const { id, links } = topic;
   const { linkTitle, linkDescription, linkURL } = link;
 
   function handleChange(key: string, value: string) {
@@ -26,7 +24,9 @@ export default function LinkForm({ topic }: iProps) {
     setLink({ ...link, ...field });
     setUpdatedTopic({
       ...updatedTopic,
+      /*
       links: { ...updatedTopic.links, link },
+*/
     });
   }
   async function onSave(topic: iTopic, link: iLink, e: FormEvent) {

@@ -39,19 +39,19 @@ export default function AdminTopic() {
       <p>{fullDescription}</p>
       <ul>
         <li>
-          <Link to={`/admin-topics/${id}/add-upload`}>
+          <Link to={`/admin-topics/${id}/file`}>
             <Icon fileName={"cloud-upload"} />
             Upload resources
           </Link>
         </li>
         <li>
-          <Link to={`/admin-topics/${id}/add-video`}>
+          <Link to={`/admin-topics/${id}/video`}>
             <Icon fileName={"video"} />
             Add a video
           </Link>
         </li>
         <li>
-          <Link to={`/admin-topics/${id}/add-link`}>
+          <Link to={`/admin-topics/${id}/link`}>
             <Icon fileName={"link"} />
             Add a link
           </Link>

@@ -46,20 +46,6 @@ export async function getCollection(path: string) {
 
   return list;
 }
-export async function getSubCollection(
-  path: string,
-  subPath: string,
-  documentId: string
-) {
-  const subCollectionSnapshot = await getDocs(
-    collection(fireStoreInstance, path, documentId, subPath)
-  );
-  const list = subCollectionSnapshot.docs.map((doc) => {
-    return { id: doc.id, ...doc.data() };
-  });
-
-  return list;
-}
 
 export async function getCollectionGroup(subPath: string) {
   const allDataSnapshot = await getDocs(

@@ -51,7 +51,7 @@ export default function Browser() {
         />
         <AuthenticatedRoute
           exact
-          path="/admin-topics/:id/add-:type"
+          path="/admin-topics/:id/:type"
           component={AdminAddResources}
         />
         <AuthenticatedRoute path="/participants/:id" component={Participant} />
