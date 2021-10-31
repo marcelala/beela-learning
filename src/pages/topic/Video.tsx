@@ -1,7 +1,7 @@
 import YouTube from "react-youtube";
 import getYouTubeID from "get-youtube-id";
 import { useState } from "react";
-import iVideo from "../interfaces/iVideo";
+import iVideo from "../../interfaces/iVideo";
 interface iProps {
   video: iVideo;
 }

@@ -23,6 +23,11 @@ export default function TopicForm({ topic, onChange }: iProps) {
       />
       <InputField
         onChange={onChange}
+        settings={topicFields.ownerEmail}
+        state={topic.ownerEmail}
+      />
+      <InputField
+        onChange={onChange}
         settings={topicFields.shortDescription}
         state={topic.shortDescription}
       />

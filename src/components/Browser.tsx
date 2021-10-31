@@ -38,7 +38,7 @@ export default function Browser() {
         <UnauthenticatedRoute path="/recovery" component={PasswordRecovery} />
 
         <AuthenticatedRoute exact path="/home" component={HomePage} />
-        <AuthenticatedRoute exact path="/topics/:id" component={TopicPage} />
+        <AuthenticatedRoute exact path="/topics/:id" component={Topic} />
         <AuthenticatedRoute
           exact
           path="/participants"

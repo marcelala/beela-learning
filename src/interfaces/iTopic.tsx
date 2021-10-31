@@ -4,6 +4,7 @@ export default interface iTopic {
   shortDescription: string;
   fullDescription: string;
   owner: string;
+  ownerEmail: string;
   thumbnailURL: string;
   topicImageURL: string;
   resources?: any;

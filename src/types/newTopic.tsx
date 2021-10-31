@@ -6,6 +6,7 @@ export const newTopic: iTopic = {
   shortDescription: "",
   fullDescription: "",
   owner: "",
+  ownerEmail: "",
   thumbnailURL: "",
   topicImageURL: "",
   resources: null,

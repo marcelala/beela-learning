@@ -22,9 +22,15 @@
   },  "owner":{
   "key": "owner",
   "label": "Author",
-  "placeholder": "The name of the main person responsible for this topic",
+  "placeholder": "The email of the main person responsible for this topic",
   "type": "text",
   "instructions":""
+},  "ownerEmail":{
+"key": "owner",
+"label": "Author",
+"placeholder": "The name of the main person responsible for this topic",
+"type": "email",
+"instructions":""
 },
 "thumbnailURL": {
 "key": "thumbnailURL",

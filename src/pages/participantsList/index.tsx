@@ -10,6 +10,7 @@ import iUser from "../../interfaces/iUser";
 import Participant from "../../components/Participant";
 import { deleteAccount } from "../../firebaseServices/authentication";
 import Icon from "../../components/Icon";
+import ErrorComponent from "../../components/ErrorComponent";
 
 export default function ParticipantsList() {
   const { userData } = useUserData();
@@ -32,7 +33,6 @@ export default function ParticipantsList() {
 
   useEffect(() => {
     fetchParticipants("userData");
-    console.log(participants);
   }, [fetchParticipants]);
 
   async function onDelete(participant: iUser, e: FormEvent) {
@@ -49,18 +49,21 @@ export default function ParticipantsList() {
       alert("Participant removed");
     }
   }
-  const Participants = participants.map((user: iUser) => (
-    <div className={"participant-container"} key={user.id}>
-      <Participant user={user} />
-      {admin && (
-        <button onClick={(e) => onDelete(user, e)}>
-          {" "}
-          <Icon fileName={"bin"} />{" "}
-        </button>
-      )}
-    </div>
-  ));
-  //if (participants === undefined) return ErrorComponent;
+  const Participants = participants.map((user: iUser) =>
+    user.userRole === "participant" ? (
+      <div className={"participant-container"} key={user.id}>
+        <Participant user={user} />
+        {admin && (
+          <button onClick={(e) => onDelete(user, e)}>
+            {" "}
+            <Icon fileName={"bin"} />{" "}
+          </button>
+        )}
+      </div>
+    ) : null
+  );
+
+  if (participants === undefined) return ErrorComponent;
 
   return (
     <section className="ParticipantsList">
