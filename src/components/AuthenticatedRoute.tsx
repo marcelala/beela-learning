@@ -8,7 +8,12 @@ export default function AuthenticatedRoute({ component: C, ...props }) {
     <Route
       {...props}
       render={(routeProps) =>
-        isAuthenticated ? <C {...routeProps} /> : <Redirect to="/home" />
+        isAuthenticated ? (
+          <C {...routeProps} />
+        ) : (
+          (alert("Sorry! You need to log in to access this page"),
+          (<Redirect to="/" />))
+        )
       }
     />
   );

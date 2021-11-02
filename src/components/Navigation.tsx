@@ -36,9 +36,16 @@ export default function Navigation() {
               <img src={logo} alt="bee in a beehive" />
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/home">Home</NavLink>
-          </li>
+          {isAuthenticated && (
+            <li>
+              <NavLink to="/home">Home</NavLink>
+            </li>
+          )}
+          {!isAuthenticated && (
+            <li>
+              <a href="/#about">Why Beela?</a>
+            </li>
+          )}
           <li>
             <NavLink to="/topics">Discover</NavLink>
           </li>

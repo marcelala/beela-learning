@@ -42,8 +42,8 @@ export default function Topic() {
       const fetchedResources = await getCollection(`topics/${id}/resources`);
       const updatedTopic = { ...topic, resources: fetchedResources };
       dispatch({ type: Type.UPDATE_TOPIC, payload: updatedTopic });
-      setTopic(updatedTopic);
       console.log(updatedTopic.resources);
+      setTopic(updatedTopic);
       setStatus(1);
     } catch {
       setStatus(2);
