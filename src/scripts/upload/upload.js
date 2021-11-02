@@ -1,5 +1,5 @@
 export default async function uploadFileToFirebase(firebaseContext, file) {
-  // Create stroage reference
+  // Create storage reference
   const storageReference = firebaseContext.storage().ref(file.name);
 
   // Upload image

@@ -16,26 +16,35 @@ export const ResourcesList = ({ resources, toShow }: iProps) => {
     return array.filter((item: iResource) => item.type === toShow);
   }
 
-  const LinkCardList = selectedList.map((item: iResource, index) => (
-    <li key={index}>
-      <ResourceCard resource={item} />
-    </li>
-  ));
+  function displayResources(array: iResource[], toShow: string) {
+    if (toShow === "video") {
+      return selectedList.map((item: iResource, index) => (
+        <li key={index}>
+          <Video resource={item} />
+        </li>
+      ));
+    }
+    if (toShow === "link") {
+      return selectedList.map((item: iResource, index) => (
+        <li key={index}>
+          <a href={item.url} rel="noreferrer">
+            <ResourceCard resource={item} />
+          </a>
+        </li>
+      ));
+    } else if (toShow === "file") {
+      return selectedList.map((item: iResource, index) => (
+        <li key={index}>
+          <a href={item.url} target="_blank" rel="noreferrer" download>
+            <ResourceCard resource={item} />
+          </a>
+        </li>
+      ));
+    }
+  }
 
-  const VideoCardList = selectedList.map((item: iResource, index) => (
-    <li key={index}>
-      <Video resource={item} />
-    </li>
-  ));
-
-  const ResourceCardList = selectedList.map((item: iResource, index) => (
-    <li key={index}>
-      <ResourceCard resource={item} />
-    </li>
-  ));
-  console.log(selected, "list");
   if (selectedList === undefined) return <span>No items available</span>;
   if (selectedList === null) return <span>No items available</span>;
 
-  return <ul>{VideoCardList}</ul>;
+  return <ul>{displayResources(selectedList, toShow)}</ul>;
 };
