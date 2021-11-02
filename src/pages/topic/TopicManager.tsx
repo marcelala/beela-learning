@@ -3,9 +3,9 @@ import { useHistory, useParams, Link } from "react-router-dom";
 import { useTopicsData } from "../../context/TopicsContext";
 import iTopic from "../../interfaces/iTopic";
 import ErrorComponent from "../../components/ErrorComponent";
-import iUser from "../../interfaces/iUser";
 import { deleteDocument } from "../../firebaseServices/firestore";
 import Icon from "../../components/Icon";
+import { FormEvent } from "react";
 // Interface
 type PropParams = {
   id: string;
@@ -17,8 +17,8 @@ export default function TopicManager() {
   const topicInfo = topicsData.find((item: iTopic) => item.id === id);
   if (topicInfo === undefined) return ErrorComponent;
 
-  async function onDelete(id: string) {
-    //e.preventDefault();
+  async function onDelete(id: string, e: FormEvent) {
+    e.preventDefault();
     if (
       window.confirm(
         "Are you sure you want to delete this topic and all of its contents?"
@@ -58,7 +58,7 @@ export default function TopicManager() {
           </Link>
         </li>
         <li>
-          <button onClick={() => onDelete(id)}>
+          <button onClick={(e) => onDelete(id, e)}>
             <Icon fileName={"bin"} />
             Delete topic
           </button>

@@ -26,13 +26,13 @@ export default function AdminTopicEditor() {
     return existingTopic === undefined ? newTopic : existingTopic;
   }
 
-  function onChange(key: string, value: string) {
+  async function onChange(key: string, value: string) {
     const field = { [key]: value };
     setTopic({ ...topic, ...field });
   }
 
-  function onSave(topic: iTopic) {
-    id === "newTopic" ? onCreateTopic(topic) : onUpdateTopic(topic);
+  async function onSave(topic: iTopic) {
+    id === "newTopic" ? await onCreateTopic(topic) : await onUpdateTopic(topic);
     history.goBack();
   }
 

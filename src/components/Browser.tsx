@@ -16,6 +16,7 @@ import AdminTopicEditor from "../pages/adminTopicEditor";
 import PasswordRecovery from "../pages/passwordRecovery";
 import Landing from "../pages/landing";
 import AdminAddResources from "../pages/adminAddResources";
+import ScrollToTop from "./ScrollToTop";
 
 export default function Browser() {
   const { userData } = useUserData();
@@ -25,31 +26,36 @@ export default function Browser() {
     <BrowserRouter>
       <Navigation />
       <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route exact path="/topics" component={TopicsList} />
+        <ScrollToTop>
+          <Route exact path="/" component={Landing} />
+          <Route exact path="/topics" component={TopicsList} />
 
-        <UnauthenticatedRoute path="/register" component={Register} />
-        <UnauthenticatedRoute path="/login" component={Login} />
-        <UnauthenticatedRoute path="/recovery" component={PasswordRecovery} />
+          <UnauthenticatedRoute path="/register" component={Register} />
+          <UnauthenticatedRoute path="/login" component={Login} />
+          <UnauthenticatedRoute path="/recovery" component={PasswordRecovery} />
 
-        <AuthenticatedRoute exact path="/home" component={HomePage} />
-        <AuthenticatedRoute exact path="/topics/:id" component={Topic} />
-        <AuthenticatedRoute
-          exact
-          path="/participants"
-          component={ParticipantsList}
-        />
-        <AuthenticatedRoute
-          exact
-          path="/admin-topics/:id"
-          component={AdminTopicEditor}
-        />
-        <AuthenticatedRoute
-          exact
-          path="/admin-topics/:id/:type"
-          component={AdminAddResources}
-        />
-        <AuthenticatedRoute path="/participants/:id" component={Participant} />
+          <AuthenticatedRoute exact path="/home" component={HomePage} />
+          <AuthenticatedRoute exact path="/topics/:id" component={Topic} />
+          <AuthenticatedRoute
+            exact
+            path="/participants"
+            component={ParticipantsList}
+          />
+          <AuthenticatedRoute
+            exact
+            path="/admin-topics/:id"
+            component={AdminTopicEditor}
+          />
+          <AuthenticatedRoute
+            exact
+            path="/admin-topics/:id/:type"
+            component={AdminAddResources}
+          />
+          <AuthenticatedRoute
+            path="/participants/:id"
+            component={Participant}
+          />
+        </ScrollToTop>
       </Switch>
       <Footer />
     </BrowserRouter>
