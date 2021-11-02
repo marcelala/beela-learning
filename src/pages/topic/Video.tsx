@@ -1,24 +1,21 @@
 import YouTube from "react-youtube";
 import getYouTubeID from "get-youtube-id";
-import { useState } from "react";
-import iVideo from "../../interfaces/iVideo";
-interface iProps {
-  video: iVideo;
-}
+import PropsResource from "./PropsResource";
+import iResource from "../../interfaces/iResource";
 
-export default function Video({ video }: iProps) {
-  const [url, setURL] = useState(video.videoURL);
-  const youtubeId = getYouTubeID(url);
-  if (youtubeId == undefined) return "haMOUb3KVSo";
+export default function Video(resource: iResource) {
+  const { title, description, url } = resource;
+  let youtubeId = getYouTubeID(url);
+
   return (
     <div id={"video-player"}>
-      <h1>{video.videoTitle}</h1>
-      <p>{video.videoDescription}</p>
       <YouTube
-        videoId={youtubeId}
+        videoId={youtubeId || "haMOUb3KVSo"}
         className="video"
         containerClassName="player"
       />
+      <h3>{title}</h3>
+      <p>{description}</p>
     </div>
   );
 }

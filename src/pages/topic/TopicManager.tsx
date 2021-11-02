@@ -10,13 +10,12 @@ import Icon from "../../components/Icon";
 type PropParams = {
   id: string;
 };
-export default function AdminTopic() {
+export default function TopicManager() {
   const { topicsData, dispatch } = useTopicsData();
   const { id } = useParams<PropParams>();
   const history = useHistory();
   const topicInfo = topicsData.find((item: iTopic) => item.id === id);
   if (topicInfo === undefined) return ErrorComponent;
-  const { topicImageURL, title, fullDescription, owner } = topicInfo;
 
   async function onDelete(id: string) {
     //e.preventDefault();
@@ -32,11 +31,7 @@ export default function AdminTopic() {
     }
   }
   return (
-    <section id="topic">
-      <img src={topicImageURL} alt={title} />
-      <h1>{title}</h1>
-      <h3>{owner}</h3>
-      <p>{fullDescription}</p>
+    <section id="admin-topic">
       <ul>
         <li>
           <Link to={`/admin-topics/${id}/file`}>
@@ -69,7 +64,6 @@ export default function AdminTopic() {
           </button>
         </li>
       </ul>
-      <button onClick={() => history.goBack()}>Go back</button>
     </section>
   );
 }

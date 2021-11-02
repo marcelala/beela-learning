@@ -13,7 +13,6 @@ import ParticipantsList from "../pages/participantsList";
 import Participant from "./Participant";
 import Footer from "./Footer";
 import AdminTopicEditor from "../pages/adminTopicEditor";
-import AdminTopic from "../pages/adminTopic";
 import PasswordRecovery from "../pages/passwordRecovery";
 import Landing from "../pages/landing";
 import Toolbar from "./Toolbar";
@@ -23,8 +22,6 @@ export default function Browser() {
   const { userData } = useUserData();
   const admin = userData.userRole === "admin";
   const HomePage = admin ? AdminHome : Home;
-  const TopicPage = admin ? AdminTopic : Topic;
-
   return (
     <BrowserRouter>
       <Navigation />

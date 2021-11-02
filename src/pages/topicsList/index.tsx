@@ -16,7 +16,6 @@ export default function TopicsList() {
     try {
       const fetchedTopics = await getCollection(path);
       dispatch({ type: Type.SET_TOPICS, payload: fetchedTopics });
-      console.log(topicsData);
       setStatus(1);
     } catch {
       setStatus(2);
@@ -25,7 +24,6 @@ export default function TopicsList() {
 
   useEffect(() => {
     fetchTopics("topics");
-    console.log(topicsData);
   }, [fetchTopics]);
 
   const TopicsList = topicsData.map((item: iTopic) => (

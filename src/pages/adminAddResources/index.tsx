@@ -28,20 +28,21 @@ export default function AdminAddResources() {
   }
   function onChange(key: string, value: string) {
     const field = { [key]: value };
-    setResource({ ...resource, ...field });
-    setTopic({ ...topic, resources: { ...topic.resources, ...resource } });
+    setResource({ ...resource, type: type, ...field });
+    setTopic({
+      ...topic,
+      resources: { ...topic.resources, ...resource },
+    });
   }
 
   async function onSave(topic: iTopic, resource: iResource, e: FormEvent) {
-    const documentID = await createDocument(
-      `topics/${topic.id}/resources`,
-      resource
-    );
+    e.preventDefault();
+    const documentID = await createDocument(`topics/${id}/resources`, resource);
     dispatch({ type: Type.UPDATE_TOPIC, payload: topic });
     (await documentID)
       ? alert("File added successfully")
       : alert(" Yikes, there was a problem adding this file");
-    history.push("/topics");
+    history.goBack();
   }
 
   return (

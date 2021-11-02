@@ -15,7 +15,7 @@ export default function Toolbar() {
         </li>
         <li>
           <NavLink to="/admin-topics/newTopic">
-            <Icon fileName={"File"} />
+            <Icon fileName={"file"} />
             <span>Create a topic</span>
           </NavLink>
         </li>
