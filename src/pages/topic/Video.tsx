@@ -1,11 +1,9 @@
 import YouTube from "react-youtube";
 import getYouTubeID from "get-youtube-id";
 import PropsResource from "./PropsResource";
-import iResource from "../../interfaces/iResource";
 
-export default function Video(resource: iResource) {
-  const { title, description, url } = resource;
-  let youtubeId = getYouTubeID(url);
+export default function Video({ resource }: PropsResource) {
+  let youtubeId = getYouTubeID(resource.url);
 
   return (
     <div id={"video-player"}>
@@ -14,8 +12,8 @@ export default function Video(resource: iResource) {
         className="video"
         containerClassName="player"
       />
-      <h3>{title}</h3>
-      <p>{description}</p>
+      <h3>{resource.title}</h3>
+      <p>{resource.description}</p>
     </div>
   );
 }

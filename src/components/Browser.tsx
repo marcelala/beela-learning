@@ -15,7 +15,6 @@ import Footer from "./Footer";
 import AdminTopicEditor from "../pages/adminTopicEditor";
 import PasswordRecovery from "../pages/passwordRecovery";
 import Landing from "../pages/landing";
-import Toolbar from "./Toolbar";
 import AdminAddResources from "../pages/adminAddResources";
 
 export default function Browser() {
@@ -25,7 +24,6 @@ export default function Browser() {
   return (
     <BrowserRouter>
       <Navigation />
-      <Toolbar />
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route exact path="/topics" component={TopicsList} />

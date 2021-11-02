@@ -13,19 +13,29 @@ export const ResourcesList = ({ resources, toShow }: iProps) => {
   const [selectedList, setSelected] = useState(selected);
 
   function getResources(array: iResource[]) {
-    return array.filter((item: iResource) => item.type);
+    return array.filter((item: iResource) => item.type === toShow);
   }
 
-  const ResourceCardList = resources.map((item: iResource, index) => (
+  const LinkCardList = selectedList.map((item: iResource, index) => (
     <li key={index}>
       <ResourceCard resource={item} />
     </li>
   ));
-  console.log(resources, "list");
 
+  const VideoCardList = selectedList.map((item: iResource, index) => (
+    <li key={index}>
+      <Video resource={item} />
+    </li>
+  ));
+
+  const ResourceCardList = selectedList.map((item: iResource, index) => (
+    <li key={index}>
+      <ResourceCard resource={item} />
+    </li>
+  ));
   console.log(selected, "list");
   if (selectedList === undefined) return <span>No items available</span>;
   if (selectedList === null) return <span>No items available</span>;
 
-  return <ul>{ResourceCardList}</ul>;
+  return <ul>{VideoCardList}</ul>;
 };

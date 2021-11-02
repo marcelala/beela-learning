@@ -20,15 +20,6 @@ export default function AdminHome() {
         <li>
           <Link to="/participants"> View and manage participants</Link>
         </li>
-        <li>
-          <p> Topic: add, delete resourceItems(file and link items) and data</p>
-        </li>
-        <li>
-          <button> upload files up to 10mb</button>
-        </li>
-        <li>
-          <button> progress bar for upload</button>
-        </li>
       </ul>
     </section>
   );
