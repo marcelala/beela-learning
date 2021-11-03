@@ -115,25 +115,15 @@
   @include animate(spin, 0.6s, infinite, linear)
 
 @mixin respond($breakpoint)
-
   @if $breakpoint== phablet
-    @media screen and (min-width: $media-phablet)
+    @media only screen and (min-width: 400px)
       @content
-
   @if $breakpoint== tablet
-    @media screen and (min-width: $media-tablet)
+    @media only screen and (min-width: 550px)
       @content
-
-    @if $breakpoint== max-tablet
-    @media screen and (max-width: 550px)
-      @content
-
-
   @if $breakpoint== desktop
-    @media screen and (min-width: $media-desktop)
+    @media only screen and (min-width: 1000px)
       @content
-
-
   @if $breakpoint== ultra-wide
-    @media screen and (min-width: $media-ultra-wide)
+    @media only screen and (min-width: 2000px)
       @content

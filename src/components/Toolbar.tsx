@@ -5,7 +5,7 @@ export default function Toolbar() {
   const calendarLink =
     "https://calendar.google.com/calendar/embed?src=u32c1ks1g0q9nt7eljl2hlqqsg%40group.calendar.google.com&ctz=Europe%2FStockholm";
   return (
-    <section id="toolbar">
+    <nav id="toolbar">
       <ul>
         <li>
           <NavLink to="/home">
@@ -38,6 +38,6 @@ export default function Toolbar() {
           </a>
         </li>
       </ul>
-    </section>
+    </nav>
   );
 }

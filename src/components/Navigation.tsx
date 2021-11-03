@@ -1,11 +1,13 @@
 import { NavLink, useHistory } from "react-router-dom";
 import { useAuthentication } from "../context/AuthenticationContext";
 import { logOut } from "../firebaseServices/authentication";
-import logo from "assets/images/logo/BeelaLogonotext.png";
+import logo from "assets/images/logo/logo.png";
 import Icon from "./Icon";
 export default function Navigation() {
   const { isAuthenticated, setIsAuthenticated } = useAuthentication();
   const history = useHistory();
+  const calendarLink =
+    "https://calendar.google.com/calendar/embed?src=u32c1ks1g0q9nt7eljl2hlqqsg%40group.calendar.google.com&ctz=Europe%2FStockholm";
 
   const signIn = (
     <li>
@@ -53,6 +55,11 @@ export default function Navigation() {
             <NavLink to="/register" className={"btn btn-primary"}>
               Sign Up
             </NavLink>
+          </li>
+          <li>
+            <a href={calendarLink} target="_blank" rel="noreferrer">
+              <Icon fileName={"calendar-number"} />
+            </a>
           </li>
           {signToShow}
         </ul>
