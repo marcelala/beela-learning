@@ -67,14 +67,16 @@ export default function ParticipantsList() {
   if (participants === undefined) return ErrorComponent;
 
   return (
-    <section className="ParticipantsList">
-      {status === 0 && <Spinner />}
-      {status === 1 && <ul>{Participants}</ul>}
-      {status === 2 && <p>Error 🚨</p>}
-      <button className="btn btn-primary" onClick={() => history.goBack()}>
-        Go back
-      </button>
+    <>
+      <section className="ParticipantsList">
+        {status === 0 && <Spinner />}
+        {status === 1 && <ul>{Participants}</ul>}
+        {status === 2 && <p>Error 🚨</p>}
+        <button className="btn btn-primary" onClick={() => history.goBack()}>
+          Go back
+        </button>
+      </section>
       {admin && <Toolbar />}
-    </section>
+    </>
   );
 }

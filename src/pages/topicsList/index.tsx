@@ -37,14 +37,17 @@ export default function TopicsList() {
   ));
 
   return (
-    <section id="topicsList">
-      {status === 0 && <Spinner />}
-      {status === 1 && (
-        <>
-          {TopicsList} {admin && <Toolbar />}
-        </>
-      )}
-      {status === 2 && <p>Error 🚨</p>}
-    </section>
+    <>
+      <section id="topicsList">
+        {status === 0 && <Spinner />}
+        {status === 1 && (
+          <>
+            {TopicsList} {admin && <Toolbar />}
+          </>
+        )}
+        {status === 2 && <p>Error 🚨</p>}
+      </section>
+      {admin && <Toolbar />}
+    </>
   );
 }

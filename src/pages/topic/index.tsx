@@ -64,36 +64,38 @@ export default function Topic() {
   }
 
   return (
-    <main id="topic">
-      <img src={topicImageURL} alt={title} />
-      <h1>{title}</h1>
-      {admin && <>{TopicManager()}</>}
-      <section id={"author-card"}>
-        <h3>{owner}</h3>
-        <span> {ownerEmail}</span>
-      </section>
-      <section id={"description-card"}>
-        <h3>Description</h3>
-        <p>{fullDescription}</p>
-      </section>
-      <section id="resourcesList">
-        <h3>Resources</h3>
-        <button value="link" onClick={(e) => onChange(e)}>
-          Links
-        </button>
-        <button value="file" onClick={(e) => onChange(e)}>
-          Files
-        </button>
-        <button value="video" onClick={onChange}>
-          Videos
-        </button>
-        {status === 0 && <Spinner />}
-        {status === 1 &&
-          ResourcesList({ resources: resourcesList, toShow: selectorType })}
-        {status === 2 && <p>Error 🚨</p>}
-      </section>
-      <button onClick={() => history.push("/topics")}>Go back</button>
+    <>
+      <main id="topic">
+        <img src={topicImageURL} alt={title} />
+        <h1>{title}</h1>
+        {admin && <>{TopicManager()}</>}
+        <section id={"author-card"}>
+          <h3>{owner}</h3>
+          <span> {ownerEmail}</span>
+        </section>
+        <section id={"description-card"}>
+          <h3>Description</h3>
+          <p>{fullDescription}</p>
+        </section>
+        <section id="resourcesList">
+          <h3>Resources</h3>
+          <button value="link" onClick={(e) => onChange(e)}>
+            Links
+          </button>
+          <button value="file" onClick={(e) => onChange(e)}>
+            Files
+          </button>
+          <button value="video" onClick={onChange}>
+            Videos
+          </button>
+          {status === 0 && <Spinner />}
+          {status === 1 &&
+            ResourcesList({ resources: resourcesList, toShow: selectorType })}
+          {status === 2 && <p>Error 🚨</p>}
+        </section>
+        <button onClick={() => history.push("/topics")}>Go back</button>
+      </main>
       {admin && <Toolbar />}
-    </main>
+    </>
   );
 }
