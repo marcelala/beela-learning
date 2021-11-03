@@ -3,12 +3,13 @@ import { getCollection } from "../../firebaseServices/firestore";
 import { useTopicsData } from "../../context/TopicsContext";
 import iTopic from "../../interfaces/iTopic";
 import ErrorComponent from "../../components/ErrorComponent";
-import { useCallback, useEffect, useState } from "react";
+import { SetStateAction, useCallback, useEffect, useState } from "react";
 import Type from "../../types/reducerTypes";
 import Spinner from "../../components/Spinner";
 import { useUserData } from "../../context/UserDataContext";
 import TopicManager from "./TopicManager";
 import { ResourcesList } from "./ResourcesList";
+import iResource from "../../interfaces/iResource";
 // Interface
 type PropParams = {
   type: string;
@@ -33,8 +34,8 @@ export default function Topic() {
   } = topicInfo;
   const [status, setStatus] = useState(0); // 0 pending, 1 ready, 2 error
   const [topic, setTopic] = useState(topicInfo);
-
-  const [resourcesToShow, setToShow] = useState("link");
+  const [selectorType, setSelector] = useState("link");
+  const [resourcesList, setResourcesList] = useState(topic.resources);
 
   //Methods
   const fetchResources = useCallback(async () => {
@@ -53,6 +54,22 @@ export default function Topic() {
   useEffect(() => {
     fetchResources();
   }, [fetchResources, id]);
+
+  function getResourcesSelected(array: iResource[], selectedResource: string) {
+    const listSelected = array.filter(
+      (item: iResource) => item.type === selectedResource
+    );
+    setResourcesList(listSelected);
+    return listSelected;
+  }
+
+  function onChange(e: any) {
+    setSelector(e.target.value);
+    console.log(selectorType);
+    getResourcesSelected(topic.resources, e.target.value);
+    console.log(resourcesList);
+  }
+
   return (
     <main id="topic">
       <img src={topicImageURL} alt={title} />
@@ -68,13 +85,18 @@ export default function Topic() {
       </section>
       <section id="resourcesList">
         <h3>Resources</h3>
-        <button onClick={() => setToShow("link")}>Links</button>
-        <button onClick={() => setToShow("file")}>Files</button>
-        <button onClick={() => setToShow("video")}>Videos</button>
+        <button value="link" onClick={(e) => onChange(e)}>
+          Links
+        </button>
+        <button value="file" onClick={(e) => onChange(e)}>
+          Files
+        </button>
+        <button value="video" onClick={onChange}>
+          Videos
+        </button>
         {status === 0 && <Spinner />}
-        {status === 1 && (
-          <ResourcesList resources={topic.resources} toShow={resourcesToShow} />
-        )}
+        {status === 1 &&
+          ResourcesList({ resources: resourcesList, toShow: selectorType })}
         {status === 2 && <p>Error 🚨</p>}
       </section>
       <button onClick={() => history.push("/topics")}>Go back</button>

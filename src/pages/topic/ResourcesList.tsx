@@ -1,50 +1,37 @@
 import iResource from "../../interfaces/iResource";
 import Video from "./Video";
-import { useState } from "react";
 import ResourceCard from "./ResourceCard";
+import { useState } from "react";
 
 type iProps = {
-  resources: iResource[];
+  resources: any;
   toShow: string;
 };
 
-export const ResourcesList = ({ resources, toShow }: iProps) => {
-  const selected = getResources(resources);
-  const [selectedList, setSelected] = useState(selected);
-
-  function getResources(array: iResource[]) {
-    return array.filter((item: iResource) => item.type === toShow);
+export function ResourcesList({ resources, toShow }: iProps) {
+  if (toShow === "video") {
+    return resources.map((item: iResource, index: any) => (
+      <li key={index}>
+        <Video resource={item} />
+      </li>
+    ));
   }
-
-  function displayResources(array: iResource[], toShow: string) {
-    if (toShow === "video") {
-      return selectedList.map((item: iResource, index) => (
-        <li key={index}>
-          <Video resource={item} />
-        </li>
-      ));
-    }
-    if (toShow === "link") {
-      return selectedList.map((item: iResource, index) => (
-        <li key={index}>
-          <a href={item.url} rel="noreferrer">
-            <ResourceCard resource={item} />
-          </a>
-        </li>
-      ));
-    } else if (toShow === "file") {
-      return selectedList.map((item: iResource, index) => (
-        <li key={index}>
-          <a href={item.url} target="_blank" rel="noreferrer" download>
-            <ResourceCard resource={item} />
-          </a>
-        </li>
-      ));
-    }
+  if (toShow === "link") {
+    return resources.map((item: iResource, index: any) => (
+      <li key={index}>
+        <a href={item.url} target="_blank" rel="noreferrer">
+          <ResourceCard resource={item} />
+        </a>
+      </li>
+    ));
   }
-
-  if (selectedList === undefined) return <span>No items available</span>;
-  if (selectedList === null) return <span>No items available</span>;
-
-  return <ul>{displayResources(selectedList, toShow)}</ul>;
-};
+  if (toShow === "file") {
+    return resources.map((item: iResource, index: any) => (
+      <li key={index}>
+        <a href={item.url} target="_blank" rel="noreferrer" download>
+          <ResourceCard resource={item} />
+        </a>
+      </li>
+    ));
+  } else return <span>No items available</span>;
+}
