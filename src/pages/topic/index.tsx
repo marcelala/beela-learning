@@ -3,13 +3,14 @@ import { getCollection } from "../../firebaseServices/firestore";
 import { useTopicsData } from "../../context/TopicsContext";
 import iTopic from "../../interfaces/iTopic";
 import ErrorComponent from "../../components/ErrorComponent";
-import { SetStateAction, useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Type from "../../types/reducerTypes";
 import Spinner from "../../components/Spinner";
 import { useUserData } from "../../context/UserDataContext";
 import TopicManager from "./TopicManager";
 import { ResourcesList } from "./ResourcesList";
 import iResource from "../../interfaces/iResource";
+import Toolbar from "../../components/Toolbar";
 // Interface
 type PropParams = {
   type: string;
@@ -24,14 +25,8 @@ export default function Topic() {
   //local
   const topicInfo = topicsData.find((item: iTopic) => item.id === id);
   if (topicInfo === undefined) return ErrorComponent;
-  const {
-    topicImageURL,
-    title,
-    fullDescription,
-    owner,
-    resources,
-    ownerEmail,
-  } = topicInfo;
+  const { topicImageURL, title, fullDescription, owner, ownerEmail } =
+    topicInfo;
   const [status, setStatus] = useState(0); // 0 pending, 1 ready, 2 error
   const [topic, setTopic] = useState(topicInfo);
   const [selectorType, setSelector] = useState("link");
@@ -65,9 +60,7 @@ export default function Topic() {
 
   function onChange(e: any) {
     setSelector(e.target.value);
-    console.log(selectorType);
     getResourcesSelected(topic.resources, e.target.value);
-    console.log(resourcesList);
   }
 
   return (
@@ -100,6 +93,7 @@ export default function Topic() {
         {status === 2 && <p>Error 🚨</p>}
       </section>
       <button onClick={() => history.push("/topics")}>Go back</button>
+      {admin && <Toolbar />}
     </main>
   );
 }

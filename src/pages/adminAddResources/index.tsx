@@ -8,6 +8,7 @@ import ResourceForm from "./ResourceForm";
 import { createDocument } from "../../firebaseServices/firestore";
 import { newResource } from "../../types/newResource";
 import iResource from "../../interfaces/iResource";
+import Toolbar from "../../components/Toolbar";
 // Interface
 type iPropParams = {
   id: string;
@@ -58,6 +59,7 @@ export default function AdminAddResources() {
         <button type={"submit"}>Save</button>
       </form>
       <button onClick={() => history.push("/topics")}>Go back</button>
+      <Toolbar />
     </section>
   );
 }

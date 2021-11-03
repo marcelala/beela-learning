@@ -9,6 +9,7 @@ import {
 } from "../../firebaseServices/firestore";
 import Type from "../../types/reducerTypes";
 import TopicForm from "./TopicForm.jsx";
+import Toolbar from "../../components/Toolbar";
 // Interface
 type iPropParams = {
   id: string;
@@ -53,10 +54,9 @@ export default function AdminTopicEditor() {
     <section id="topic-editor">
       <h1>{title}</h1>
       <TopicForm topic={topic} onChange={onChange} />
-      <footer>
-        <button onClick={() => onSave(topic)}>Save changes</button>
-        <button onClick={() => history.goBack()}>Go back</button>
-      </footer>
+      <button onClick={() => onSave(topic)}>Save changes</button>
+      <button onClick={() => history.goBack()}>Go back</button>
+      <Toolbar />
     </section>
   );
 }

@@ -11,6 +11,7 @@ import Participant from "../../components/Participant";
 import { deleteAccount } from "../../firebaseServices/authentication";
 import Icon from "../../components/Icon";
 import ErrorComponent from "../../components/ErrorComponent";
+import Toolbar from "../../components/Toolbar";
 
 export default function ParticipantsList() {
   const { userData } = useUserData();
@@ -73,6 +74,7 @@ export default function ParticipantsList() {
       <button className="btn btn-primary" onClick={() => history.goBack()}>
         Go back
       </button>
+      {admin && <Toolbar />}
     </section>
   );
 }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useUserData } from "../../context/UserDataContext";
 import { newTopic } from "../../types/newTopic";
+import Toolbar from "../../components/Toolbar";
 
 export default function AdminHome() {
   // Global state
@@ -21,6 +22,7 @@ export default function AdminHome() {
           <Link to="/participants"> View and manage participants</Link>
         </li>
       </ul>
+      <Toolbar />
     </section>
   );
 }

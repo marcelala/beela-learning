@@ -1,7 +1,6 @@
 import iResource from "../../interfaces/iResource";
 import Video from "./Video";
 import ResourceCard from "./ResourceCard";
-import { useState } from "react";
 
 type iProps = {
   resources: any;
