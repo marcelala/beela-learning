@@ -11,7 +11,7 @@ import iTopic from "../../interfaces/iTopic";
 import Type from "../../types/reducerTypes";
 import Header from "../../components/Header";
 import Toolbar from "../../components/Toolbar";
-import TopicCard from "../../components/TopicCard";
+import TopicCard from "./TopicCard";
 import banner from "assets/images/sections/listBanner.svg";
 
 export default function TopicsList() {
@@ -36,19 +36,22 @@ export default function TopicsList() {
   }, [fetchTopics]);
 
   const TopicsList = topicsData.map((item: iTopic) => (
-    <Link to={`/topics/${item.id}`} key={item.id}>
-      <TopicCard topic={item} />
-    </Link>
+    <li className="topic-card" key={item.id}>
+      <Link to={`/topics/${item.id}`}>
+        <TopicCard topic={item} />
+      </Link>
+    </li>
   ));
 
   return (
     <>
       <Header id="topicsList-header" />
-      <div className="topicsList-banner">
-        <img src={banner} alt={"yellow background with text over it"} />
-        <span>Browse our curated content and boost your tech career</span>
-      </div>
+
       <section id="topicsList">
+        <div className="topicsList-banner">
+          <img src={banner} alt={"yellow background with text over it"} />
+          <span>Browse our curated content and boost your tech career</span>
+        </div>
         {status === 0 && <Spinner />}
         {status === 1 && <ul>{TopicsList}</ul>}
         {status === 2 && <p>Error 🚨</p>}

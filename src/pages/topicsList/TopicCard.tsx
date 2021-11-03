@@ -1,4 +1,5 @@
-import iTopic from "../interfaces/iTopic";
+import iTopic from "../../interfaces/iTopic";
+import Icon from "../../components/Icon";
 interface iProps {
   topic: iTopic;
 }
@@ -6,16 +7,17 @@ interface iProps {
 export default function TopicCard({ topic }: iProps) {
   const { thumbnailURL, title, shortDescription, owner } = topic;
   return (
-    <li className="topic-item">
+    <>
       <img src={thumbnailURL} alt="user content" />
       <div className="text-box">
         <h1>{title}</h1>
+        <span>by {owner}</span>
         <p>{shortDescription}</p>
+        <div className="btn icon-btn">
+          <Icon fileName={"plus-circle"} />
+          Read more
+        </div>
       </div>
-      <span>{owner}</span>
-      <div className="btn btn-secondary">
-        <p>Read more</p>
-      </div>
-    </li>
+    </>
   );
 }
