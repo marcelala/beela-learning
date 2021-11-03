@@ -40,11 +40,7 @@ export default function TopicsList() {
     <>
       <section id="topicsList">
         {status === 0 && <Spinner />}
-        {status === 1 && (
-          <>
-            {TopicsList} {admin && <Toolbar />}
-          </>
-        )}
+        {status === 1 && <>{TopicsList}</>}
         {status === 2 && <p>Error 🚨</p>}
       </section>
       {admin && <Toolbar />}
