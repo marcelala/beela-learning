@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <>
-      <Header />
+      <Header id="home-header" />
       <section id={"home"}>
         <img
           src={avatar}

@@ -1,13 +1,18 @@
-import { getCollection } from "../../firebaseServices/firestore";
-import { useTopicsData } from "../../context/TopicsContext";
+//dependencies
+
 import { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import TopicCard from "../../components/TopicCard";
-import iTopic from "../../interfaces/iTopic";
-import Spinner from "../../components/Spinner";
-import Type from "../../types/reducerTypes";
-import Toolbar from "../../components/Toolbar";
+//project files
+import { getCollection } from "../../firebaseServices/firestore";
+import { useTopicsData } from "../../context/TopicsContext";
 import { useUserData } from "../../context/UserDataContext";
+import Spinner from "../../components/Spinner";
+import iTopic from "../../interfaces/iTopic";
+import Type from "../../types/reducerTypes";
+import Header from "../../components/Header";
+import Toolbar from "../../components/Toolbar";
+import TopicCard from "../../components/TopicCard";
+import banner from "assets/images/sections/listBanner.svg";
 
 export default function TopicsList() {
   const { userData } = useUserData();
@@ -38,9 +43,14 @@ export default function TopicsList() {
 
   return (
     <>
+      <Header id="topicsList-header" />
+      <div className="topicsList-banner">
+        <img src={banner} alt={"yellow background with text over it"} />
+        <span>Browse our curated content and boost your tech career</span>
+      </div>
       <section id="topicsList">
         {status === 0 && <Spinner />}
-        {status === 1 && <>{TopicsList}</>}
+        {status === 1 && <ul>{TopicsList}</ul>}
         {status === 2 && <p>Error 🚨</p>}
       </section>
       {admin && <Toolbar />}

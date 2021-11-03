@@ -11,7 +11,7 @@ export default function AdminHome() {
 
   return (
     <>
-      <Header />
+      <Header id="home-header" />
       <section id="home">
         <img
           src={avatar}
