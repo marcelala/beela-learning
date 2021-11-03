@@ -8,6 +8,12 @@ type iProps = {
 };
 
 export function ResourcesList({ resources, toShow }: iProps) {
+  if (resources === undefined || null) {
+    return <span>No resources of have been added to this topic</span>;
+  }
+  if (resources.type === undefined && toShow) {
+    return <span>No resources of this type are available</span>;
+  }
   if (toShow === "video") {
     return resources.map((item: iResource, index: any) => (
       <li key={index}>

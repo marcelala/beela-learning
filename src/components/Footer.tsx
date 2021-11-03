@@ -1,7 +1,6 @@
 import element from "../assets/images/element-bottom.svg";
 import github from "../assets/icons/github.svg";
 import linkedin from "../assets/icons/linkedin.svg";
-import home from "../assets/icons/home.svg";
 import Icon from "./Icon";
 
 export default function Footer() {
@@ -11,7 +10,7 @@ export default function Footer() {
     <div className="footer-container">
       <img
         src={element}
-        alt="colorfull circles decoration"
+        alt="colorful circles decoration"
         className="element"
       />
       <footer>
@@ -34,7 +33,10 @@ export default function Footer() {
         >
           <p> contact@beela.se</p>
         </a>
-        <p>©{currentYear} Beela & Marcela Fortis</p>
+        <p>
+          ©{currentYear} <a href="https://beela.se/">Beela</a> &{" "}
+          <a href="https://marcelaf-portfolio.web.app/">Marcela Felix Fortis</a>
+        </p>
       </footer>
     </div>
   );
