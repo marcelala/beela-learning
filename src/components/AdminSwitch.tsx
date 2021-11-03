@@ -1,7 +1,7 @@
 import { Switch } from "react-router-dom";
 import AuthenticatedRoute from "./AuthenticatedRoute";
-import AdminHome from "../pages/AdminHome";
-import ParticipantsList from "../pages/ParticipantsList";
+import AdminHome from "../pages/adminHome";
+import ParticipantsList from "../pages/participantsList";
 import Participant from "./Participant";
 
 export default function AdminSwitch() {

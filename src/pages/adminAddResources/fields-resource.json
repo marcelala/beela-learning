@@ -1,0 +1,26 @@
+{
+  "title":{
+    "key": "title",
+    "label": "Title",
+    "placeholder": "Resource's title",
+    "type": "text"
+  },
+  "description":{
+    "key": "description",
+    "label": "Description",
+    "placeholder": "Briefly describe this resource",
+    "type": "text"
+  },
+  "type": {
+    "key": "type",
+    "label": " Type of file",
+    "instructions": "What's the type or resource (file, video or link)?",
+    "type": "text"
+  },
+"url": {
+"key": "url",
+"label": "URL",
+"instructions": "Please choose a file of types .pdf, .doc, .png, .jpg, .docx.",
+  "placeholder": "Please paste the link in https:// format"
+}
+}

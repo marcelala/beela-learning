@@ -3,7 +3,7 @@ import { FormEvent } from "react";
 
 // Project files
 import Placeholder from "assets/images/placeholder.png";
-import { uploadImage } from "../scripts/uploadImage";
+import { uploadImage } from "../scripts/upload/imageUpload";
 
 // Interfaces
 interface iFields {
@@ -15,14 +15,14 @@ interface iProps {
   onChange: Function;
   options: iFields;
   state: any;
-  filename: string;
+  folder: string;
 }
 
 export default function InputImage({
   onChange,
   options,
   state,
-  filename,
+  folder,
 }: iProps) {
   const { label, key, instructions } = options;
 
@@ -31,7 +31,7 @@ export default function InputImage({
 
   // Methods
   async function onFileChange(event: FormEvent) {
-    const image_url = await uploadImage(event, filename);
+    const image_url = await uploadImage(event, folder);
 
     onChange(key, image_url);
   }
@@ -40,7 +40,11 @@ export default function InputImage({
     <fieldset className="input-image">
       <label className="custom-file-chooser">
         {label}
-        <input onChange={(event) => onFileChange(event)} type="file" />
+        <input
+          accept="image/gif, image/jpeg, image/png"
+          onChange={(event) => onFileChange(event)}
+          type="file"
+        />
         <img src={Image} alt="User generated content" />
       </label>
       <small>{instructions}</small>

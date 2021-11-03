@@ -25,7 +25,6 @@ export default function App() {
         setIsAuthenticated(true);
         setUserData(userData);
         setStatus(1);
-        console.log(userData, "tries to set ");
       }
     },
     [setIsAuthenticated, setUserData]

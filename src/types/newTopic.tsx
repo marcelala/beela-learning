@@ -6,9 +6,8 @@ export const newTopic: iTopic = {
   shortDescription: "",
   fullDescription: "",
   owner: "",
+  ownerEmail: "",
   thumbnailURL: "",
   topicImageURL: "",
-  links: [],
-  files: [],
-  video: [],
+  resources: null,
 };

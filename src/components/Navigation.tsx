@@ -1,24 +1,63 @@
 import { NavLink, useHistory } from "react-router-dom";
 import { useAuthentication } from "../context/AuthenticationContext";
 import { logOut } from "../firebaseServices/authentication";
+import logo from "assets/images/logo/BeelaLogonotext.png";
+import Icon from "./Icon";
 export default function Navigation() {
   const { isAuthenticated, setIsAuthenticated } = useAuthentication();
   const history = useHistory();
 
+  const signIn = (
+    <li>
+      <NavLink to="login">
+        <Icon fileName={"sign-in"} />
+      </NavLink>
+    </li>
+  );
+  const signOut = (
+    <li onClick={onLogout}>
+      <Icon fileName={"sign-out"} />
+    </li>
+  );
+  const signToShow = isAuthenticated ? signOut : signIn;
+
   // Methods
   async function onLogout() {
     const account = await logOut();
-    console.log("Nav.jsx account", account);
     setIsAuthenticated(false);
-    history.push("/login");
+    history.push("/");
   }
   return (
-    <nav>
-      <NavLink to="/home">Home</NavLink>|<NavLink to="login">Login</NavLink>|
-      <NavLink to="/signup">Sign Up</NavLink>
-      <NavLink to="/topics">Browse</NavLink>
-      {isAuthenticated ? <button onClick={onLogout}> Sign out</button> : ""}
-      <button> Calendar</button>
+    <nav className="navigation">
+      <div className={"nav-content"}>
+        <ul>
+          <li>
+            <NavLink to="/">
+              <img src={logo} alt="bee in a beehive" />
+            </NavLink>
+          </li>
+          {isAuthenticated && (
+            <li>
+              <NavLink to="/home">Home</NavLink>
+            </li>
+          )}
+          {!isAuthenticated && (
+            <li>
+              <a href="/#about">Why Beela?</a>
+            </li>
+          )}
+          <li>
+            <NavLink to="/topics">Discover</NavLink>
+          </li>
+          <li>
+            <NavLink to="/register" className={"btn btn-primary"}>
+              Sign Up
+            </NavLink>
+          </li>
+          {signToShow}
+        </ul>
+      </div>
+      <hr />
     </nav>
   );
 }

@@ -29,9 +29,9 @@ export default function InputField({ onChange, settings, state }: iProps) {
           ref={inputReference}
           type={type}
           value={state}
+          className={"input-field"}
         />
       </label>
-      <small>{instructions}</small>
     </fieldset>
   );
 }

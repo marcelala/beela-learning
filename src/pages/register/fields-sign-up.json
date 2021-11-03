@@ -1,0 +1,36 @@
+[
+  {
+    "key": "fullName",
+    "label": "Full Name",
+    "placeholder": "Susanne Butler",
+    "type": "text",
+    "instructions":"your full name please"
+  },
+  {
+    "key": "city",
+    "label": "City",
+    "placeholder": "Stockholm",
+    "type": "text",
+    "instructions":"the city where you live"
+  },  {
+  "key": "phone",
+  "label": "Phone",
+  "placeholder": "0710001111",
+  "type": "text",
+  "instructions":"phone"
+},
+  {
+    "key": "email",
+    "label": "Email",
+    "placeholder": "yourname@gmail.com",
+    "type": "email",
+    "instructions":"your email"
+  },
+  {
+    "key": "password",
+    "label": "Password",
+    "placeholder": "********",
+    "type": "password",
+    "instructions":"your password should contain at least 8 characters"
+  }
+]
