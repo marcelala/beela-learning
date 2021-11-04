@@ -28,7 +28,6 @@ export default function Login() {
     account.setIsAuthenticated
       ? await onSuccess(account.payload)
       : onFailure(account.payload);
-    history.push("/home");
   }
 
   async function onSuccess(uid: string) {
@@ -47,18 +46,19 @@ export default function Login() {
     <>
       {" "}
       <Header id="auth-header" />
-      <section id="login">
+      <section id="auth">
         <h1>Log in</h1>
-        <form onSubmit={handleLogin}>
+        <form className="form form-login" onSubmit={handleLogin}>
           <FormFields fields={loginFields} state={[form, setForm]} />
-          <Link to={"/recovery"}>
-            <small>Forgot your password?</small>
-          </Link>
-          <small>
-            Not a member yet? <Link to="/register">Sign up here</Link>
-          </small>
-
-          <p>{errorMessage}</p>
+          <div className="auth-links">
+            <Link to={"/recovery"}>
+              <small>Forgot your password?</small>
+            </Link>
+            <small>
+              Not a member yet? <Link to="/register">Sign up here</Link>
+            </small>
+            <p>{errorMessage}</p>
+          </div>
           <button type="submit" className="btn btn-primary">
             Login
           </button>

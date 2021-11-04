@@ -32,12 +32,14 @@ export default function PasswordRecovery() {
     <>
       {" "}
       <Header id="auth-header" />
-      <section id={"password-recovery"}>
+      <section id={"auth"}>
         <h1>Password Recovery</h1>
-        <form onSubmit={handleRecoveryRequest}>
+        <form className="form form-recovery" onSubmit={handleRecoveryRequest}>
           <FormFields fields={recoveryFields} state={[form, setForm]} />
           <p>{errorMessage}</p>
-          <button type="submit">Reset password</button>
+          <button className="btn-primary" type="submit">
+            Reset password
+          </button>
         </form>
       </section>{" "}
     </>

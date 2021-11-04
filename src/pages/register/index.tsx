@@ -57,17 +57,19 @@ export default function Register() {
     <>
       {" "}
       <Header id="auth-header" />
-      <div className={"auth"}>
+      <section id={"auth"}>
         <h1>Create an account</h1>
-        <form onSubmit={onSubmit}>
+        <form className="form form-register" onSubmit={onSubmit}>
           <FormFields fields={signUpFields} state={[form, setForm]} />
-          <small>
-            Already a member? <Link to="/login">Log in here</Link>
-          </small>
-          <p>{errorMessage}</p>
-          <button>Create account</button>
+          <div className="auth-links">
+            <small>
+              Already a member? <Link to="/login">Log in here</Link>
+            </small>
+            <p>{errorMessage}</p>
+          </div>
+          <button className="btn-primary">Create account</button>
         </form>
-      </div>
+      </section>
     </>
   );
 }

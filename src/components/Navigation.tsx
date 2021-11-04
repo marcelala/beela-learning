@@ -58,11 +58,13 @@ export default function Navigation() {
               </NavLink>
             </li>
           )}
-          <li>
-            <a href={calendarLink} target="_blank" rel="noreferrer">
-              <Icon fileName={"calendar-number"} />
-            </a>
-          </li>
+          {isAuthenticated && (
+            <li>
+              <a href={calendarLink} target="_blank" rel="noreferrer">
+                <Icon fileName={"calendar-number"} />
+              </a>
+            </li>
+          )}
           {signToShow}
         </ul>
       </div>
