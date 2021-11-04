@@ -10,7 +10,7 @@ type iProps = {
 export function ResourcesList({ resources, toShow }: iProps) {
   if (toShow === "video") {
     return resources.map((item: iResource, index: any) => (
-      <li key={index} id={"resource-video"}>
+      <li key={index} id={"resource resource-video"}>
         <Video resource={item} />
       </li>
     ));
