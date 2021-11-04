@@ -1,0 +1,47 @@
+#topic
+  @include sectionGrid
+  padding: $space-large $space-medium
+  h1
+    color: $primary-dark
+#author-card
+  @include cardContentGrid
+  border: .5px solid $primary
+  border-radius: 16px
+  h3
+    justify-self: start
+    color: $primary-dark
+    font-weight: 500
+
+  img
+    height: 5rem
+    width: auto
+  .at
+    border: .5px solid $primary-dark
+    border-radius: 30px
+    height: 3rem
+    width: 3rem
+    @include hover-lift
+  .icon
+    cursor: pointer
+    width: 100%
+    height: auto
+    padding: 0.5rem
+
+#description-card
+  @include cardContentGrid
+  border: .5px solid $primary
+  border-radius: 16px
+  justify-items: start
+
+  h3
+    color: $primary-dark
+    font-weight: 500
+
+
+#resources
+  @include cardContentGrid
+  border: .5px solid $primary
+  border-radius: 16px
+  h3
+    font-weight: 500
+    justify-self: start

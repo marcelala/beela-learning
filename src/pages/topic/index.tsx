@@ -11,6 +11,11 @@ import TopicManager from "./TopicManager";
 import { ResourcesList } from "./ResourcesList";
 import iResource from "../../interfaces/iResource";
 import Toolbar from "../../components/Toolbar";
+import Header from "../../components/Header";
+import logo from "assets/images/logo/logoNoText.png";
+import Icon from "../../components/Icon";
+import ResourcesMenu from "./ResourcesMenu";
+
 // Interface
 type PropParams = {
   type: string;
@@ -70,19 +75,29 @@ export default function Topic() {
 
   return (
     <>
+      <Header id={"header-topic"} />
       <main id="topic">
-        <img src={topicImageURL} alt={title} />
+        <img src={topicImageURL} alt={title} className={"sectionImg"} />
         <h1>{title}</h1>
         {admin && <>{TopicManager()}</>}
         <section id={"author-card"}>
-          <h3>{owner}</h3>
-          <span> {ownerEmail}</span>
+          <h3>Author</h3>
+          <img src={logo} alt={"bee"} />
+          <h4>{owner}</h4>
+          <a
+            href={`mailto:${ownerEmail}`}
+            target="_blank"
+            rel="noreferrer"
+            className={"at"}
+          >
+            <Icon fileName={"letter"} />
+          </a>
         </section>
         <section id={"description-card"}>
           <h3>Description</h3>
           <p>{fullDescription}</p>
         </section>
-        <section id="resourcesList">
+        <section id="resources">
           <h3>Resources</h3>
           <button value="link" onClick={(e) => onChange(e)}>
             Links
@@ -98,11 +113,12 @@ export default function Topic() {
             ResourcesList({ resources: resourcesList, toShow: selectorType })}
           {status === 2 && <p>Error 🚨</p>}
           {status === 4 && (
-            <span>There are no resourc es available for this topic</span>
+            <span>There are no resources available for this topic</span>
           )}
         </section>
         <button onClick={() => history.push("/topics")}>Go back</button>
       </main>
+      {admin && <Toolbar />}
     </>
   );
 }

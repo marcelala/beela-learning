@@ -32,6 +32,7 @@ export default function TopicManager() {
   }
   return (
     <section id="admin-topic">
+      <h3> Topic management</h3>
       <ul>
         <li>
           <Link to={`/admin-topics/${id}/file`}>
@@ -42,13 +43,13 @@ export default function TopicManager() {
         <li>
           <Link to={`/admin-topics/${id}/video`}>
             <Icon fileName={"video"} />
-            Add a video
+            Add video
           </Link>
         </li>
         <li>
           <Link to={`/admin-topics/${id}/link`}>
             <Icon fileName={"link"} />
-            Add a link
+            Add link
           </Link>
         </li>
         <li>

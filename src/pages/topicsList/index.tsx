@@ -13,7 +13,6 @@ import Header from "../../components/Header";
 import Toolbar from "../../components/Toolbar";
 import TopicCard from "./TopicCard";
 import banner from "assets/images/sections/listBanner.svg";
-import element from "../../assets/images/card-vector.svg";
 
 export default function TopicsList() {
   const { userData } = useUserData();
