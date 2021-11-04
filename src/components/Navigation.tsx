@@ -51,11 +51,13 @@ export default function Navigation() {
           <li>
             <NavLink to="/topics">Discover</NavLink>
           </li>
-          <li>
-            <NavLink to="/register" className={"btn btn-primary"}>
-              Sign Up
-            </NavLink>
-          </li>
+          {!isAuthenticated && (
+            <li>
+              <NavLink to="/register" className={"btn btn-primary"}>
+                Sign Up
+              </NavLink>
+            </li>
+          )}
           <li>
             <a href={calendarLink} target="_blank" rel="noreferrer">
               <Icon fileName={"calendar-number"} />

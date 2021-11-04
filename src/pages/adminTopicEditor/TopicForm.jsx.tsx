@@ -1,6 +1,7 @@
 import InputImage from "../../components/InputImage";
 import iTopic from "../../interfaces/iTopic";
 import InputField from "../../components/InputField";
+import TextArea from "../../components/TextArea";
 // Interface
 interface iProps {
   topic: iTopic;
@@ -8,7 +9,6 @@ interface iProps {
 }
 export default function TopicForm({ topic, onChange }: iProps) {
   const topicFields = require("./fields-topic.json");
-
   return (
     <section id={"topic-form"}>
       <InputField
@@ -26,12 +26,12 @@ export default function TopicForm({ topic, onChange }: iProps) {
         settings={topicFields.ownerEmail}
         state={topic.ownerEmail}
       />
-      <InputField
+      <TextArea
         onChange={onChange}
         settings={topicFields.shortDescription}
         state={topic.shortDescription}
       />
-      <InputField
+      <TextArea
         onChange={onChange}
         settings={topicFields.fullDescription}
         state={topic.fullDescription}

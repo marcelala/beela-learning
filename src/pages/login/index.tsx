@@ -8,6 +8,7 @@ import { login } from "../../firebaseServices/authentication";
 import { useAuthentication } from "../../context/AuthenticationContext";
 import { useUserData } from "../../context/UserDataContext";
 import { getDocument } from "../../firebaseServices/firestore";
+import Header from "../../components/Header";
 
 export default function Login() {
   // Global state
@@ -43,22 +44,26 @@ export default function Login() {
   }
 
   return (
-    <section id="login">
-      <h1>Log in</h1>
-      <form onSubmit={handleLogin}>
-        <FormFields fields={loginFields} state={[form, setForm]} />
-        <Link to={"/recovery"}>
-          <small>Forgot your password?</small>
-        </Link>
-        <small>
-          Not a member yet? <Link to="/register">Sign up here</Link>
-        </small>
+    <>
+      {" "}
+      <Header id="auth-header" />
+      <section id="login">
+        <h1>Log in</h1>
+        <form onSubmit={handleLogin}>
+          <FormFields fields={loginFields} state={[form, setForm]} />
+          <Link to={"/recovery"}>
+            <small>Forgot your password?</small>
+          </Link>
+          <small>
+            Not a member yet? <Link to="/register">Sign up here</Link>
+          </small>
 
-        <p>{errorMessage}</p>
-        <button type="submit" className="btn btn-primary">
-          Login
-        </button>
-      </form>
-    </section>
+          <p>{errorMessage}</p>
+          <button type="submit" className="btn btn-primary">
+            Login
+          </button>
+        </form>
+      </section>
+    </>
   );
 }

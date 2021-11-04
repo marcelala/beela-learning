@@ -44,19 +44,23 @@ export default function AdminTopicEditor() {
     setTopic({ ...topic, id });
     dispatch({ type: Type.CREATE_TOPIC, payload: topic });
   }
-
   async function onUpdateTopic(topic: iTopic) {
     await updateDocument("topics", topic);
     dispatch({ type: Type.UPDATE_TOPIC, payload: topic });
   }
-
   return (
     <>
-      <section id="topic-editor">
+      <section id="topic-editor" className="topic-editor">
         <h1>{title}</h1>
         <TopicForm topic={topic} onChange={onChange} />
-        <button onClick={() => onSave(topic)}>Save changes</button>
-        <button onClick={() => history.goBack()}>Go back</button>
+        <div className="btn-box">
+          <button onClick={() => onSave(topic)} className="btn-primary">
+            Save changes
+          </button>
+          <button onClick={() => history.goBack()} className="btn-secondary">
+            Go back
+          </button>
+        </div>
       </section>
       <Toolbar />
     </>

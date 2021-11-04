@@ -26,36 +26,29 @@
   ul
     @include cardGrid
     padding: $space-medium
+    margin: $space-large auto
 
   li
     width: 100%
     height: auto
-    a
-      height: 100%
-      width: 100%
-      img
-        padding: $space-medium
-
+    box-shadow: 0 4px 6px rgba(6, 25, 56, 0.07)
+    border-radius: 24px
+  a
+    height: 100%
+    width: 100%
+    .card-image
+      padding: $space-medium
     .text-box
       padding: $space-medium
       background-color: $primary-7
       height: 100%
       width: 100%
-      border-radius: 100px
       @include cardContentGrid
       justify-items: start
+      border-end-end-radius: 24px
+      border-bottom-left-radius: 24px
 
-    .icon-btn
-      @include hover-lift
-      display: flex
-      justify-content: space-between
-      margin: $space-small auto
-      align-items: center
-      img
-        height: auto
-        margin: 0 auto
-        padding: $space-x-small
-        z-index: 55
-        width: 3rem
+
+
 
 

@@ -8,30 +8,29 @@ interface iProps {
     instructions: string;
     label: string;
     placeholder: string;
-    type: string;
     maxLength: number;
-    size: number;
     isRequired: boolean;
     minLength: number;
+    rows: number;
+    cols: number;
   };
   state: any;
 }
 
-export default function InputField({ onChange, settings, state }: iProps) {
+export default function TextArea({ onChange, settings, state }: iProps) {
   const {
     key,
     label,
     placeholder,
-    type,
     instructions,
     isRequired,
     maxLength,
-    minLength,
-    size,
+    rows,
+    cols,
   } = settings;
   const [touched, setTouched] = useState(false);
   // Properties
-  const inputReference = useRef<HTMLInputElement>(null);
+  const inputReference = useRef<HTMLTextAreaElement>(null);
 
   return (
     <fieldset className={`fieldset fieldset-${key}`}>
@@ -40,17 +39,16 @@ export default function InputField({ onChange, settings, state }: iProps) {
         className={`label label-${key}`}
       >
         {label}
-        <input
+        <textarea
           onChange={() => onChange(key, inputReference.current?.value)}
           placeholder={placeholder}
           ref={inputReference}
-          type={type}
           value={state}
           className={`input-field input-field-${key}`}
           maxLength={maxLength}
-          size={size}
           required={isRequired}
-          minLength={minLength}
+          cols={cols}
+          rows={rows}
         />
         {touched && <small>{instructions}</small>}
       </label>

@@ -1,22 +1,9 @@
 fieldset
     border: none
-    text-transform: capitalize
+    label
+        @include label
+        small
+            @include small
 
 .input-field
-    max-width: 100%
-    width: 100%
-    height: auto
-    background-color: $white
-    border-radius: 16px
-    border: 2px solid $dark-line
-    outline: 0
-    font-size: 1.2rem
-    padding: $space-x-small $space-small
-    margin: $space-small 0
-    display: grid
-    row-gap: $space-small
-    column-gap: $space-medium
-    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr))
-
-    @include respond(big-desktop)
-      grid-template-columns: repeat(auto-fit, minmax(600px, 1fr))
+    @include field

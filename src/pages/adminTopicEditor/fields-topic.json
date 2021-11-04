@@ -1,45 +1,55 @@
 {
-  "title":{
+  "title": {
     "key": "title",
-    "label": "Topic title",
-    "placeholder": "Topic's title",
+    "label": "Title",
+    "placeholder": "Title of up to 60 characters",
     "type": "text",
-    "instructions":""
+    "instructions": "",
+    "isRequired": true
   },
-  "shortDescription":{
+  "shortDescription": {
     "key": "shortDescription",
     "label": "Short description",
-    "placeholder": "Briefly describe this topic",
+    "placeholder": "Please keep it short",
     "type": "text",
-    "instructions":""
+    "instructions": "Briefly describe this topic",
+    "isRequired": true,
+    "rows": 2,
+    "minLength": 80
   },
   "fullDescription": {
     "key": "fullDescription",
     "label": "Full description",
-    "placeholder": "Describe what this topic is about in detail ",
+    "placeholder": "Your long text goes here ",
     "type": "text",
-    "instructions":""
-  },  "owner":{
-  "key": "owner",
-  "label": "Author",
-  "placeholder": "The email of the main person responsible for this topic",
-  "type": "text",
-  "instructions":""
-},  "ownerEmail":{
-"key": "owner",
-"label": "Author",
-"placeholder": "The name of the main person responsible for this topic",
-"type": "email",
-"instructions":""
-},
-"thumbnailURL": {
-"key": "thumbnailURL",
-"label": "Thumbnail image",
-"instructions": "Please choose a picture for the small cards on the topics list."
-},
+    "instructions": "Describe what this topic is about in detail",
+    "isRequired": true,
+    "maxLength": 55550,
+    "rows": 8
+  },
+  "owner": {
+    "key": "owner",
+    "label": "Author",
+    "placeholder": "Ada Lovelace",
+    "type": "text",
+    "instructions": "The full name of the main person responsible for this topic",
+    "isRequired": true
+
+  },
+  "ownerEmail": {
+    "key": "ownerEmail",
+    "label": "Author's email",
+    "placeholder": "theiruser@provider.com",
+    "type": "email",
+    "instructions": "The email of the main person responsible for this topic",
+    "isRequired": true
+  },
+  "thumbnailURL": {
+    "key": "thumbnailURL",
+    "label": "Thumbnail image",
+    "instructions": "Please choose a picture for the small cards on the topics list."},
   "topicImageURL": {
     "key": "topicImageURL",
     "label": "Topic image",
-    "instructions": "Please choose a picture for the main topic banner."
-  }
+    "instructions": "Please choose a picture for the main topic banner."}
 }
