@@ -12,15 +12,15 @@ import { ResourcesList } from "./ResourcesList";
 import iResource from "../../interfaces/iResource";
 import Toolbar from "../../components/Toolbar";
 import Header from "../../components/Header";
-import logo from "assets/images/logo/logoNoText.png";
-import Icon from "../../components/Icon";
-import ResourcesMenu from "./ResourcesMenu";
+import ResourcesSelector from "./ResourcesSelector";
+import AuthorCard from "./AuthorCard";
 
 // Interface
 type PropParams = {
   type: string;
   id: string;
 };
+
 export default function Topic() {
   const { dispatch, topicsData } = useTopicsData();
   const { userData } = useUserData();
@@ -46,7 +46,6 @@ export default function Topic() {
         dispatch({ type: Type.UPDATE_TOPIC, payload: updatedTopic });
         console.log(updatedTopic.resources);
         setTopic(updatedTopic);
-        //TODO check resources status before changing status so the empty lists don't render
         setStatus(1);
       } else {
         setStatus(4);
@@ -80,34 +79,17 @@ export default function Topic() {
         <img src={topicImageURL} alt={title} className={"sectionImg"} />
         <h1>{title}</h1>
         {admin && <>{TopicManager()}</>}
-        <section id={"author-card"}>
-          <h3>Author</h3>
-          <img src={logo} alt={"bee"} />
-          <h4>{owner}</h4>
-          <a
-            href={`mailto:${ownerEmail}`}
-            target="_blank"
-            rel="noreferrer"
-            className={"at"}
-          >
-            <Icon fileName={"letter"} />
-          </a>
-        </section>
+        <AuthorCard owner={owner} ownerEmail={ownerEmail} />
         <section id={"description-card"}>
           <h3>Description</h3>
           <p>{fullDescription}</p>
         </section>
         <section id="resources">
           <h3>Resources</h3>
-          <button value="link" onClick={(e) => onChange(e)}>
-            Links
-          </button>
-          <button value="file" onClick={(e) => onChange(e)}>
-            Files
-          </button>
-          <button value="video" onClick={onChange}>
-            Videos
-          </button>
+          <ResourcesSelector
+            handleClick={(e) => onChange(e)}
+            onClickVideo={onChange}
+          />
           {status === 0 && <Spinner />}
           {status === 1 &&
             ResourcesList({ resources: resourcesList, toShow: selectorType })}
@@ -116,7 +98,9 @@ export default function Topic() {
             <span>There are no resources available for this topic</span>
           )}
         </section>
-        <button onClick={() => history.push("/topics")}>Go back</button>
+        <button onClick={() => history.push("/topics")} className="btn-primary">
+          Go back
+        </button>
       </main>
       {admin && <Toolbar />}
     </>

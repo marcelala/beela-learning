@@ -8,19 +8,16 @@ type iProps = {
 };
 
 export function ResourcesList({ resources, toShow }: iProps) {
-  if (resources.length === 0) {
-    return <span>No resources of this type are available</span>;
-  }
   if (toShow === "video") {
     return resources.map((item: iResource, index: any) => (
-      <li key={index}>
+      <li key={index} id={"resource-video"}>
         <Video resource={item} />
       </li>
     ));
   }
   if (toShow === "link") {
     return resources.map((item: iResource, index: any) => (
-      <li key={index}>
+      <li key={index} id={"resource"}>
         <a href={item.url} target="_blank" rel="noreferrer">
           <ResourceCard resource={item} />
         </a>
@@ -29,7 +26,7 @@ export function ResourcesList({ resources, toShow }: iProps) {
   }
   if (toShow === "file") {
     return resources.map((item: iResource, index: any) => (
-      <li key={index}>
+      <li key={index} id={"resource"}>
         <a href={item.url} target="_blank" rel="noreferrer" download>
           <ResourceCard resource={item} />
         </a>
