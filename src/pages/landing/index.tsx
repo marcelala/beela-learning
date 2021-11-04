@@ -1,7 +1,7 @@
 import Hero from "./Hero";
 import About from "./About";
 import Testimonials from "./Testimonials";
-import Numbers from "./Numbers";
+import WhoAreWe from "./WhoAreWe";
 import Newsletter from "./Newsletter";
 
 export default function Landing() {
@@ -10,7 +10,7 @@ export default function Landing() {
       <Hero />
       <About />
       <Testimonials />
-      <Numbers />
+      <WhoAreWe />
       <Newsletter />
     </main>
   );
