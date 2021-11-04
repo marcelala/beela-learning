@@ -36,11 +36,16 @@ export default function Topic() {
   const fetchResources = useCallback(async () => {
     try {
       const fetchedResources = await getCollection(`topics/${id}/resources`);
-      const updatedTopic = { ...topic, resources: fetchedResources };
-      dispatch({ type: Type.UPDATE_TOPIC, payload: updatedTopic });
-      console.log(updatedTopic.resources);
-      setTopic(updatedTopic);
-      setStatus(1);
+      if (fetchedResources.length > 0) {
+        const updatedTopic = { ...topic, resources: fetchedResources };
+        dispatch({ type: Type.UPDATE_TOPIC, payload: updatedTopic });
+        console.log(updatedTopic.resources);
+        setTopic(updatedTopic);
+        //TODO check resources status before changing status so the empty lists don't render
+        setStatus(1);
+      } else {
+        setStatus(4);
+      }
     } catch {
       setStatus(2);
     }
@@ -92,10 +97,12 @@ export default function Topic() {
           {status === 1 &&
             ResourcesList({ resources: resourcesList, toShow: selectorType })}
           {status === 2 && <p>Error 🚨</p>}
+          {status === 4 && (
+            <span>There are no resourc es available for this topic</span>
+          )}
         </section>
         <button onClick={() => history.push("/topics")}>Go back</button>
       </main>
-      {admin && <Toolbar />}
     </>
   );
 }
