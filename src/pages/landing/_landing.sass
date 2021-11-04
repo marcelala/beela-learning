@@ -44,6 +44,8 @@
     h2
       font-weight: 400
 #who
+  h1
+    color: $primary-dark
   @include sectionGrid
   padding: $space-large $space-medium
   ul
@@ -92,11 +94,33 @@
       border-radius: 30px
       height: 3rem
       width: 3rem
+      @include hover-lift
     .icon
       cursor: pointer
       width: 3rem
       height: 3rem
       padding: 0.5rem
+
+#newsletter
+  @include sectionGrid
+  padding: $space-large $space-medium
+  .text-box
+    width: 100%
+    font-family: $font
+    display: inline-flex
+    flex-direction: column
+    margin: auto
+    h2
+      font-weight: 500
+      color: $primary-dark
+    p
+      color: $dark
+  a
+    @include button
+    @include hover-lift
+    background-color: $primary
+    color: $dark
+
 
 
 

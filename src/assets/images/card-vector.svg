@@ -1,0 +1,11 @@
+<svg width="321" height="306" viewBox="0 0 321 306" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g opacity=".5">
+<path d="M83.0644 1.47802C38.6331 -5.44144 7.80002 36.4355 0.747437 52.2926V305.286H319.767C322.852 219.513 307.601 69.5914 221.912 69.5914C114.801 69.5914 138.604 10.1273 83.0644 1.47802Z" fill="#fef6db" style="mix-blend-mode:multiply"/>
+</g>
+<defs>
+<linearGradient id="card-element" x1="315.978" y1="8.07872" x2="-39.7567" y2="118" gradientUnits="userSpaceOnUse">
+<stop stop-color="#fef6db"/>
+<stop offset=".5" stop-color="#F3F3F3"/>
+</linearGradient>
+</defs>
+</svg>
