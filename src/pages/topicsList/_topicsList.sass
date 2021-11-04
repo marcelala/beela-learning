@@ -33,20 +33,47 @@
     height: auto
     box-shadow: 0 4px 6px rgba(6, 25, 56, 0.07)
     border-radius: 24px
+    position: relative
+
   a
     height: 100%
     width: 100%
     .card-image
       padding: $space-medium
     .text-box
+      @include cardContentGrid
+      position: relative
       padding: $space-medium
-      background-color: $primary-7
+      background-color: $primary-5
       height: 100%
       width: 100%
-      @include cardContentGrid
       justify-items: start
       border-end-end-radius: 24px
       border-bottom-left-radius: 24px
+      h1
+        color: $dark-3
+        z-index: 20
+
+      span
+        color: $dark-5
+        z-index: 20
+
+      p
+        color: $dark-3
+        z-index: 20
+      .btn-icon
+        z-index: 20
+
+.element-card
+  position: absolute
+  height: auto
+  left: 0
+  bottom: 0
+  object-fit: cover
+  z-index: 10
+  border-radius: 24px
+  opacity: .9
+
 
 
 

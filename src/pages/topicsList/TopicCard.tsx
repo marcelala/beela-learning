@@ -1,5 +1,6 @@
 import iTopic from "../../interfaces/iTopic";
 import Icon from "../../components/Icon";
+import element from "../../assets/images/card-vector.svg";
 interface iProps {
   topic: iTopic;
 }
@@ -17,6 +18,7 @@ export default function TopicCard({ topic }: iProps) {
           <Icon fileName={"plus-circle"} />
           Read more
         </div>
+        <img src={element} alt="bee in a hive" className={"element-card"} />
       </div>
     </>
   );
