@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import Register from "../pages/register";
 import Login from "../pages/login";
 import Navigation from "./Navigation";
@@ -58,7 +58,8 @@ export default function Browser() {
             path="/participants/:id"
             component={Participant}
           />
-          <Route component={Page404} />
+          <Route path="/404" component={Page404} />
+          <Redirect to={"/404"} />
         </ScrollToTop>
       </Switch>
       <Footer />
