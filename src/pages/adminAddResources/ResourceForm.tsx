@@ -3,6 +3,7 @@ import InputFile from "../../components/InputFile";
 import InputField from "../../components/InputField";
 import { newResource } from "../../types/newResource";
 import iResource from "../../interfaces/iResource";
+import TextArea from "../../components/TextArea";
 
 // Interface
 interface iProps {
@@ -35,13 +36,13 @@ export default function ResourceForm({
       />
     );
   return (
-    <section className="file-form">
+    <section className="form">
       <InputField
         onChange={onChange}
         settings={fields.title}
         state={resource.title}
       />
-      <InputField
+      <TextArea
         onChange={onChange}
         settings={fields.description}
         state={resource.description}

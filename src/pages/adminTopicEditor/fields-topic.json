@@ -14,7 +14,7 @@
     "type": "text",
     "instructions": "Briefly describe this topic",
     "isRequired": true,
-    "rows": 2,
+    "rows": 4,
     "minLength": 80
   },
   "fullDescription": {
@@ -25,7 +25,7 @@
     "instructions": "Describe what this topic is about in detail",
     "isRequired": true,
     "maxLength": 55550,
-    "rows": 8
+    "rows": 10
   },
   "owner": {
     "key": "owner",

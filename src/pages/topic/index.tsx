@@ -99,6 +99,7 @@ export default function Topic() {
               <span>There are no resources available for this topic</span>
             )}
           </section>
+          {admin && <>{TopicManager()}</>}
         </div>
         <button onClick={() => history.push("/topics")} className="btn-primary">
           Go back

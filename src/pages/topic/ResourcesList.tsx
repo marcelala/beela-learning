@@ -8,9 +8,11 @@ type iProps = {
 };
 
 export function ResourcesList({ resources, toShow }: iProps) {
-  if (resources === undefined) return <span> No items available </span>;
-  if (resources === null) return <span> No items available </span>;
-  if (resources.length < 0) return <span> No items available </span>;
+  if (resources === undefined)
+    return <span> No items have been to this topic</span>;
+  if (resources === null) return <span> No items have been to this topic</span>;
+  if (resources.length < 0)
+    return <span>No items have been to this topic</span>;
 
   const Videos = resources.map((item: iResource, index: any) => (
     <li key={index} id={"resource resource-video"}>
