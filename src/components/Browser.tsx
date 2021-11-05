@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import Register from "../pages/register";
 import Login from "../pages/login";
 import Navigation from "./Navigation";
@@ -17,6 +17,7 @@ import PasswordRecovery from "../pages/passwordRecovery";
 import Landing from "../pages/landing";
 import AdminAddResources from "../pages/adminAddResources";
 import ScrollToTop from "./ScrollToTop";
+import Page404 from "../pages/404/Page404";
 
 export default function Browser() {
   const { userData } = useUserData();
@@ -57,6 +58,8 @@ export default function Browser() {
             path="/participants/:id"
             component={Participant}
           />
+          <Route path="/404" component={Page404} />
+          <Redirect to={"/404"} />
         </ScrollToTop>
       </Switch>
       <Footer />
