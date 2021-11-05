@@ -1,21 +1,36 @@
 .header
+  @include adaptToToolbar
   position: absolute
+  display: inline-block
+  max-width: 100%
   width: 100vw
   height: auto
-  margin: 0
+  margin: 0 auto
+  object-fit: cover
+
   .element-header
-    width: 15rem
+    min-width: 15rem
+    width: 18rem
     height: auto
     position: relative
-    top: -50%
-    left: -20%
-    right: 100%
-    bottom: 80%
-  .logo-header
-    width: 5rem
-    height: auto
-    position: relative
-    left: 5%
-    right: 20%
-    top: 15%
-    bottom: 80%
+    padding-right: 1.5rem
+    overflow: hidden
+    object-fit: cover
+    margin-right: 0
+    margin-left: -3rem
+    margin-top: -1rem
+
+.logo-header
+  width: 5rem
+  height: auto
+  position: relative
+  object-fit: cover
+  margin-left: 0
+  @include respond(phablet)
+    margin-left: 30%
+  @include respond(tablet)
+    margin-left: 45%
+  @include respond(desktop)
+    margin-left: 55%
+
+

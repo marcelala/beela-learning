@@ -186,3 +186,10 @@
 @mixin adaptToToolbar
   @include respond(tablet)
     margin-left: 5rem
+
+@mixin adaptToToolbarDesktop
+  @include respond(desktop)
+    justify-content: center
+    justify-items: center
+    margin: 0 auto
+    padding: $space-x-large

@@ -43,10 +43,9 @@ export default function Topic() {
       const fetchedResources = await getCollection(`topics/${id}/resources`);
       if (fetchedResources.length > 0) {
         const updatedTopic = { ...topic, resources: fetchedResources };
-        dispatch({ type: Type.UPDATE_TOPIC, payload: updatedTopic });
-        console.log(updatedTopic.resources);
         setTopic(updatedTopic);
         setStatus(1);
+        dispatch({ type: Type.UPDATE_TOPIC, payload: updatedTopic });
       } else {
         setStatus(4);
       }
@@ -80,25 +79,27 @@ export default function Topic() {
         <img src={topicImageURL} alt={title} className={"sectionImg"} />
         <h1>{title}</h1>
         {admin && <>{TopicManager()}</>}
-        <AuthorCard owner={owner} ownerEmail={ownerEmail} />
-        <section id={"description-card"}>
-          <h3>Description</h3>
-          <p>{fullDescription}</p>
-        </section>
-        <section id="resources">
-          <h3>Resources</h3>
-          <ResourcesSelector
-            handleClick={(e) => onChange(e)}
-            onClickVideo={onChange}
-          />
-          {status === 0 && <Spinner />}
-          {status === 1 &&
-            ResourcesList({ resources: resourcesList, toShow: selectorType })}
-          {status === 2 && <p>Error 🚨</p>}
-          {status === 4 && (
-            <span>There are no resources available for this topic</span>
-          )}
-        </section>
+        <div className={"grid"}>
+          <AuthorCard owner={owner} ownerEmail={ownerEmail} />
+          <section id={"description-card"}>
+            <h3>Description</h3>
+            <p>{fullDescription}</p>
+          </section>
+          <section id="resources">
+            <h3>Resources</h3>
+            <ResourcesSelector
+              handleClick={(e) => onChange(e)}
+              onClickVideo={onChange}
+            />
+            {status === 0 && <Spinner />}
+            {status === 1 &&
+              ResourcesList({ resources: resourcesList, toShow: selectorType })}
+            {status === 2 && <p>Error 🚨</p>}
+            {status === 4 && (
+              <span>There are no resources available for this topic</span>
+            )}
+          </section>
+        </div>
         <button onClick={() => history.push("/topics")} className="btn-primary">
           Go back
         </button>

@@ -42,11 +42,12 @@ export default function Register() {
       phone: phone,
       imageURL: imageURL,
       userRole: "participant",
+      isActive: true,
     };
     await createDocumentWithId("userData", uid, newParticipant);
     setUserData(newParticipant);
     setIsAuthenticated(true);
-    history.push("/");
+    history.push("/home");
   }
 
   function onFailure(message: any) {
@@ -55,7 +56,6 @@ export default function Register() {
 
   return (
     <>
-      {" "}
       <Header id="auth-header" />
       <section id={"auth"}>
         <h1>Create an account</h1>

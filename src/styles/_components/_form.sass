@@ -1,6 +1,8 @@
 #topic-editor
+  @include adaptToToolbar
   @include sectionGrid
   padding: $space-x-large $space-medium
+
 
   h1
     color: $primary-dark
@@ -22,6 +24,7 @@
   padding: $space-x-large $space-medium
   @include sectionGrid
   margin: $space-medium auto
+  justify-content: center
 
   h1
     color: $primary-dark
@@ -33,10 +36,10 @@
     padding: $space-small
     align-items: flex-end
     color: $primary-dark
-    a
-      @include hover-lift
     small
       padding: $space-x-small 0
+      display: block
+      text-align: end
       @include hover-lift
   .btn-box
     width: 100%
@@ -59,3 +62,6 @@
     @include small
     text-transform: capitalize
 
+#auth-header
+  width: 100%
+  margin: 0

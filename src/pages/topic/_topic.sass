@@ -1,15 +1,26 @@
 #topic
   @include sectionGrid
   padding: $space-large $space-medium
+  justify-content: center
+  justify-items: center
   @include adaptToToolbar
   margin-top: $space-x-large
+  max-width: 100%
+
+  @include respond(desktop)
+    margin: 0 auto
+    max-width: 100%
+    padding: $space-x-large
 
   h1
     color: $primary-dark
+
 #author-card
   @include cardContentGrid
   border: .5px solid $primary
   border-radius: 16px
+  max-width: $media-tablet
+
   h3
     justify-self: start
     color: $primary-dark
@@ -35,6 +46,8 @@
   border: .5px solid $primary
   border-radius: 16px
   justify-items: start
+  max-width: $media-tablet
+
 
   h3
     color: $primary-dark
@@ -45,6 +58,8 @@
   @include cardContentGrid
   border: .5px solid $primary
   border-radius: 16px
+  max-width: $media-tablet
+
   h3
     font-weight: 500
     justify-self: start

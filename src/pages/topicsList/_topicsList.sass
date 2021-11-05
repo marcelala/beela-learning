@@ -1,7 +1,10 @@
 #topicsList
-  @include adaptToToolbar
   justify-items: center
   padding-top: 0
+  margin: 0 auto
+  @include adaptToToolbar
+  @include respond($media-desktop)
+    margin: 0 auto
 
   .topicsList-banner
     position: relative
