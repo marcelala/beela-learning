@@ -1,4 +1,7 @@
 #landing
+  display: grid
+  justify-items: center
+  margin: 0 auto
   #hero
     height: 97vh
     width: 100%
@@ -106,12 +109,14 @@
 #newsletter
   @include sectionGrid
   padding: $space-large $space-medium
+  margin: 0 auto
+  justify-content: center
   .text-box
     width: 100%
     font-family: $font
     display: inline-flex
     flex-direction: column
-    margin: auto
+    margin: 0 auto
     h2
       font-weight: 500
       color: $primary-dark

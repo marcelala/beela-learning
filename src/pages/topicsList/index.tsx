@@ -45,8 +45,6 @@ export default function TopicsList() {
 
   return (
     <>
-      <Header id="topicsList-header" />
-
       <section id="topicsList">
         <div className="topicsList-banner">
           <img src={banner} alt={"yellow background with text over it"} />

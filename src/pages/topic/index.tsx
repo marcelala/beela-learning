@@ -60,10 +60,11 @@ export default function Topic() {
   }, [fetchResources, id]);
 
   function getResourcesSelected(array: iResource[], selectedResource: string) {
+    selectedResource;
     const listSelected = array.filter(
       (item: iResource) => item.type === selectedResource
     );
-    setResourcesList(listSelected);
+    listSelected ? setResourcesList(listSelected) : array;
     return listSelected;
   }
 
