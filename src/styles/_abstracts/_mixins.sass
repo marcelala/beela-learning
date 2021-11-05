@@ -33,7 +33,7 @@
 @mixin cardGrid()
   display: grid
   width: 100%
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr))
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr))
   row-gap: $space-large
   column-gap: $space-large
   justify-items: center
@@ -177,3 +177,7 @@
   @if $breakpoint== ultra-wide
     @media only screen and (min-width: 2000px)
       @content
+
+@mixin adaptToToolbar
+  @include respond(tablet)
+    margin-left: 5rem

@@ -14,7 +14,7 @@ export default function Login() {
   // Global state
   const history = useHistory();
   const { setUserData } = useUserData();
-  const { setIsAuthenticated } = useAuthentication();
+  const { setIsAuthenticated, isAuthenticated } = useAuthentication();
   // Local state
   const loginFields = require("./fields-login.json");
   const [form, setForm] = useState({ email: "", password: "" });
@@ -28,6 +28,7 @@ export default function Login() {
     account.setIsAuthenticated
       ? await onSuccess(account.payload)
       : onFailure(account.payload);
+    history.push("/home");
   }
 
   async function onSuccess(uid: string) {
@@ -39,7 +40,6 @@ export default function Login() {
 
   function onFailure(message: string) {
     setErrorMessage(message);
-    history.push("/");
   }
 
   return (

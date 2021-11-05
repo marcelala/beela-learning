@@ -1,4 +1,5 @@
 #topicsList
+  @include adaptToToolbar
   justify-items: center
   .topicsList-banner
     position: relative
@@ -25,6 +26,8 @@
     @include cardGrid
     padding: $space-medium
     margin: $space-large auto
+    align-items: start
+
 
   li
     width: 100%
@@ -38,6 +41,8 @@
     width: 100%
     .card-image
       padding: $space-medium
+      object-fit: cover
+
     .text-box
       @include cardContentGrid
       position: relative
@@ -48,6 +53,8 @@
       justify-items: start
       border-end-end-radius: 24px
       border-bottom-left-radius: 24px
+      max-height: 20rem
+      overflow: hidden
       h1
         color: $dark-3
         z-index: 20
