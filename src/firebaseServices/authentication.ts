@@ -27,7 +27,7 @@ export async function register({ email, password }: iProps) {
     );
     account.isCreated = true;
     account.payload = authCredential.user.uid;
-    await createDocument("participants", { email, password, account });
+    await createDocument("participants", { email, account });
   } catch (error) {
     console.error("authentication.js error", error);
     // @ts-ignore
