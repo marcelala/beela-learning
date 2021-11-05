@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 export default function About() {
   return (
-    <section id={"about"}>
+    <section id="about">
       <div className="text-box title">
         <h2>Learn a skill.</h2>
         <h2>Build your portfolio.</h2>
@@ -14,7 +14,9 @@ export default function About() {
         Project Management, Backend and Frontend Software Engineering and more.
         Join our hive today!
       </p>
-      <Link to={"/topics"}>Discover</Link>
+      <Link to={"/topics"} className={"btn-secondary"}>
+        Discover
+      </Link>
     </section>
   );
 }

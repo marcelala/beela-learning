@@ -15,25 +15,19 @@ export function ResourcesList({ resources, toShow }: iProps) {
     return <span>No items have been to this topic</span>;
 
   const Videos = resources.map((item: iResource, index: any) => (
-    <li key={index} id={"resource resource-video"}>
-      <Video resource={item} />
-    </li>
+    <Video resource={item} />
   ));
 
   const Links = resources.map((item: iResource, index: any) => (
-    <li key={index} id={"resource"}>
-      <a href={item.url} target="_blank" rel="noreferrer">
-        <ResourceCard resource={item} />
-      </a>
-    </li>
+    <a href={item.url} target="_blank" rel="noreferrer" key={index}>
+      <ResourceCard resource={item} />
+    </a>
   ));
 
   const Files = resources.map((item: iResource, index: any) => (
-    <li key={index} id={"resource"}>
-      <a href={item.url} target="_blank" rel="noreferrer" download>
-        <ResourceCard resource={item} />
-      </a>
-    </li>
+    <a href={item.url} target="_blank" rel="noreferrer" download key={index}>
+      <ResourceCard resource={item} />
+    </a>
   ));
 
   if (toShow === "video") {

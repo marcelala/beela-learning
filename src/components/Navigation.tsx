@@ -53,7 +53,7 @@ export default function Navigation() {
           </li>
           {!isAuthenticated && (
             <li>
-              <NavLink to="/register" className={"btn btn-primary"}>
+              <NavLink to="/register" className={"btn-secondary"}>
                 Sign Up
               </NavLink>
             </li>

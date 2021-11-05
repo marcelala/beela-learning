@@ -16,6 +16,13 @@ to visit.
 
 <br/>
 
+### Upcoming updates
+  
+  - Profile page
+  - Video playlists
+  - Upgrade validations
+  - Avatars
+
 ## Table of Contents
 
 <br/>
@@ -156,10 +163,9 @@ npm run build
 
 - This project was developed by Marcela Felix Fortis mentored by [Eduardo Alvarez](https://github.com/elalienx) with
   support from [Novare Potential](https://www.novarepotential.com/).
-- Barlow fonts are by from Google Fonts.
-- UI inspired by @yahyaamirudin from Figma Community;
-- Icons by FontAwesome [(Creative Commons Attribution 4.0 International license)](https://fontawesome.com/license).
-- Images from Unsplash.
+- Condensed Barlow and Lexend fonts are by from Google Fonts.
+- Icons by Feather and FontAwesome [(Creative Commons Attribution 4.0 International license)](https://fontawesome.com/license), 
+- Images from Unsplash
 - Vectors by [PNGWING](https://www.pngwing.com/en/free-png-zbytj).
 - The project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). For more
   information on how to perform common tasks,

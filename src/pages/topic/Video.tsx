@@ -1,11 +1,11 @@
 import YouTube from "react-youtube";
 import getYouTubeID from "get-youtube-id";
-import PropsResource from "./PropsResource";
+import PropsResource from "../../types/PropsResource";
 
 export default function Video({ resource }: PropsResource) {
   const youtubeId = getYouTubeID(resource.url);
   return (
-    <div id={"video-player"}>
+    <li id={"resource video-player"}>
       <YouTube
         videoId={youtubeId || ""}
         className="video"
@@ -15,6 +15,6 @@ export default function Video({ resource }: PropsResource) {
         <h3>{resource.title}</h3>
         <p>{resource.description}</p>
       </div>
-    </div>
+    </li>
   );
 }

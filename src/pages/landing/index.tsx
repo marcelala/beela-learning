@@ -5,7 +5,7 @@ import Newsletter from "./Newsletter";
 
 export default function Landing() {
   return (
-    <main id={"landing"}>
+    <main id={"landing"} className={"landing"}>
       <Hero />
       <About />
       <WhoAreWe />

@@ -8,7 +8,7 @@ export default function Hero() {
       <div className="text-box">
         <h1>Beela Learning</h1>
         <h2> Explore the tech industry with us to find your path</h2>
-        <Link to="/register" className="btn">
+        <Link to="/register" className="btn-secondary">
           Sign up now
         </Link>
       </div>

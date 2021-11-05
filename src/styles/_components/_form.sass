@@ -1,8 +1,11 @@
 #topic-editor
-  @include adaptToToolbar
   @include sectionGrid
+  @include adaptToToolbar
   padding: $space-x-large $space-medium
-
+  width: 100%
+  max-width: 800px
+  @include respond(desktop)
+    padding: $space-x-large $space-large
 
   h1
     color: $primary-dark
@@ -11,21 +14,34 @@
     flex-direction: column
     .btn-primary
       margin-bottom: $space-medium
+
 #topic-form
+  display: grid
   width: 100%
   height: auto
   row-gap: $space-small
-  padding-bottom: 0
   margin: 0 auto
   justify-items: center
+  justify-content: center
+  max-width: 800px
   font-family: $font
+  padding: $space-medium
+
+  fieldset
+    width: 100%
+    max-width: 100%
+
 
 #auth, #add-resources
   padding: $space-x-large $space-medium
   @include sectionGrid
   margin: $space-medium auto
   justify-content: center
+  @include respond(desktop)
+    padding: $space-x-large $space-large
 
+  fieldset
+    width: 100%
   h1
     color: $primary-dark
   .auth-links
@@ -48,15 +64,18 @@
   .btn-primary
     margin: 0 auto
 
-.form
-  display: grid
-  row-gap: $space-small
-  width: 100%
-  height: auto
-  padding-bottom: 0
-  margin: 0 auto
-  justify-items: center
-  font-family: $font
+  .form, form
+    display: grid
+    row-gap: $space-small
+    max-width: 800px
+    width: 100%
+    height: auto
+    padding-bottom: 0
+    margin: 0 auto
+    justify-items: center
+    font-family: $font
+    .input-image
+      max-width: 800px
 
   small
     @include small

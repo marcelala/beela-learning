@@ -59,12 +59,13 @@ export default function Topic() {
   }, [fetchResources, id]);
 
   function getResourcesSelected(array: iResource[], selectedResource: string) {
-    selectedResource;
-    const listSelected = array.filter(
-      (item: iResource) => item.type === selectedResource
-    );
-    listSelected ? setResourcesList(listSelected) : array;
-    return listSelected;
+    if (array !== undefined) {
+      const listSelected = array.filter(
+        (item: iResource) => item.type === selectedResource
+      );
+      listSelected ? setResourcesList(listSelected) : array;
+      return listSelected;
+    } else return <p>There are resources of this type</p>;
   }
 
   function onChange(e: any) {
