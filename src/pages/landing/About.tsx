@@ -14,7 +14,9 @@ export default function About() {
         Project Management, Backend and Frontend Software Engineering and more.
         Join our hive today!
       </p>
-      <Link to={"/topics"}>Discover</Link>
+      <Link to={"/topics"} className={"btn-secondary"}>
+        Discover
+      </Link>
     </section>
   );
 }

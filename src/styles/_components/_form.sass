@@ -2,7 +2,8 @@
   @include adaptToToolbar
   @include sectionGrid
   padding: $space-x-large $space-medium
-
+  @include respond(desktop)
+    padding: $space-x-large $space-large
 
   h1
     color: $primary-dark
@@ -25,6 +26,8 @@
   @include sectionGrid
   margin: $space-medium auto
   justify-content: center
+  @include respond(desktop)
+    padding: $space-x-large $space-large
 
   h1
     color: $primary-dark
