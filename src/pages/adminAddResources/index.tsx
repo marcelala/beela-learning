@@ -67,8 +67,8 @@ export default function AdminAddResources() {
         >
           Go back
         </button>
-        <Toolbar />
       </section>
+      <Toolbar />
     </>
   );
 }

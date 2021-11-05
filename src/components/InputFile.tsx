@@ -34,7 +34,7 @@ export default function InputFile({ onChange, options, state, item }: iProps) {
   }
 
   return (
-    <fieldset className="input-file">
+    <fieldset className="input-image">
       <label className="custom-file-chooser">
         {label}
         <input onChange={(event) => onFileChange(event)} type="file" />
