@@ -17,6 +17,7 @@ import PasswordRecovery from "../pages/passwordRecovery";
 import Landing from "../pages/landing";
 import AdminAddResources from "../pages/adminAddResources";
 import ScrollToTop from "./ScrollToTop";
+import Page404 from "../pages/404/Page404";
 
 export default function Browser() {
   const { userData } = useUserData();
@@ -57,6 +58,7 @@ export default function Browser() {
             path="/participants/:id"
             component={Participant}
           />
+          <Route component={Page404} />
         </ScrollToTop>
       </Switch>
       <Footer />

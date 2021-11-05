@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import nuts from "../../assets/images/nuts.png";
+
 export default function Page404() {
-  //phrase  from http://www.free404.com
-  //nuts from unsplash
   return (
-    <main className="page-404">
+    <section className="pageNotFound">
       <img src={nuts} alt="assorted nuts" />
       <div className="text-box">
         <h1>Ah, nuts!</h1>
@@ -14,10 +13,10 @@ export default function Page404() {
           cracking on the problem.
         </p>
 
-        <Link to={"/"} className={"btn btn-secondary"}>
+        <Link to={"/"} className={"btn btn-primary"}>
           Go Home
         </Link>
       </div>
-    </main>
+    </section>
   );
 }
