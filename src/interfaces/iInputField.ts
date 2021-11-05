@@ -5,5 +5,10 @@ export default interface iInputField {
     instructions: string;
     placeholder: string;
     type: string;
+    maxLength?: number;
+    size?: number;
+    width?: number;
+    required?: boolean;
+    minlength?: number;
   };
 }

@@ -10,4 +10,5 @@ export default interface iUser {
   links: Array<any>;
   topics: Array<any>;
   favorites: Array<any>;
+  isActive: boolean;
 }

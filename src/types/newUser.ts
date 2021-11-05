@@ -12,4 +12,5 @@ export const newUser: iUser = {
   topics: [],
   favorites: [],
   userRole: "",
+  isActive: true,
 };

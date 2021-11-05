@@ -9,6 +9,7 @@ import { createDocumentWithId } from "../../firebaseServices/firestore";
 import { useUserData } from "../../context/UserDataContext";
 import { useAuthentication } from "../../context/AuthenticationContext";
 import { newUser } from "../../types/newUser";
+import Header from "../../components/Header";
 
 export default function Register() {
   // global state
@@ -41,11 +42,12 @@ export default function Register() {
       phone: phone,
       imageURL: imageURL,
       userRole: "participant",
+      isActive: true,
     };
     await createDocumentWithId("userData", uid, newParticipant);
     setUserData(newParticipant);
     setIsAuthenticated(true);
-    history.push("/");
+    history.push("/home");
   }
 
   function onFailure(message: any) {
@@ -53,16 +55,21 @@ export default function Register() {
   }
 
   return (
-    <div>
-      <h1>Create an account</h1>
-      <form onSubmit={onSubmit}>
-        <FormFields fields={signUpFields} state={[form, setForm]} />
-        <small>
-          Already a member? <Link to="/login">Log in here</Link>
-        </small>
-        <p>{errorMessage}</p>
-        <button>Create account</button>
-      </form>
-    </div>
+    <>
+      <Header id="auth-header" />
+      <section id={"auth"}>
+        <h1>Create an account</h1>
+        <form className="form form-register" onSubmit={onSubmit}>
+          <FormFields fields={signUpFields} state={[form, setForm]} />
+          <div className="auth-links">
+            <small>
+              Already a member? <Link to="/login">Log in here</Link>
+            </small>
+            <p>{errorMessage}</p>
+          </div>
+          <button className="btn-primary">Create account</button>
+        </form>
+      </section>
+    </>
   );
 }

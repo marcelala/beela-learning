@@ -1,25 +1,29 @@
 //noinspection SassScssResolvedByNameOnly
 .btn
-  cursor: pointer
-  font-size: 1rem
-  font-family: $font
-  text-decoration: none
-  border: 0
-  font-weight: 500
-  text-align: center
-  padding: $space-x-small $space-small
-  max-width: 10rem
-  border-radius: $space-small
-  margin: 0 auto
+  @include button
   @include hover-lift
 
   &-primary
+    @include button
     background-color: $primary
-    color: $white
+    color: $dark
     @include hover-lift
 
   &-secondary
+    @include button
     background-color: transparent
-    color: $primary
-    border: 0.5px solid $primary
+    color: $primary-dark
+    border: 0.5px solid $primary-dark
     @include hover-lift
+
+  &-icon
+    align-items: center
+    display: flex
+    justify-content: space-between
+    margin: 0 auto
+    img
+      height: auto
+      margin: 0 auto
+      padding: $space-x-small
+      z-index: 55
+      width: 3rem

@@ -18,7 +18,9 @@ body
 .App
   scroll-behavior: smooth
   width: 100vw
-  height: 100vh
+  height: auto
+  min-height: 100vh
+  max-width: 100vw
   font-family: $font
   background-color: $white
   margin: 0 auto
@@ -38,7 +40,11 @@ section
   width: 100vw
   padding: 0
   margin: 0
+  max-width: $media-desktop
   @include sectionGrid
+
+main
+  max-width: $media-desktop
 
 article,
 nav,

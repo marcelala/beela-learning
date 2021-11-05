@@ -43,23 +43,32 @@ export default function AdminAddResources() {
     (await documentID)
       ? alert("File added successfully")
       : alert(" Yikes, there was a problem adding this file");
-    history.goBack();
+    history.push("/topics");
   }
 
   return (
-    <section id={"resources"}>
-      <h1>Add resources to {topic.title}</h1>
-      <form onSubmit={(e) => onSave(topic, resource, e)}>
-        <ResourceForm
-          onChange={onChange}
-          type={type}
-          topic={topic}
-          resource={resource}
-        />
-        <button type={"submit"}>Save</button>
-      </form>
-      <button onClick={() => history.push("/topics")}>Go back</button>
-      <Toolbar />
-    </section>
+    <>
+      <section id={"add-resources"}>
+        <h1>Add resources to {topic.title}</h1>
+        <form onSubmit={(e) => onSave(topic, resource, e)}>
+          <ResourceForm
+            onChange={onChange}
+            type={type}
+            topic={topic}
+            resource={resource}
+          />
+          <button className="btn-primary" type={"submit"}>
+            Save
+          </button>
+        </form>
+        <button
+          className="btn-secondary"
+          onClick={() => history.push("/topics")}
+        >
+          Go back
+        </button>
+        <Toolbar />
+      </section>
+    </>
   );
 }

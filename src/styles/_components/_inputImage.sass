@@ -4,11 +4,32 @@
   height: auto
   border-radius: 16px
   label
-    width: 100%
+    @include label
+  small
+    @include small
+    padding: 0
   input
+    @include field
     width: 100%
-    margin: .3rem 0
+    margin-top: $space-small
+    margin-bottom: 0.2rem
+    padding: $space-x-small
+    height: auto
+    font-size: .8rem
+    &::file-selector-button
+      background-color: $primary-dark
+      color: $white
+      @include button
+      @include hover-lift
   img
+    @include field
     width: 100%
     height: 100%
+    max-height: 90vh
     object-fit: cover
+    background-color: $off-white
+    border: .5px dashed $primary-dark
+    padding: 0
+
+
+

@@ -4,8 +4,6 @@ import PropsResource from "./PropsResource";
 
 export default function Video({ resource }: PropsResource) {
   const youtubeId = getYouTubeID(resource.url);
-  console.log(resource.url);
-  console.log("youtubeId: " + youtubeId);
   return (
     <div id={"video-player"}>
       <YouTube
@@ -13,8 +11,10 @@ export default function Video({ resource }: PropsResource) {
         className="video"
         containerClassName="player"
       />
-      <h3>{resource.title}</h3>
-      <p>{resource.description}</p>
+      <div className={"text-box"}>
+        <h3>{resource.title}</h3>
+        <p>{resource.description}</p>
+      </div>
     </div>
   );
 }

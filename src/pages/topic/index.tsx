@@ -11,11 +11,16 @@ import TopicManager from "./TopicManager";
 import { ResourcesList } from "./ResourcesList";
 import iResource from "../../interfaces/iResource";
 import Toolbar from "../../components/Toolbar";
+import Header from "../../components/Header";
+import ResourcesSelector from "./ResourcesSelector";
+import AuthorCard from "./AuthorCard";
+
 // Interface
 type PropParams = {
   type: string;
   id: string;
 };
+
 export default function Topic() {
   const { dispatch, topicsData } = useTopicsData();
   const { userData } = useUserData();
@@ -36,11 +41,14 @@ export default function Topic() {
   const fetchResources = useCallback(async () => {
     try {
       const fetchedResources = await getCollection(`topics/${id}/resources`);
-      const updatedTopic = { ...topic, resources: fetchedResources };
-      dispatch({ type: Type.UPDATE_TOPIC, payload: updatedTopic });
-      console.log(updatedTopic.resources);
-      setTopic(updatedTopic);
-      setStatus(1);
+      if (fetchedResources.length > 0) {
+        const updatedTopic = { ...topic, resources: fetchedResources };
+        setTopic(updatedTopic);
+        setStatus(1);
+        dispatch({ type: Type.UPDATE_TOPIC, payload: updatedTopic });
+      } else {
+        setStatus(4);
+      }
     } catch {
       setStatus(2);
     }
@@ -51,10 +59,11 @@ export default function Topic() {
   }, [fetchResources, id]);
 
   function getResourcesSelected(array: iResource[], selectedResource: string) {
+    selectedResource;
     const listSelected = array.filter(
       (item: iResource) => item.type === selectedResource
     );
-    setResourcesList(listSelected);
+    listSelected ? setResourcesList(listSelected) : array;
     return listSelected;
   }
 
@@ -64,36 +73,39 @@ export default function Topic() {
   }
 
   return (
-    <main id="topic">
-      <img src={topicImageURL} alt={title} />
-      <h1>{title}</h1>
-      {admin && <>{TopicManager()}</>}
-      <section id={"author-card"}>
-        <h3>{owner}</h3>
-        <span> {ownerEmail}</span>
-      </section>
-      <section id={"description-card"}>
-        <h3>Description</h3>
-        <p>{fullDescription}</p>
-      </section>
-      <section id="resourcesList">
-        <h3>Resources</h3>
-        <button value="link" onClick={(e) => onChange(e)}>
-          Links
+    <>
+      <Header id={"header-topic"} />
+      <main id="topic">
+        <img src={topicImageURL} alt={title} className={"sectionImg"} />
+        <h1>{title}</h1>
+        {admin && <>{TopicManager()}</>}
+        <div className={"grid"}>
+          <AuthorCard owner={owner} ownerEmail={ownerEmail} />
+          <section id={"description-card"}>
+            <h3>Description</h3>
+            <p>{fullDescription}</p>
+          </section>
+          <section id="resources">
+            <h3>Resources</h3>
+            <ResourcesSelector
+              handleClick={(e) => onChange(e)}
+              onClickVideo={onChange}
+            />
+            {status === 0 && <Spinner />}
+            {status === 1 &&
+              ResourcesList({ resources: resourcesList, toShow: selectorType })}
+            {status === 2 && <p>Error 🚨</p>}
+            {status === 4 && (
+              <span>There are no resources available for this topic</span>
+            )}
+          </section>
+          {admin && <>{TopicManager()}</>}
+        </div>
+        <button onClick={() => history.push("/topics")} className="btn-primary">
+          Go back
         </button>
-        <button value="file" onClick={(e) => onChange(e)}>
-          Files
-        </button>
-        <button value="video" onClick={onChange}>
-          Videos
-        </button>
-        {status === 0 && <Spinner />}
-        {status === 1 &&
-          ResourcesList({ resources: resourcesList, toShow: selectorType })}
-        {status === 2 && <p>Error 🚨</p>}
-      </section>
-      <button onClick={() => history.push("/topics")}>Go back</button>
+      </main>
       {admin && <Toolbar />}
-    </main>
+    </>
   );
 }

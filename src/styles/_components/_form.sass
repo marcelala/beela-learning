@@ -1,8 +1,67 @@
-form
-  display: grid
+#topic-editor
+  @include adaptToToolbar
+  @include sectionGrid
+  padding: $space-x-large $space-medium
+
+
+  h1
+    color: $primary-dark
+  .btn-box
+    display: flex
+    flex-direction: column
+    .btn-primary
+      margin-bottom: $space-medium
+#topic-form
   width: 100%
   height: auto
-  padding: 0 $space-medium
   row-gap: $space-small
+  padding-bottom: 0
   margin: 0 auto
   justify-items: center
+  font-family: $font
+
+#auth, #add-resources
+  padding: $space-x-large $space-medium
+  @include sectionGrid
+  margin: $space-medium auto
+  justify-content: center
+
+  h1
+    color: $primary-dark
+  .auth-links
+    display: inline-flex
+    flex-direction: column
+    width: 100%
+    height: 100%
+    padding: $space-small
+    align-items: flex-end
+    color: $primary-dark
+    small
+      padding: $space-x-small 0
+      display: block
+      text-align: end
+      @include hover-lift
+  .btn-box
+    width: 100%
+    margin: auto
+    justify-content: center
+  .btn-primary
+    margin: 0 auto
+
+.form
+  display: grid
+  row-gap: $space-small
+  width: 100%
+  height: auto
+  padding-bottom: 0
+  margin: 0 auto
+  justify-items: center
+  font-family: $font
+
+  small
+    @include small
+    text-transform: capitalize
+
+#auth-header
+  width: 100%
+  margin: 0

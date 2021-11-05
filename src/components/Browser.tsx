@@ -36,11 +36,13 @@ export default function Browser() {
 
           <AuthenticatedRoute exact path="/home" component={HomePage} />
           <AuthenticatedRoute exact path="/topics/:id" component={Topic} />
-          <AuthenticatedRoute
-            exact
-            path="/participants"
-            component={ParticipantsList}
-          />
+          {admin && (
+            <AuthenticatedRoute
+              exact
+              path="/participants"
+              component={ParticipantsList}
+            />
+          )}
           <AuthenticatedRoute
             exact
             path="/admin-topics/:id"

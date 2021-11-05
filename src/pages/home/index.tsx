@@ -1,29 +1,36 @@
-import { useHistory } from "react-router-dom";
-import { useAuthentication } from "../../context/AuthenticationContext";
+// dependencies
+import { Link } from "react-router-dom";
+//project files
 import { useUserData } from "../../context/UserDataContext";
-import { logOut } from "../../firebaseServices/authentication";
+import avatar from "../../assets/images/avatar/avatar-placeholder.png";
+import Header from "../../components/Header";
+import Icon from "../../components/Icon";
 
 export default function Home() {
   // Global state
   const { userData } = useUserData();
-  const { setIsAuthenticated } = useAuthentication();
-  const history = useHistory();
-  // Methods
-  async function onLogout() {
-    const account = await logOut();
-    console.log("Home.jsx account", account);
-    setIsAuthenticated(false);
-    history.push("/");
-  }
 
   return (
-    <div>
-      <h1>Home</h1>
-      <p>Welcome to our page {userData.fullName}.</p>
-      <button> Add profile</button>
-      <button> View topics</button>
-
-      <button onClick={onLogout}>Logout</button>
-    </div>
+    <>
+      <Header id="home-header" />
+      <section id={"home"}>
+        <img
+          src={avatar}
+          alt="silhouette of a person's upper body"
+          className={"avatar-home"}
+        />
+        <h2>
+          Welcome <b>{userData.fullName}</b>
+        </h2>
+        <ul>
+          <hr />
+          <li>
+            <Icon fileName={"list"} />
+            <Link to={`/topics/`}>View topics</Link>
+          </li>
+          <hr />
+        </ul>
+      </section>
+    </>
   );
 }

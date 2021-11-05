@@ -25,14 +25,11 @@ export default function InputImage({
   folder,
 }: iProps) {
   const { label, key, instructions } = options;
-
   // Properties
   const Image = state === "" ? Placeholder : state;
-
   // Methods
   async function onFileChange(event: FormEvent) {
     const image_url = await uploadImage(event, folder);
-
     onChange(key, image_url);
   }
 
@@ -40,12 +37,12 @@ export default function InputImage({
     <fieldset className="input-image">
       <label className="custom-file-chooser">
         {label}
+        <img src={Image} alt="User generated content" />
         <input
           accept="image/gif, image/jpeg, image/png"
           onChange={(event) => onFileChange(event)}
           type="file"
         />
-        <img src={Image} alt="User generated content" />
       </label>
       <small>{instructions}</small>
     </fieldset>

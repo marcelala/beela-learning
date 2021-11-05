@@ -1,4 +1,7 @@
 #landing
+  display: grid
+  justify-items: center
+  margin: 0 auto
   #hero
     height: 97vh
     width: 100%
@@ -12,10 +15,123 @@
       object-fit: cover
       overflow: hidden
       position: absolute
-
+      opacity: 0.4
+      filter: grayscale(9)
     .text-box
       position: relative
-      display: block
+      display: inline-flex
+      flex-direction: column
       margin: auto
+      top: 40%
+      padding: $space-large
+      h1
+        padding: $space-medium 0
+        color: $primary
+        font-weight: 700
+        font-size: xxx-large
+        text-decoration: $dark
+        text-emphasis: $dark
+      h2
+        padding: $space-medium 0
+        font-weight: 500
+        color: $dark
+      a
+        margin: 0 auto
+        background-color: $primary
+        color: $dark-3
+
+#about
+  @include sectionGrid
+  padding: $space-large $space-medium
+
+  .text-box
+    width: 100%
+    h2
+      font-weight: 400
+#who
+  h1
+    color: $primary-dark
+  @include sectionGrid
+  padding: $space-large $space-medium
+  ul
+    width: 100%
+    @include cardGrid
+
+  li
+    width: 100%
+    height: auto
+    box-shadow: 0 4px 6px rgba(6, 25, 56, 0.07)
+    border-radius: 24px
+    @include cardContentGrid
+    row-gap: 1.5rem
+
+    img
+      padding-right: $space-small
+      height: 10rem
+      width: auto
+  .text-box
+    font-family: $font
+    display: inline-flex
+    flex-direction: column
+    margin: auto
+    h3
+      font-weight: 500
+      font-size: 1.5rem
+      color: $primary-dark
+    h4
+      font-weight: 300
+      color: $primary-dark
+      padding-top: $space-medium
+    p
+      color: $dark
+      padding-top: $space-medium
+
+  .button-box
+    display: inline-flex
+    flex-direction: row
+    justify-items: center
+    align-items: center
+    width: 100%
+    height: auto
+    justify-content: space-evenly
+    a
+      border: .5px solid $primary-dark
+      border-radius: 30px
+      height: 3rem
+      width: 3rem
+      @include hover-lift
+    .icon
+      cursor: pointer
+      width: 3rem
+      height: 3rem
+      padding: 0.5rem
+
+#newsletter
+  @include sectionGrid
+  padding: $space-large $space-medium
+  margin: 0 auto
+  justify-content: center
+  .text-box
+    width: 100%
+    font-family: $font
+    display: inline-flex
+    flex-direction: column
+    margin: 0 auto
+    h2
+      font-weight: 500
+      color: $primary-dark
+    p
+      color: $dark
+  a
+    @include button
+    @include hover-lift
+    background-color: $primary
+    color: $dark
+
+
+
+
+
+
 
 
