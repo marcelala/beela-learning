@@ -8,6 +8,7 @@ import Spinner from "./components/Spinner";
 
 export default function App() {
   // Global state
+  // isAuthenticated is not used
   const { uid, setIsAuthenticated, isAuthenticated } = useAuthentication();
   const { setUserData } = useUserData();
 

@@ -19,6 +19,15 @@ import AdminAddResources from "../pages/adminAddResources";
 import ScrollToTop from "./ScrollToTop";
 import Page404 from "../pages/404/Page404";
 
+// This component is too long -1
+/**
+ * A quick detail about the private routes.
+ * to make this component smaller, you could have create 4 types of private routes:
+ * 1. standard routes like: <Route exact path="/" component={Landing} />
+ * 2. un logged routes like: <UnauthenticatedRoute path="/register" component={Register} />
+ * 3. teacher routes <TeacherRoute path="participants"/>
+ * 4. student routers <StudentRoute path="topics"/> (or something that only students see)
+ */
 export default function Browser() {
   const { userData } = useUserData();
   const admin = userData.userRole === "admin";
@@ -27,6 +36,7 @@ export default function Browser() {
     <BrowserRouter>
       <Navigation />
       <Switch>
+        {/* Good use of private routes! */}
         <ScrollToTop>
           <Route exact path="/" component={Landing} />
           <Route exact path="/topics" component={TopicsList} />
