@@ -5,7 +5,7 @@ import PropsResource from "../../types/PropsResource";
 export default function Video({ resource }: PropsResource) {
   const youtubeId = getYouTubeID(resource.url);
   return (
-    <li id={"resource video-player"}>
+    <li id={"video-player"}>
       <YouTube
         videoId={youtubeId || ""}
         className="video"

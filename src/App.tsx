@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from "react";
 import "./styles/index.sass";
-import Browser from "./components/Browser";
+import Browser from "./routes/Browser";
 import { getDocument } from "./firebaseServices/firestore";
 import { useUserData } from "./context/UserDataContext";
 import { useAuthentication } from "./context/AuthenticationContext";
