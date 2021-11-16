@@ -13,11 +13,12 @@ export default function UnauthenticatedSwitch() {
     <Switch>
       <ScrollToTop>
         <UnauthenticatedRoute exact path="/" component={Landing} />
-        <UnauthenticatedRoute exact path="/topics" component={TopicsList} />
+        <UnauthenticatedRoute path="/topics" component={TopicsList} />
         <UnauthenticatedRoute path="/register" component={Register} />
         <UnauthenticatedRoute path="/login" component={Login} />
         <UnauthenticatedRoute path="/recovery" component={PasswordRecovery} />
         <UnauthenticatedRoute path="/404" component={Page404} />
+        <Redirect to="/" />
       </ScrollToTop>
     </Switch>
   );

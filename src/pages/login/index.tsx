@@ -25,9 +25,9 @@ export default function Login() {
     e.preventDefault();
     setErrorMessage("");
     const account = await login({ email, password });
-    account.setIsAuthenticated
+    account.isAuthenticated
       ? await onSuccess(account.payload)
-      : onFailure(account.payload);
+      : await onFailure(account.payload);
   }
 
   async function onSuccess(uid: string) {
@@ -37,7 +37,7 @@ export default function Login() {
     history.push("/home");
   }
 
-  function onFailure(message: string) {
+  async function onFailure(message: string) {
     setErrorMessage(message);
     history.push("/login");
   }
