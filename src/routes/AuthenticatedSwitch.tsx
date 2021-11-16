@@ -1,5 +1,5 @@
 import ScrollToTop from "../components/ScrollToTop";
-import { Redirect, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import Landing from "../pages/landing";
 import TopicsList from "../pages/topicsList";
 import AuthenticatedRoute from "./AuthenticatedRoute";
@@ -10,7 +10,6 @@ import Home from "../pages/home";
 import ParticipantsList from "../pages/participantsList";
 import AdminTopicEditor from "../pages/adminTopicEditor";
 import AdminAddResources from "../pages/adminAddResources";
-import Participant from "../components/Participant";
 import Page404 from "../pages/404/Page404";
 
 export default function AuthenticatedSwitch() {
@@ -22,9 +21,9 @@ export default function AuthenticatedSwitch() {
     <Switch>
       <ScrollToTop>
         <AuthenticatedRoute exact path="/" component={Landing} />
+        <AuthenticatedRoute path="/home" component={HomePage} />
         <AuthenticatedRoute exact path="/topics" component={TopicsList} />
         <AuthenticatedRoute exact path="/topics/:id" component={Topic} />
-        <AuthenticatedRoute exact path="/home" component={HomePage} />
         {admin && (
           <AuthenticatedRoute
             exact
@@ -42,7 +41,6 @@ export default function AuthenticatedSwitch() {
           path="/admin-topics/:id/:type"
           component={AdminAddResources}
         />
-        <AuthenticatedRoute path="/participants/:id" component={Participant} />
         <AuthenticatedRoute path="/404" component={Page404} />
       </ScrollToTop>
     </Switch>

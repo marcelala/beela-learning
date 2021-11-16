@@ -9,7 +9,6 @@ import { useUserData } from "../../context/UserDataContext";
 import Spinner from "../../components/Spinner";
 import iTopic from "../../interfaces/iTopic";
 import Type from "../../types/reducerTypes";
-import Header from "../../components/Header";
 import Toolbar from "../../components/Toolbar";
 import TopicCard from "./TopicCard";
 import banner from "assets/images/sections/listBanner.svg";

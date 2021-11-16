@@ -58,6 +58,8 @@ export default function Topic() {
     fetchResources();
   }, [fetchResources, id]);
 
+  //TODO refactor these guards and checks
+
   function getResourcesSelected(array: iResource[], selectedResource: string) {
     if (array !== undefined) {
       const listSelected = array.filter(
@@ -70,7 +72,11 @@ export default function Topic() {
 
   function onChange(e: any) {
     setSelector(e.target.value);
-    getResourcesSelected(topic.resources, e.target.value);
+    topic.resources ? (
+      getResourcesSelected(topic.resources, e.target.value)
+    ) : (
+      <p>There are no resources of this type available</p>
+    );
   }
 
   return (
