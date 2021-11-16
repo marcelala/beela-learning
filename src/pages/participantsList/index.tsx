@@ -8,7 +8,6 @@ import Spinner from "../../components/Spinner";
 import { useUserData } from "../../context/UserDataContext";
 import iUser from "../../interfaces/iUser";
 import Participant from "../../components/Participant";
-import { deleteAccount } from "../../firebaseServices/authentication";
 import Icon from "../../components/Icon";
 import ErrorComponent from "../../components/ErrorComponent";
 import Toolbar from "../../components/Toolbar";
@@ -38,15 +37,11 @@ export default function ParticipantsList() {
   }, [fetchParticipants]);
 
   async function onDelete(participant: iUser, e: FormEvent) {
-    e.preventDefault();
-    const userEmail = participant.email;
-    const userId = participant.id;
     if (
       window.confirm("" + "Do you really want to remove this participant? ?")
     ) {
       // @ts-ignore
-      await deleteAccount({ userEmail, userId });
-      await deleteDocument("userData", participant.id);
+      await deleteDocument("participants", participant.id);
       alert("Participant removed");
     }
   }

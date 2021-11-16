@@ -5,7 +5,6 @@ import {
   signOut,
   sendPasswordResetEmail,
   updatePassword,
-  deleteUser,
   User,
 } from "firebase/auth";
 //project files
@@ -27,7 +26,10 @@ export async function register({ email, password }: iProps) {
     );
     account.isCreated = true;
     account.payload = authCredential.user.uid;
-    await createDocument("participants", { email, account });
+    await createDocumentWithId("participants", account.payload, {
+      email,
+      account,
+    });
   } catch (error) {
     console.error("authentication.js error", error);
     // @ts-ignore
@@ -97,15 +99,5 @@ export async function updateCredentials(newPassword: string) {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-    });
-}
-
-export async function deleteAccount(user: User) {
-  deleteUser(user)
-    .then(() => {
-      console.log("Successfully deleted user");
-    })
-    .catch((error) => {
-      console.log("Error deleting user:", error);
     });
 }

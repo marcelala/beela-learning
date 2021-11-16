@@ -8,7 +8,8 @@ type iProps = {
 };
 
 export function ResourcesList({ resources, toShow }: iProps) {
-  if (resources === null || resources === undefined) return <span></span>;
+  if (resources === null || resources === undefined)
+    return <span>No resources of this type are available for now</span>;
   else {
     const Videos = resources.map((item: iResource, index: any) => (
       <Video resource={item} key={index} />
